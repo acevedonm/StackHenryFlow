@@ -1,0 +1,12 @@
+{
+  "name": "stack-henry-flow",
+  "displayName": "stack-henry-flow",
+  "expo": {
+    "name": "stack-henry-flow",
+    "slug": "stack-henry-flow",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
