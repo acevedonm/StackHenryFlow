@@ -9,9 +9,8 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../styles/styles";
-
 //importo el controller para comunicarme con la base de datos firebase
-import Controller from "../../database/controllers/controller";
+import ControllerUser from "../../database/controllers/controlleruser";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
@@ -34,7 +33,7 @@ export default function Register({ navigation }) {
   });
 
   const handleRegister = (values, { resetForm }) => {
-    Controller.CreateUser(values)
+    ControllerUser.CreateUser(values)
     resetForm();
   };
 

@@ -7,7 +7,7 @@ en el front solo uses esos metodos sin ensuciar el codigo.
 import firebase from "firebase";
 import "firebase/firestore";
 
-const Controller = {
+const ControllerUser = {
 
   CreateUser: (values) => {
     const { email, password } = values;
@@ -22,8 +22,9 @@ const Controller = {
         console.log("No fue posible crear usuario");
         console.log(error);
       });
-  },
+  }
   
+
 };
 
-export default Controller;
+export default ControllerUser;
