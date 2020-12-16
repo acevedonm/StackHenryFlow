@@ -63,6 +63,8 @@ export const styles = StyleSheet.create({
         width: '80%',
         marginTop: 5,
         justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
     },
     label: {
         color: `${white}`,
