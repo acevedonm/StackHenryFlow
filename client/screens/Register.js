@@ -9,7 +9,9 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../styles/styles";
-import firebase from "../../database/firebase";
+
+//importo el controller para comunicarme con la base de datos firebase
+import Controller from "../../database/controllers/controller";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
@@ -32,13 +34,7 @@ export default function Register({ navigation }) {
   });
 
   const handleRegister = (values, { resetForm }) => {
-    console.log(values);
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .then((user) => console.log(user))
-      .catch((error) => console.log(error));
-
+    Controller.CreateUser(values)
     resetForm();
   };
 
