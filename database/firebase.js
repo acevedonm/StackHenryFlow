@@ -17,7 +17,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
-
+console.log("base de datos iniciada")
 export default {
   firebase,
   db
