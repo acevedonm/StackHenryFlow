@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         zIndex: -1,
     },
     h1: {
-        color: `${white}`,
+        color: `${yellow}`,
         marginTop: 30,
         marginBottom: 20,
         fontSize: 30,
@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
         zIndex: 10
     },
     h2: {
+        color: `${white}`,
         fontSize: 20,
         textAlign: "center",
         marginTop: 15,
@@ -64,7 +65,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
     },
     label: {
-        color: "grey",
+        color: `${white}`,
         marginTop: 15,
     },
     errorForm: {
@@ -74,6 +75,8 @@ export const styles = StyleSheet.create({
         marginBottom: 15
     },
     boton: {
+        color: `${black}`,
+        fontWeight: "bold",
         backgroundColor: 'yellow',
         borderRadius: 100,
         height: 30,
@@ -84,7 +87,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20
     },
     linkForm: {
-        color: "grey",
+        color: `${white}`,
         marginBottom: 10,
         marginTop: 5
     },
