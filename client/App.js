@@ -4,7 +4,7 @@ import {createStackNavigator} from "@react-navigation/stack"
 import Login from "./screens/Login"
 import Register from "./screens/Register"
 import ForgotPassword from "./screens/ForgotPassword"
-// import firebase from "../database/firebase"
+import firebase from "../database/firebase" //esta linea sirve para inicializar el backend
 import Welcome from "./screens/Welcome"
 
 const Stack = createStackNavigator()
