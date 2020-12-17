@@ -99,20 +99,20 @@ export const styles = StyleSheet.create({
         zIndex: 1,
         alignSelf: "center"
     },
-    homeApp: {
-        marginTop: -80,
-        fontSize: 40,
-        fontWeight: "bold",
-        color: yellow
-    },
-    homeBoton: {
-        marginTop: 60,
-        marginBottom: 25,
-        width: 250,
-        height: 60,
-        backgroundColor: '#FFFF01',
-        borderRadius: 100,
-        alignItems: "center",
-        justifyContent: "center",
-    },
+    // homeApp: {
+    //     marginTop: -80,
+    //     fontSize: 40,
+    //     fontWeight: "bold",
+    //     color: yellow
+    // },
+    // homeBoton: {
+    //     marginTop: 60,
+    //     marginBottom: 25,
+    //     width: 250,
+    //     height: 60,
+    //     backgroundColor: '#FFFF01',
+    //     borderRadius: 100,
+    //     alignItems: "center",
+    //     justifyContent: "center",
+    // },
 });

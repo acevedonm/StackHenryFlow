@@ -3,6 +3,7 @@ import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../styles/styles";
+import ControllerUser from "../../database/controllers/controlleruser";
 
 export default function Login({ navigation }) {
   const validations = yup.object().shape({
@@ -15,7 +16,12 @@ export default function Login({ navigation }) {
 
   const handleSubmit = (values) => {
     // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
+
     console.log(values);
+    ControllerUser.Login(values)
+
+    navigation.navigate('Welcome');
+
   };
 
   return (
@@ -35,8 +41,8 @@ export default function Login({ navigation }) {
         >
           {({
             handleChange,
-            handleBlur,
-            handleSubmit,
+            handleBlur, //Se usa al momento del error, relaciono error con el campo
+            handleSubmit, 
             values,
             errors,
             touched,
