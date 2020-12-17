@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         zIndex: -1,
     },
     h1: {
-        color: `${white}`,
+        color: `${yellow}`,
         marginTop: 30,
         marginBottom: 20,
         fontSize: 30,
@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
         zIndex: 10
     },
     h2: {
+        color: `${white}`,
         fontSize: 20,
         textAlign: "center",
         marginTop: 15,
@@ -62,9 +63,11 @@ export const styles = StyleSheet.create({
         width: '80%',
         marginTop: 5,
         justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
     },
     label: {
-        color: "grey",
+        color: `${white}`,
         marginTop: 15,
     },
     errorForm: {
@@ -74,6 +77,8 @@ export const styles = StyleSheet.create({
         marginBottom: 15
     },
     boton: {
+        color: `${black}`,
+        fontWeight: "bold",
         backgroundColor: 'yellow',
         borderRadius: 100,
         height: 30,
@@ -84,7 +89,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20
     },
     linkForm: {
-        color: "grey",
+        color: `${white}`,
         marginBottom: 10,
         marginTop: 5
     },
@@ -94,20 +99,20 @@ export const styles = StyleSheet.create({
         zIndex: 1,
         alignSelf: "center"
     },
-    homeApp: {
-        marginTop: -80,
-        fontSize: 40,
-        fontWeight: "bold",
-        color: yellow
-    },
-    homeBoton: {
-        marginTop: 60,
-        marginBottom: 25,
-        width: 250,
-        height: 60,
-        backgroundColor: '#FFFF01',
-        borderRadius: 100,
-        alignItems: "center",
-        justifyContent: "center",
-    },
+    // homeApp: {
+    //     marginTop: -80,
+    //     fontSize: 40,
+    //     fontWeight: "bold",
+    //     color: yellow
+    // },
+    // homeBoton: {
+    //     marginTop: 60,
+    //     marginBottom: 25,
+    //     width: 250,
+    //     height: 60,
+    //     backgroundColor: '#FFFF01',
+    //     borderRadius: 100,
+    //     alignItems: "center",
+    //     justifyContent: "center",
+    // },
 });
