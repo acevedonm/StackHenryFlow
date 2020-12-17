@@ -8,10 +8,10 @@ import NewPostForm from "../components/NewPostForm"
 //Aca renderizamos SearchBar, Componente nuevo post y Componente post
 const Welcome = ( { navigation } )=>{
     return (
-        <View>
+        <View style={styles.header}>
             <SearchBar/>
             
-        <View style={styles.header}>
+        <View/>
             <Text>¡Bienvenido a Stack Henry Flow!</Text>
             <NewPostForm/>
             {/* <TouchableOpacity onPress={() => { navigation.navigate('NewPostForm') }}>
