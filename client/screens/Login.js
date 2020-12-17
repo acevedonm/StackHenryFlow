@@ -16,12 +16,9 @@ export default function Login({ navigation }) {
 
   const handleSubmit = (values) => {
     // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
-
     console.log(values);
     ControllerUser.Login(values)
-
     navigation.navigate('Welcome');
-
   };
 
   return (
