@@ -7,6 +7,7 @@ import ForgotPassword from "./screens/ForgotPassword"
 import Profile from "./screens/Profile"
 import ProfileEdit from "./screens/ProfileEdit"
 import firebase from "../database/firebase"
+import Welcome from "./screens/Welcome"
 
 const Stack = createStackNavigator()
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>
         <Stack.Screen name="Profile" component={Profile}/>
         <Stack.Screen name="ProfileEdit" component={ProfileEdit}/>
+        <Stack.Screen name="Welcome" component={Welcome}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

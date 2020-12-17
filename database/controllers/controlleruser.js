@@ -22,6 +22,22 @@ const ControllerUser = {
         console.log("No fue posible crear usuario");
         console.log(error);
       });
+  },
+  Login: (values) =>{
+    const email = values.username
+    const password = values.password
+    console.log(email)
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email,password)
+      .then((user) => {
+        console.log("Estas Loggeado");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log("No fue posible Loggearte");
+        console.log(error);
+      });
   }
 
 };
