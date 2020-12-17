@@ -4,8 +4,9 @@ import {createStackNavigator} from "@react-navigation/stack"
 import Login from "./screens/Login"
 import Register from "./screens/Register"
 import ForgotPassword from "./screens/ForgotPassword"
-// import firebase from "../database/firebase"
+import firebase from "../database/firebase" //esta linea sirve para inicializar el backend
 import Welcome from "./screens/Welcome"
+import NewPostForm from "./components/NewPostForm"
 
 const Stack = createStackNavigator()
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register}/>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>
         <Stack.Screen name="Welcome" component={Welcome}/>
+        <Stack.Screen name="NewPostForm" component={NewPostForm}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
