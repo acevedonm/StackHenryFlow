@@ -23,7 +23,6 @@ const ControllerUser = {
         console.log(error);
       });
   }
-  
 
 };
 
