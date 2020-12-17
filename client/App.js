@@ -8,6 +8,7 @@ import Profile from "./screens/Profile"
 import ProfileEdit from "./screens/ProfileEdit"
 import firebase from "../database/firebase"
 import Welcome from "./screens/Welcome"
+import NewPostForm from "./components/NewPostForm"
 
 const Stack = createStackNavigator()
 
@@ -21,6 +22,7 @@ export default function App() {
         <Stack.Screen name="Profile" component={Profile}/>
         <Stack.Screen name="ProfileEdit" component={ProfileEdit}/>
         <Stack.Screen name="Welcome" component={Welcome}/>
+        <Stack.Screen name="NewPostForm" component={NewPostForm}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
