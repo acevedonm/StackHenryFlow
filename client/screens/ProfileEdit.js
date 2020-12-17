@@ -2,14 +2,27 @@ import React from 'react'
 import { Formik } from 'formik';
 import { View, SafeAreaView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
+import ControllerUser from '../../database/controllers/controlleruser'
 
-
-const ProfileEdit = ({  navigation }) => {
-
+const ProfileEdit = (props,{  navigation }) => {
+ const {username, name, email, phone, cohorte} = props.route.params.myData
     
 
     const handleSubmit = (values) => {
-        //modify values here
+        var user=  ControllerUser.GetUserLogin()
+        console.log('usuariooo', user)
+       user.updateProfile({
+            displayName: values.username,
+            email: values.email,
+            name: values.name,
+            phone: values.phone
+        })
+        .then(()=> {
+            console.log('usuario cambiado', user)
+        })
+        .catch(function(error){
+            console.log('no se pudo actualizar los datos'. error)
+        })
         navigation.navigate('Profile');
     }
 
@@ -18,11 +31,10 @@ const ProfileEdit = ({  navigation }) => {
             <View style={styles.userInfoSection}>
                 <Formik
                     initialValues={{
-                        name: '',
-                        username: '',
-                        email: '',
-                        cohorte: '',
-                        phone: '',
+                        name,
+                        username,
+                        cohorte,
+                        phone,
                     }}
                     onSubmit={values => handleSubmit(values)}
                 >
@@ -33,9 +45,9 @@ const ProfileEdit = ({  navigation }) => {
                             <TextInput
                                 style={styles.textInput}
                                 placeholder="Nombre"
-                                onChangeText={handleChange('firstName')}
-                                onBlur={handleBlur('firstName')}
-                                value={values.firstName}
+                                onChangeText={handleChange('name')}
+                                onBlur={handleBlur('name')}
+                                value={values.name}
                             />
                            
                             <Text style={styles.textLabel}>Usuario</Text>
@@ -45,14 +57,6 @@ const ProfileEdit = ({  navigation }) => {
                                 onChangeText={handleChange('username')}
                                 onBlur={handleBlur('username')}
                                 value={values.username}
-                            />
-                            <Text style={styles.textLabel}>Email</Text>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder="Email"
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
                             />
                             <Text style={styles.textLabel}>Cohorte</Text>
                             <TextInput
@@ -66,8 +70,9 @@ const ProfileEdit = ({  navigation }) => {
                             <TextInput
                                 style={styles.textInput}
                                 placeholder="Telefono - Opcional"
-                                onChangeText={handleChange('nroTelefono')}
-                                onBlur={handleBlur('nroTelefono')}
+                                onChangeText={handleChange('phone')}
+                                onBlur={handleBlur('phone')}
+                                value={values.phone}
                                
                             />
                             <View style={styles.containerBoton}>
