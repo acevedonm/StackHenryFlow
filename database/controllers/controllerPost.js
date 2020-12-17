@@ -22,6 +22,21 @@ const ControllerPost = {
         console.log(err);
       });
   },
+  //ESTA FUNCION RETORNA UN ARREGLO DE POST
+  GetAllPosts: () => {
+    let postRef = firebase.firestore().collection('post')
+    var array = []
+     postRef.get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          array.push(doc.data());
+        });
+      })
+      .catch(err => {
+        console.log('Error getting documents', err);
+      });
+    return array
+  }
 };
 
 export default ControllerPost;
