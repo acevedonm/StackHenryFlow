@@ -16,8 +16,12 @@ export default function Login({ navigation }) {
 
   const handleSubmit = (values) => {
     // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
+
     console.log(values);
     ControllerUser.Login(values)
+
+    navigation.navigate('Welcome');
+
   };
 
   return (
@@ -37,8 +41,8 @@ export default function Login({ navigation }) {
         >
           {({
             handleChange,
-            handleBlur,
-            handleSubmit,
+            handleBlur, //Se usa al momento del error, relaciono error con el campo
+            handleSubmit, 
             values,
             errors,
             touched,
