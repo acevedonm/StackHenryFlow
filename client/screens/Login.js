@@ -7,10 +7,9 @@ import ControllerUser from "../../database/controllers/controlleruser";
 
 export default function Login({ navigation }) {
   const validations = yup.object().shape({
-    username: yup.string()
+    email: yup.string()
       .required("Campo obligatorio"),
     password: yup.string()
-      .min(8, ({ min }) => `La contraseña debe tener al menos ${min} caracteres`)
       .required("Campo obligatorio"),
   });
 
@@ -50,17 +49,17 @@ export default function Login({ navigation }) {
               <Text style={styles.h1}>LOGIN</Text>
 
               {/* CAMPO USUARIO */}
-              <Text style={styles.label}>Usuario</Text>
+              <Text style={styles.label}>Email</Text>
               <TextInput
                 style={styles.input}
-                onChangeText={handleChange("username")}
-                onBlur={handleBlur("username")}
-                value={values.username}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
               />
 
-              {/* ERROR USUARIO */}
-              {touched.username && errors.username && (
-                <Text style={styles.errorForm}>{errors.username}</Text>
+              {/* ERROR EMAIL */}
+              {touched.email && errors.email && (
+                <Text style={styles.errorForm}>{errors.email}</Text>
               )}
 
               {/* CAMPO CONTRASEÑA */}
