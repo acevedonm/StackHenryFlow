@@ -25,7 +25,7 @@ const ControllerUser = {
       });
   },
   Login: (values) =>{
-    const email = values.username
+    const email = values.email
     const password = values.password
     console.log(email)
     firebase
