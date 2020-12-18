@@ -1,34 +1,44 @@
 import React from "react";
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, Alert  } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { styles } from "../styles/styles";
-import ControllerUser from "../../database/controllers/controlleruser";
+import { styles } from "../../styles/styles";
+import ControllerUser from "../../../database/controllers/controllerUser";
+
 
 export default function Login({ navigation }) {
   const validations = yup.object().shape({
-    username: yup.string()
+    email: yup.string()
       .required("Campo obligatorio"),
     password: yup.string()
-      .min(8, ({ min }) => `La contraseña debe tener al menos ${min} caracteres`)
       .required("Campo obligatorio"),
   });
 
   const handleSubmit = (values) => {
     // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
-
-    console.log(values);
     ControllerUser.Login(values)
+    .then((user) => {
+      console.log("Estas Loggeado");
+      console.log(user);
+      if (user !=null) {
+        navigation.navigate('Index');
+      } else {
+        alert("Error de Logueo")
+      }
+    })
+    .catch((error) => {
+      console.log("No fue posible Loggearte");
+      console.log(error);
+      alert("Error de Logueo")
 
-    navigation.navigate('Welcome');
-
+    });
   };
 
   return (
     <>
       <View style={styles.header}>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>
@@ -53,17 +63,17 @@ export default function Login({ navigation }) {
               <Text style={styles.h1}>LOGIN</Text>
 
               {/* CAMPO USUARIO */}
-              <Text style={styles.label}>Usuario</Text>
+              <Text style={styles.label}>Email</Text>
               <TextInput
                 style={styles.input}
-                onChangeText={handleChange("username")}
-                onBlur={handleBlur("username")}
-                value={values.username}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
               />
 
-              {/* ERROR USUARIO */}
-              {touched.username && errors.username && (
-                <Text style={styles.errorForm}>{errors.username}</Text>
+              {/* ERROR EMAIL */}
+              {touched.email && errors.email && (
+                <Text style={styles.errorForm}>{errors.email}</Text>
               )}
 
               {/* CAMPO CONTRASEÑA */}
@@ -89,12 +99,14 @@ export default function Login({ navigation }) {
               <TouchableOpacity onPress={() => navigation.navigate("Register")}>
                 <Text style={styles.linkForm}>Registrarse</Text>
               </TouchableOpacity>
-
+              
               <TouchableOpacity
                 onPress={() => navigation.navigate("ForgotPassword")}
               >
                 <Text style={styles.linkForm}>Recuperar contraseña</Text>
               </TouchableOpacity>
+
+              
             </View>
           )}
         </Formik>

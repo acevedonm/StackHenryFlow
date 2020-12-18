@@ -20,6 +20,16 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    headerIn: {
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: 120,
+        backgroundColor: `${white}`,
+        overflow: "visible",
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
     body: {
         backgroundColor: `${black}`,
         flex: 1,
@@ -97,22 +107,21 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 200,
         zIndex: 1,
-        alignSelf: "center"
     },
-    // homeApp: {
-    //     marginTop: -80,
-    //     fontSize: 40,
-    //     fontWeight: "bold",
-    //     color: yellow
-    // },
-    // homeBoton: {
-    //     marginTop: 60,
-    //     marginBottom: 25,
-    //     width: 250,
-    //     height: 60,
-    //     backgroundColor: '#FFFF01',
-    //     borderRadius: 100,
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    // },
+    inputdescription: {
+        borderRadius: 15,
+        borderWidth: 1,
+        borderColor: 'yellow',
+        height: 100,
+        width: '80%',
+        marginTop: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    newpost: {
+    
+
+    }
+   
 });

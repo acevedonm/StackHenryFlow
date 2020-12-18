@@ -8,23 +8,14 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { styles } from "../styles/styles";
+import { styles } from "../../styles/styles";
 //importo el controller para comunicarme con la base de datos firebase
-import ControllerUser from "../../database/controllers/controlleruser";
+import ControllerUser from "../../../database/controllers/controllerUser";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
-    username: yup
-      .string()
-      .min(4, ({ min }) => `Mínimo ${min} caracteres`)
-      .max(20, ({ max }) => `Máximo ${max} caracteres`)
-      .required("Campo obligatorio"),
     email: yup
       .string().email("Email no válido").required("Campo obligatorio"),
-    name: yup
-      .string()
-      .max(20, ({ max }) => `Máximo ${max} caracteres`)
-      .required("Campo obligatorio"),
     password: yup
       .string()
       .min(8, ({ min }) => `La contraseña debe tener al menos ${min} caracteres`)
@@ -41,7 +32,7 @@ export default function Register({ navigation }) {
     <>
       <View style={styles.header}>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>
@@ -49,9 +40,7 @@ export default function Register({ navigation }) {
       <View style={styles.body}>
         <Formik
           initialValues={{
-            username: "",
             email: "",
-            name: "",
             password: "",
             repeatPassword: "",
           }}
@@ -70,19 +59,6 @@ export default function Register({ navigation }) {
             <View style={styles.form}>
               <Text style={styles.h1}>REGISTRO</Text>
 
-              {/* CAMPO USERNAME */}
-              <Text style={styles.label}>Usuario</Text>
-              <TextInput
-                style={styles.input}
-                onChangeText={handleChange("username")}
-                onBlur={handleBlur("username")}
-                value={values.username}
-              />
-              {/* ERROR USERNAME */}
-              {touched.username && errors.username && (
-                <Text style={styles.errorForm}>{errors.username}</Text>
-              )}
-
               {/* CAMPO EMAIL */}
               <Text style={styles.label}>Email</Text>
               <TextInput
@@ -96,18 +72,6 @@ export default function Register({ navigation }) {
                 <Text style={styles.errorForm}>{errors.email}</Text>
               )}
 
-              {/* CAMPO FIRST NAME */}
-              <Text style={styles.label}>Nombre completo</Text>
-              <TextInput
-                style={styles.input}
-                onChangeText={handleChange("name")}
-                onBlur={handleBlur("name")}
-                value={values.name}
-              />
-              {/* ERROR FIRSTNAME */}
-              {touched.name && errors.name && (
-                <Text style={styles.errorForm}>{errors.name}</Text>
-              )}
 
               {/* CAMPO PASSWORD */}
               <Text style={styles.label}>Contraseña</Text>
