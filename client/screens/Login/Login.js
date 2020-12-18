@@ -17,9 +17,6 @@ export default function Login({ navigation }) {
   const handleSubmit = (values) => {
     // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
     ControllerUser.Login(values)
-<<<<<<< HEAD:client/screens/Login/Login.js
-    navigation.navigate('Index');
-=======
     .then((user) => {
       console.log("Estas Loggeado");
       console.log(user);
@@ -35,7 +32,6 @@ export default function Login({ navigation }) {
       alert("Error de Logueo")
 
     });
->>>>>>> 65cc9d2a61da93c7a3a799a711c3a661b091a049:client/screens/Login.js
   };
 
   return (
