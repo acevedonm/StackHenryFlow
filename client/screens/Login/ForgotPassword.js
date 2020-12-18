@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { styles } from "../styles/styles";
+import { styles } from "../../styles/styles";
 
 export default function ForgotPassword({ navigation }) {
   const validations = yup.object().shape({
@@ -21,7 +21,7 @@ export default function ForgotPassword({ navigation }) {
     <>
       <View style={styles.header}>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
           onPress={() => navigation.navigate("Home")}

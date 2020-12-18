@@ -4,13 +4,11 @@ import { Formik } from "formik";
 import { styles } from "../styles/styles";
 
 export default function NewPostForm(){
-
     return(
         <View >
             <Formik
             initialValues={{title: "", description: "",tag: ""}}
             onSubmit={(values) => {
-
             }}
             >
                 {(props) => (

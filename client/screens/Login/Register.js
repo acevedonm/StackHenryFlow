@@ -8,9 +8,9 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { styles } from "../styles/styles";
+import { styles } from "../../styles/styles";
 //importo el controller para comunicarme con la base de datos firebase
-import ControllerUser from "../../database/controllers/controlleruser";
+import ControllerUser from "../../../database/controllers/controllerUser";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
@@ -41,7 +41,7 @@ export default function Register({ navigation }) {
     <>
       <View style={styles.header}>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>
