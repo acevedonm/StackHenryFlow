@@ -2,16 +2,20 @@ import React from "react";
 import { Button, View, Text, TextInput} from "react-native";
 import { Formik } from "formik";
 import { styles } from "../styles/styles";
+import ControllerPost from '../../database/controllers/controllerPost'
 
 export default function NewPostForm(){
+
+    const handlerPost = async (values) => {
+     var posteo= await ControllerPost.CreatePost(values)
+        console.log(posteo)
+    }
 
     return(
         <View >
             <Formik
             initialValues={{title: "", description: "",tag: ""}}
-            onSubmit={(values) => {
-
-            }}
+            onSubmit={handlerPost}
             >
                 {(props) => (
                     <View>

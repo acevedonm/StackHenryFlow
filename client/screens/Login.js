@@ -86,12 +86,14 @@ export default function Login({ navigation }) {
               <TouchableOpacity onPress={() => navigation.navigate("Register")}>
                 <Text style={styles.linkForm}>Registrarse</Text>
               </TouchableOpacity>
-
+              
               <TouchableOpacity
                 onPress={() => navigation.navigate("ForgotPassword")}
               >
                 <Text style={styles.linkForm}>Recuperar contraseña</Text>
               </TouchableOpacity>
+
+              
             </View>
           )}
         </Formik>
