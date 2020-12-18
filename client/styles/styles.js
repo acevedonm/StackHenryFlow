@@ -108,20 +108,20 @@ export const styles = StyleSheet.create({
         height: 200,
         zIndex: 1,
     },
-    // homeApp: {
-    //     marginTop: -80,
-    //     fontSize: 40,
-    //     fontWeight: "bold",
-    //     color: yellow
-    // },
-    // homeBoton: {
-    //     marginTop: 60,
-    //     marginBottom: 25,
-    //     width: 250,
-    //     height: 60,
-    //     backgroundColor: '#FFFF01',
-    //     borderRadius: 100,
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    // },
+    inputdescription: {
+        borderRadius: 15,
+        borderWidth: 1,
+        borderColor: 'yellow',
+        height: 100,
+        width: '80%',
+        marginTop: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    newpost: {
+    
+
+    }
+   
 });

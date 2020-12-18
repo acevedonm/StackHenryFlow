@@ -3,9 +3,10 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 // COMPONENTS //
 import Home from "../User/Home";
-import Welcome from "../User/Welcome";
-import NewPostForm from "../../components/NewPostForm";
+import Profile from "../User/Profile"
+import Comments from "../../components/Comments"
 import SideBar from "../../components/SideBar";
+import ProfileEdit from "../User/ProfileEdit"
 
 const Drawer = createDrawerNavigator();
 
@@ -14,8 +15,10 @@ export default function Index({ navigation }) {
     <Drawer.Navigator 
       // drawerContent={(props) => <SideBar {...props} />}
     >
-      <Drawer.Screen name="Welcome" component={Welcome} />
       <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="Comments" component={Comments} />
+      {/* <Drawer.Screen name="ProfileEdit" component={ProfileEdit} /> */}
     </Drawer.Navigator>
   );
 }
