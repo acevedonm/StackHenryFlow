@@ -4,7 +4,6 @@ import { Formik } from "formik";
 import { styles } from "../styles/styles";
 import ControllerPost from '../../database/controllers/controllerPost'
 
-
 export default function NewPostForm(){
 
     const handlerPost = async (values) => {

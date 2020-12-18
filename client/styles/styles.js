@@ -20,6 +20,16 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    headerIn: {
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: 120,
+        backgroundColor: `${white}`,
+        overflow: "visible",
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
     body: {
         backgroundColor: `${black}`,
         flex: 1,
@@ -97,7 +107,6 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 200,
         zIndex: 1,
-        alignSelf: "center"
     },
     inputdescription: {
         borderRadius: 15,

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import { Avatar, Title, Caption, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import ControllerUser from '../../database/controllers/controlleruser'
+import ControllerUser from '../../../database/controllers/controlleruser'
+import Header from '../../components/Header'
 
 const Profile = ({ route, navigation }) => {
   
@@ -18,9 +19,9 @@ var initialState={
 const [usuario, setUsuario] = useState(initialState)
     
     const handleProfileEdit = () => {
-        navigation.navigate('ProfileEdit',{
-           myData: usuario
-        })
+        // navigation.navigate('ProfileEdit',{
+        //    myData: usuario
+        // })
     }
 
    useEffect (()  => {
@@ -40,6 +41,8 @@ const [usuario, setUsuario] = useState(initialState)
 
 },[])
     return (
+        <>
+        <Header navigation={navigation} />
         <SafeAreaView style={styles.container}>
             <View style={styles.userInfoSection}>
                 <View style={{ flexDirection: 'row', marginTop: 15 }}>
@@ -79,6 +82,7 @@ const [usuario, setUsuario] = useState(initialState)
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
+        </>
     );
 }
 

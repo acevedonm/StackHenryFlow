@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, TextInput, Image, TouchableOpacity, Alert  } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { styles } from "../styles/styles";
-import ControllerUser from "../../database/controllers/controlleruser";
+import { styles } from "../../styles/styles";
+import ControllerUser from "../../../database/controllers/controllerUser";
 
 
 export default function Login({ navigation }) {
@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
       console.log("Estas Loggeado");
       console.log(user);
       if (user !=null) {
-        navigation.navigate('Welcome');
+        navigation.navigate('Index');
       } else {
         alert("Error de Logueo")
       }
@@ -38,7 +38,7 @@ export default function Login({ navigation }) {
     <>
       <View style={styles.header}>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>
