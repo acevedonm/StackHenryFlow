@@ -10,13 +10,14 @@ import "firebase/firestore";
 const ControllerUser = {
 
   CreateUser: (values) => {
-    const { email, password } = values;
+    const { email, password, username,} = values;
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         console.log("Usuario creado con exito");
-        console.log(user);
+        user.displayName = username;
+      
       })
       .catch((error) => {
         console.log("No fue posible crear usuario");
@@ -38,8 +39,14 @@ const ControllerUser = {
         console.log("No fue posible Loggearte");
         console.log(error);
       });
-  }
-  
+  },
+
+  GetUserLogin: () => {
+    var user = firebase.auth().currentUser;
+    console.log('user', user)
+    return user;
+  },
+
 
 };
 
