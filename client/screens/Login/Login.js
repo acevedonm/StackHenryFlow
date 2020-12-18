@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
       console.log("Estas Loggeado");
       console.log(user);
       if (user !=null) {
-        navigation.navigate('Welcome');
+        navigation.navigate('Index');
       } else {
         alert("Error de Logueo")
       }
