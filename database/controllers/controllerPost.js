@@ -1,8 +1,7 @@
 import firebase from "firebase";
 import "firebase/firestore";
 
-const ControllerPost = {
-  CreatePost: (values) => {
+export const createPost = (values) => {
     const { title, description, tags } = values;
     //verificar que los tags sean solo 3
     firebase
@@ -21,27 +20,14 @@ const ControllerPost = {
       .catch((err) => {
         console.log(err);
       });
-  },
-  //ESTA FUNCION RETORNA UN ARREGLO DE POST
-  GetAllPosts: async () => {
-    let postRef = firebase.firestore().collection('post')
-    var array = []
-     var ref = await postRef.get()
-/*       .then(snapshot => {
-        snapshot.forEach(doc => {
-          array.push(doc.data());
-        });
-      })
-      .catch(err => {
-        console.log('Error getting documents', err);
-      }); */
-    return ref
-  },
-  GetPost: async (id)=>{
-    let postRef = firebase.firestore().collection('post').doc(id)
-    var ref = await postRef.get()
-    return ref
-  }
+}
+
+export const GetPosts = () => {
+  let postRef = firebase.firestore().collection("post").get();
+  return postRef;
 };
 
-export default ControllerPost;
+export const GetPost = ( id ) => {
+    let postRef = firebase.firestore().collection('post').doc(id).get()
+    return postRef
+}

@@ -1,37 +1,40 @@
-import React from "react";
-import { View, Text, TextInput, Image, TouchableOpacity, Alert  } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
-import ControllerUser from "../../../database/controllers/controllerUser";
-
+import { loginUser, GetUserLogin } from "../../../database/controllers/controllerUsers";
 
 export default function Login({ navigation }) {
+
   const validations = yup.object().shape({
-    email: yup.string()
-      .required("Campo obligatorio"),
-    password: yup.string()
-      .required("Campo obligatorio"),
+    email: yup.string().required("Campo obligatorio"),
+    password: yup.string().required("Campo obligatorio"),
   });
 
   const handleSubmit = (values) => {
-    // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
-    ControllerUser.Login(values)
-    .then((user) => {
-      console.log("Estas Loggeado");
-      console.log(user);
-      if (user !=null) {
-        navigation.navigate('Index');
-      } else {
-        alert("Error de Logueo")
-      }
-    })
-    .catch((error) => {
-      console.log("No fue posible Loggearte");
-      console.log(error);
-      alert("Error de Logueo")
-
-    });
+    loginUser(values)
+      .then((user) => {
+        console.log("Estas Loggeado");
+        console.log(user);
+        if (user != null) {
+          navigation.navigate("Index");
+        } else {
+          alert("Error de Logueo");
+        }
+      })
+      .catch((error) => {
+        console.log("No fue posible Loggearte");
+        console.log(error);
+        alert("Error de Logueo");
+      });
   };
 
   return (
@@ -51,8 +54,8 @@ export default function Login({ navigation }) {
         >
           {({
             handleChange,
-            handleBlur, //Se usa al momento del error, relaciono error con el campo
-            handleSubmit, 
+            handleBlur,
+            handleSubmit,
             values,
             errors,
             touched,
@@ -99,14 +102,12 @@ export default function Login({ navigation }) {
               <TouchableOpacity onPress={() => navigation.navigate("Register")}>
                 <Text style={styles.linkForm}>Registrarse</Text>
               </TouchableOpacity>
-              
+
               <TouchableOpacity
                 onPress={() => navigation.navigate("ForgotPassword")}
               >
                 <Text style={styles.linkForm}>Recuperar contraseña</Text>
               </TouchableOpacity>
-
-              
             </View>
           )}
         </Formik>
