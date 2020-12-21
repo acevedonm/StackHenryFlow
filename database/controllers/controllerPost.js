@@ -22,22 +22,12 @@ export const createPost = (values) => {
       });
 }
 
-export const GetAllPosts = () => {
-    let array = [];
-    let postRef = firebase.firestore().collection("post");
-    postRef
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => (array = [...array, doc.data()]));
-        console.log(array);
-        return array;
-      })
-      .catch((err) => {
-        console.log("Error getting documents", err);
-      });
-  }
-
 export const GetPosts = () => {
   let postRef = firebase.firestore().collection("post").get();
   return postRef;
 };
+
+export const GetPost = ( id ) => {
+    let postRef = firebase.firestore().collection('post').doc(id).get()
+    return postRef
+}

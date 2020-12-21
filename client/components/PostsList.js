@@ -18,9 +18,8 @@ export default function Posts({ navigation }) {
 
   useEffect(() => {
     GetPosts()
-      .then( posts => { setPosts(posts.docs.map( doc => ({ id: doc.id, ...doc.data() })))
+      .then( posts => { setPosts(posts.docs.map( doc => ( { id: doc.id, ...doc.data() })))})
       .catch( err => { console.log("Error getting posts", err) });
-    });
   }, []);
 
   return (
