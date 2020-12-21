@@ -17,16 +17,17 @@ export default function Posts({ navigation }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    GetPosts().then((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    GetPosts()
+      .then( posts => { setPosts(posts.docs.map( doc => ({ id: doc.id, ...doc.data() })))
+      .catch( err => { console.log("Error getting posts", err) });
     });
   }, []);
 
   return (
-    <View>
+    <View onPress={() => navigation.navigate}>
       {posts &&
         posts.map((e) => (
-          <View key={e.id}>
+          <View key={e.id} onPress={() => navigation.navigate("PostDetails", { id : e.id })}>
             <Text>{e.title}</Text>
             <Text>{e.tag}</Text>
           </View>

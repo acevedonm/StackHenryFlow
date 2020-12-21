@@ -24,7 +24,6 @@ export const loginUser = async (values) => {
 
 export const GetUserLogin = () => {
   let user = firebase.auth().currentUser;
-  console.log("user", user);
   return user;
 };
 

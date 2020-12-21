@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -10,9 +10,10 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
-import { loginUser } from "../../../database/controllers/controllerUser";
+import { loginUser, GetUserLogin } from "../../../database/controllers/controllerUsers";
 
 export default function Login({ navigation }) {
+
   const validations = yup.object().shape({
     email: yup.string().required("Campo obligatorio"),
     password: yup.string().required("Campo obligatorio"),
