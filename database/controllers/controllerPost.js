@@ -23,19 +23,24 @@ const ControllerPost = {
       });
   },
   //ESTA FUNCION RETORNA UN ARREGLO DE POST
-  GetAllPosts: () => {
+  GetAllPosts: async () => {
     let postRef = firebase.firestore().collection('post')
     var array = []
-     postRef.get()
-      .then(snapshot => {
+     var ref = await postRef.get()
+/*       .then(snapshot => {
         snapshot.forEach(doc => {
           array.push(doc.data());
         });
       })
       .catch(err => {
         console.log('Error getting documents', err);
-      });
-    return array
+      }); */
+    return ref
+  },
+  GetPost: async (id)=>{
+    let postRef = firebase.firestore().collection('post').doc(id)
+    var ref = await postRef.get()
+    return ref
   }
 };
 
