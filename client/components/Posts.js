@@ -1,37 +1,41 @@
-import React, { useEffect } from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
-import { ListItem } from 'react-native-elements';
-import {StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image, FlatList} from 'react-native';
-import ControllerPost from '../../database/controllers/controllerPost'
+import React, { useEffect, useState } from "react";
+import { ScrollView } from "react-native-gesture-handler";
+import { ListItem } from "react-native-elements";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from "react-native";
+import { GetPosts } from "../../database/controllers/controllerPost";
 
+const getPosteos = async () => {
+  const response = await GetPosts();
+  return response;
+};
 
+export default function Posts({ navigation }) {
+  const [posts, setPosts] = useState([]);
 
-export default function Posts ({natigation}){
+  useEffect(() => {
+    GetPosts().then((snapshot) => {
+      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+  }, []);
 
-    const getPosteos = async() => {
-       //  var posteos= ControllerPost.GetAllPosts()
-      
-         const  asyncCall = () =>{
-            console.log('calling');
-            const response =  ControllerPost.GetAllPosts()
-            return response
-            // expected output: "resolved"
-          }
-      const result=  await asyncCall()
-          console.log(result)
-      
-    }
-    
-
-
-    useEffect(()=> {
-     getPosteos()
-
-    },[])
-
-    return(
-        <ScrollView>
-            
-        </ScrollView>
-    )
+  return (
+      <View>
+        {posts &&
+          posts.map((e) => (
+            <View key={e.id}>
+              <Text>{e.title}</Text>
+              <Text>{e.tag}</Text>
+            </View>
+          ))}
+      </View>
+  );
 }
