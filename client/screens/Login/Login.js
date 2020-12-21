@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, Alert  } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { styles } from "../styles/styles";
-import ControllerUser from "../../database/controllers/controlleruser";
+import { styles } from "../../styles/styles";
+import ControllerUser from "../../../database/controllers/controllerUser";
+
 
 export default function Login({ navigation }) {
   const validations = yup.object().shape({
@@ -15,16 +16,29 @@ export default function Login({ navigation }) {
 
   const handleSubmit = (values) => {
     // ACA VA LA REDIRECCIÓN LUEGO DEL LOGIN
-    console.log(values);
     ControllerUser.Login(values)
-    navigation.navigate('Welcome');
+    .then((user) => {
+      console.log("Estas Loggeado");
+      console.log(user);
+      if (user !=null) {
+        navigation.navigate('Index');
+      } else {
+        alert("Error de Logueo")
+      }
+    })
+    .catch((error) => {
+      console.log("No fue posible Loggearte");
+      console.log(error);
+      alert("Error de Logueo")
+
+    });
   };
 
   return (
     <>
       <View style={styles.header}>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>

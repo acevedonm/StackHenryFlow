@@ -2,9 +2,10 @@ import React from 'react'
 import { Formik } from 'formik';
 import { View, SafeAreaView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
-import ControllerUser from '../../database/controllers/controlleruser'
+import ControllerUser from '../../../database/controllers/controlleruser'
+import Header from '../../components/Header'
 
-const ProfileEdit = (props,{  navigation }) => {
+const ProfileEdit = (props, { navigation }) => {
  const {username, name, email, phone, cohorte} = props.route.params.myData
     
 
@@ -29,6 +30,8 @@ const ProfileEdit = (props,{  navigation }) => {
     }
 
     return (
+        <>
+        <Header navigation={navigation} />
         <SafeAreaView style={styles.container}>
             <View style={styles.userInfoSection}>
                 <Formik
@@ -87,6 +90,7 @@ const ProfileEdit = (props,{  navigation }) => {
                 </Formik>
             </View>
         </SafeAreaView>
+        </>
     )
 }
 
