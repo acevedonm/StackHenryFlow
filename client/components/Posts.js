@@ -13,11 +13,6 @@ import {
 } from "react-native";
 import { GetPosts } from "../../database/controllers/controllerPost";
 
-const getPosteos = async () => {
-  const response = await GetPosts();
-  return response;
-};
-
 export default function Posts({ navigation }) {
   const [posts, setPosts] = useState([]);
 
@@ -28,14 +23,14 @@ export default function Posts({ navigation }) {
   }, []);
 
   return (
-      <View>
-        {posts &&
-          posts.map((e) => (
-            <View key={e.id}>
-              <Text>{e.title}</Text>
-              <Text>{e.tag}</Text>
-            </View>
-          ))}
-      </View>
+    <View>
+      {posts &&
+        posts.map((e) => (
+          <View key={e.id}>
+            <Text>{e.title}</Text>
+            <Text>{e.tag}</Text>
+          </View>
+        ))}
+    </View>
   );
 }
