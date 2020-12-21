@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, View, Text, TextInput,TouchableOpacity} from "react-native";
+import { Button, View, Text, TextInput,TouchableOpacity, Alert} from "react-native";
 import { Formik } from "formik";
 import { styles } from "../styles/styles";
 import ControllerPost from '../../database/controllers/controllerPost'
@@ -9,6 +9,7 @@ export default function NewPostForm(){
 
     const handlerPost = async (values) => {
      var posteo= await ControllerPost.CreatePost(values)
+        alert('posteo creado con exito')
         console.log(posteo)
     }
 

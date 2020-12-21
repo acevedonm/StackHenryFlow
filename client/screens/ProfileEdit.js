@@ -15,15 +15,17 @@ const ProfileEdit = (props,{  navigation }) => {
             displayName: values.username,
             email: values.email,
             name: values.name,
-            phone: values.phone
+            phoneNumber: values.phone,
+            
         })
         .then(()=> {
             console.log('usuario cambiado', user)
+            navigation.navigate('Profile');
         })
         .catch(function(error){
             console.log('no se pudo actualizar los datos'. error)
         })
-        navigation.navigate('Profile');
+        
     }
 
     return (

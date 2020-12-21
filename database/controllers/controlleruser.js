@@ -10,13 +10,14 @@ import "firebase/firestore";
 const ControllerUser = {
 
   CreateUser: (values) => {
-    const { email, password, username,} = values;
+    const { email, password, username, phone} = values;
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         console.log("Usuario creado con exito");
         user.displayName = username;
+        user.phoneNumber = phone
       
       })
       .catch((error) => {
