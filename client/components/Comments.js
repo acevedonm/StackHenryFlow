@@ -3,7 +3,7 @@ import {StyleSheet, View, TextInput, Button, Alert } from "react-native"
 import Header from "../components/Header"
 
 //Esto se tiene que renderizar en la pantalla postDetail
-const   Comments = ( {navigation} )=>{
+export const Comments = ( {navigation} )=>{
 
     /* const createAlert = () =>
     Alert.alert(
@@ -14,7 +14,7 @@ const   Comments = ( {navigation} )=>{
     
     return (
         <>
-        <Header navigation={navigation} />
+        {/* <Header navigation={navigation} /> */}
         <View style={styles.containerInput}>
             <TextInput placeholder="Escribe un comentario..." style={styles.comment}
             multiline = {true}
