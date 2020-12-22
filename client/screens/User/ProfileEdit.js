@@ -11,7 +11,7 @@ import { Text } from "react-native-paper";
 import { GetUserLogin } from "../../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 
-const ProfileEdit = (props, { navigation }) => {
+const ProfileEdit = (props) => {
   const { username, name, email, phone, cohorte } = props.route.params.myData;
 
   const handleSubmit = (values) => {
@@ -30,12 +30,12 @@ const ProfileEdit = (props, { navigation }) => {
       .catch(function (error) {
         console.log("no se pudo actualizar los datos".error);
       });
-    navigation.navigate("Profile");
+    props.navigation.navigate("Profile");
   };
 
   return (
     <>
-      <Header navigation={navigation} />
+      <Header navigation={props.navigation} />
       <SafeAreaView style={styles.container}>
         <View style={styles.userInfoSection}>
           <Formik
