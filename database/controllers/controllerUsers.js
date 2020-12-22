@@ -2,18 +2,18 @@ import firebase from "firebase";
 import "firebase/firestore";
 
 export const createUser = (values) => {
-  const { email, password, username } = values;
-  firebase
+  const { email, password } = values;
+  var ref = firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then((user) => {
+/*     .then((user) => {
       console.log("Usuario creado con exito");
-      user.displayName = username;
     })
     .catch((error) => {
       console.log("No fue posible crear usuario");
       console.log(error);
-    });
+    }); */
+    return ref
 };
 
 export const loginUser = (values) => {
