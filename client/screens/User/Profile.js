@@ -44,7 +44,7 @@ const Profile = ({ route, navigation }) => {
       <SafeAreaView style={styles.container}>
         <View style={styles.userInfoSection}>
           <View style={{ flexDirection: "row", marginTop: 15 }}>
-            <Avatar.Image size={80} source={usuario.photoUrl} />
+            <Avatar.Image size={80} source={usuario.photoUrl ? usuario.photoUrl :"https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg" } />
             <View style={{ marginLeft: 20 }}>
               <Title
                 style={[
