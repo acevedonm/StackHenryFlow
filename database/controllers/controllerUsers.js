@@ -20,12 +20,18 @@ export const loginUser = (values) => {
   return ref;
 };
 
+export const loginWithGoogle = () => {
+  var provider = new firebase.auth.GoogleAuthProvider()
+  var ref = firebase.auth().signInWithPopup(provider)
+  return ref;
+};
+
 export const GetUserLogin = () => {
   let user = firebase.auth().currentUser;
   return user;
 };
 
-export const UpdateUser = (values) => {
+export const updateUser = (values) => {
   var user = firebase.auth().currentUser;
   var { displayName, photoURL } = values;
 
@@ -37,9 +43,9 @@ export const UpdateUser = (values) => {
   return ref;
 };
 
-export const ResetPassword = (newPassword) => {
+export const resetPassword = (newPassword) => {
   var user = firebase.auth().currentUser;
   var ref = user.updatePassword(newPassword);
   return ref;
-  
+
 };

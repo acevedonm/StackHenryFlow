@@ -10,7 +10,7 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
-import { loginUser, GetUserLogin } from "../../../database/controllers/controllerUsers";
+import { loginUser, GetUserLogin, loginWithGoogle } from "../../../database/controllers/controllerUsers";
 
 export default function Login({ navigation }) {
 
@@ -31,6 +31,18 @@ export default function Login({ navigation }) {
         console.log(error);
       });
   };
+  const handlerloginWithGoogle = ()=>{
+    loginWithGoogle().then((result) => {
+      navigation.navigate("Index")
+
+    }).catch(function(error) {
+      // Handle Errors.
+      alert(error.message);
+      console.log(error)
+      console.log("credential: ",error.credential);
+    });
+   
+  }
 
   return (
     <>
@@ -102,6 +114,11 @@ export default function Login({ navigation }) {
                 onPress={() => navigation.navigate("ForgotPassword")}
               >
                 <Text style={styles.linkForm}>Recuperar contraseña</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handlerloginWithGoogle()}
+              >
+                <Text style={styles.linkForm}> INGRESAR CON GOOGLE HACER MAS LINDO :D</Text>
               </TouchableOpacity>
             </View>
           )}
