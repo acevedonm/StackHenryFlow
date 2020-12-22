@@ -5,7 +5,7 @@ import { styles } from "../styles/styles";
 
 
 //Esto se tiene que renderizar en la pantalla postDetail
-const   Comments = ( {navigation} )=>{
+export const Comments = ( {navigation} )=>{
 
     /* const createAlert = () =>
     Alert.alert(
@@ -16,8 +16,8 @@ const   Comments = ( {navigation} )=>{
     
     return (
         <>
-        <Header navigation={navigation} />
-        <View style={styles.containerInputComment}>
+        {/* <Header navigation={navigation} /> */}
+        <View style={styles.containerInput}>
             <TextInput placeholder="Escribe un comentario..." style={styles.comment}
             multiline = {true}
             numberOfLines = {4}/>

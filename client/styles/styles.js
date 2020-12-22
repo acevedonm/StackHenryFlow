@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         backgroundColor: `${black}`,
         flex: 1,
+        color: "white",
     },
     h1: {
         color: `${yellow}`,
