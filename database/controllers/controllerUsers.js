@@ -16,24 +16,13 @@ export const createUser = (values) => {
     });
 };
 
-export const loginUser = async (values) => {
+export const loginUser = (values) => {
   const { email, password } = values;
-  let ref = await firebase.auth().signInWithEmailAndPassword(email, password);
+  let ref = firebase.auth().signInWithEmailAndPassword(email, password);
   return ref;
 };
 
 export const GetUserLogin = () => {
   let user = firebase.auth().currentUser;
   return user;
-};
-
-export const GetUserLogin2 = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    console.log("estoy en home");
-    console.log(user);
-    setUsuario({
-      nombre: user.displayName,
-      email: user.email,
-    });
-  });
 };

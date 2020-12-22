@@ -31,9 +31,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     body: {
+        textAlign: "center",
         backgroundColor: `${black}`,
         flex: 1,
-        zIndex: -1,
     },
     h1: {
         color: `${yellow}`,
