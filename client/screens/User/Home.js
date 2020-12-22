@@ -21,8 +21,8 @@ const Home = ({ navigation }) => {
     <>
       <Header navigation={navigation} />
       <View style={styles.body}>
-        <SearchBar />
         <Text style={styles.h1}>Stack Henry Flow!</Text>
+        <SearchBar />
         <NewPostForm user={user}/>
         <PostsList />
       </View>
