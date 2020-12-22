@@ -24,16 +24,11 @@ export default function Login({ navigation }) {
       .then((user) => {
         console.log("Estas Loggeado");
         console.log(user);
-        if (user != null) {
-          navigation.navigate("Index");
-        } else {
-          alert("Error de Logueo");
-        }
+        navigation.navigate("Index");
       })
       .catch((error) => {
         console.log("No fue posible Loggearte");
         console.log(error);
-        alert("Error de Logueo");
       });
   };
 
@@ -48,7 +43,7 @@ export default function Login({ navigation }) {
       </View>
       <View style={styles.body}>
         <Formik
-          initialValues={{ username: "", password: "" }}
+          initialValues={{ email: "", password: "" }}
           onSubmit={handleSubmit}
           validationSchema={validations}
         >
