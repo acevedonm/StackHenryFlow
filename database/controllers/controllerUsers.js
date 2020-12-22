@@ -26,3 +26,17 @@ export const GetUserLogin = () => {
   let user = firebase.auth().currentUser;
   return user;
 };
+
+
+export const UpdateUser = (values) =>{
+  var user = firebase.auth().currentUser;
+  var {displayName, photoURL } = values
+
+  var ref = user.updateProfile({
+  displayName,
+  photoURL
+  })
+
+return ref
+
+}
