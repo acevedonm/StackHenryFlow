@@ -27,13 +27,12 @@ export default function Login({ navigation }) {
   const handleSubmit = (values) => {
     loginUser(values)
       .then((user) => {
-        console.log("Estas Loggeado");
         AsyncStorage.setItem(USER_LOGIN, JSON.stringify(user) )
          navigation.navigate("Index");
       })
       .catch((error) => {
-        console.log("No fue posible Loggearte");
         console.log(error);
+        console.log("No fue posible Loggearte");
       });
   };
   const handlerloginWithGoogle = ()=>{

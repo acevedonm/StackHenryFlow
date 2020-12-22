@@ -1,14 +1,18 @@
 import React from "react";
-import { Button, View, Text, TextInput} from "react-native";
+import { View, Text } from "react-native";
+import Comments from "./Comments";
+import { styles } from "../styles/styles";
+import Header from "./Header";
 
+export default function PostDetails(props) {
+  const { data } = props.route.params;
 
-//Aca renderizo Componente POST (Aye) y Componente comentario de POST(Lalo)
-export default function PostDetails({ navigation }){
-
-    return(
-        <View >
-            
-        </View>
-    )
+  return (
+    <View>
+      <Header navigation={props.navigation} />
+      <Text style={styles.h1}>{data.title}</Text>
+      <Text style={styles.body}>{data.description}</Text>
+      <Comments />
+    </View>
+  );
 }
-

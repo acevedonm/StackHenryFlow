@@ -17,7 +17,6 @@ export default function Header({ navigation }) {
 
   const logout = () => {
     AsyncStorage.removeItem(USER_LOGIN)
-    console.log('aaaaaa')
     navigation.navigate('Login')
   }
 

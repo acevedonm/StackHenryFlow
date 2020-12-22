@@ -1,16 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView } from "react-native-gesture-handler";
-import { ListItem } from "react-native-elements";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from "react-native";
+import { Text, View } from "react-native";
 import { GetPosts } from "../../database/controllers/controllerPost";
 import { styles } from "../styles/styles"
 
@@ -30,7 +19,7 @@ export default function Posts({ navigation }) {
       {posts &&
         posts.map((e) => (
           <View key={e.id}>
-            <Text onPress={() =>  navigation.navigate('PostDetails')}> {e.title} </Text>
+            <Text onPress={() =>  navigation.navigate('PostDetails', { data : e})}> {e.title} </Text>
             <Text>{e.tag}</Text>
           </View>
         ))}
