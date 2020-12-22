@@ -12,6 +12,7 @@ import {
   FlatList,
 } from "react-native";
 import { GetPosts } from "../../database/controllers/controllerPost";
+import { styles } from "../styles/styles"
 
 export default function Posts({ navigation }) {
 
@@ -24,7 +25,8 @@ export default function Posts({ navigation }) {
   }, []);
 
   return (
-    <View >
+    <View>
+      <Text style={styles.h1}>Ultimas entradas</Text>
       {posts &&
         posts.map((e) => (
           <View key={e.id}>
