@@ -7,18 +7,33 @@ import { createUser } from "../../../database/controllers/controllerUsers";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
-    email: yup.string()
-      .email("Email no válido").required("Campo obligatorio"),
-    password: yup.string()
-      .min( 8, ({ min }) => `La contraseña debe tener al menos ${min} caracteres`)
+    email: yup.string().email("Email no válido").required("Campo obligatorio"),
+    password: yup
+      .string()
+      .min(
+        8,
+        ({ min }) => `La contraseña debe tener al menos ${min} caracteres`
+      )
       .required("Campo obligatorio"),
-    repeatPassword: yup.string()
-      .required("Campo obligatorio"),
+    repeatPassword: yup.string().required("Campo obligatorio"),
   });
 
   const handleRegister = (values, { resetForm }) => {
-    createUser(values);
-    resetForm();
+    if (values.repeatPassword !== values.password) {
+      alert("Passwords do not match");
+    } else {
+      createUser(values)
+        .then((user) => {
+          console.log("Usuario creado con exito");
+          navigation.navigate("Login");
+        })
+        .catch((error) => {
+          console.log("No fue posible crear usuario");
+          console.log(error);
+          alert(error.message);
+        });
+      resetForm();
+    }
   };
 
   return (
