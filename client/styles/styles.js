@@ -119,6 +119,27 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         textAlign: "center",
         color: `${white}`
-    }
+    },
+    newpost: {
+    
+
+    },
+    containerInputComment:{
+        borderRadius:10,
+        borderColor:'yellow',
+        backgroundColor:'black',
+        padding:8,
+        margin:10,
+        widh:200,
+        height:100,
+        color:'white'
+    },
+    comment:{
+        padding:8,
+        margin:10,
+        widh:200,
+        height:100,
+        color:'white'
+    },
    
 });
