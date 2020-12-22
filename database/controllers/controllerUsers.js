@@ -3,17 +3,15 @@ import "firebase/firestore";
 
 export const createUser = (values) => {
   const { email, password } = values;
-  var ref = firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-/*     .then((user) => {
+  var ref = firebase.auth().createUserWithEmailAndPassword(email, password);
+  /*     .then((user) => {
       console.log("Usuario creado con exito");
     })
     .catch((error) => {
       console.log("No fue posible crear usuario");
       console.log(error);
     }); */
-    return ref
+  return ref;
 };
 
 export const loginUser = (values) => {
@@ -27,16 +25,21 @@ export const GetUserLogin = () => {
   return user;
 };
 
-
-export const UpdateUser = (values) =>{
+export const UpdateUser = (values) => {
   var user = firebase.auth().currentUser;
-  var {displayName, photoURL } = values
+  var { displayName, photoURL } = values;
 
   var ref = user.updateProfile({
-  displayName,
-  photoURL
-  })
+    displayName,
+    photoURL,
+  });
 
-return ref
+  return ref;
+};
 
-}
+export const ResetPassword = (newPassword) => {
+  var user = firebase.auth().currentUser;
+  var ref = user.updatePassword(newPassword);
+  return ref;
+  
+};
