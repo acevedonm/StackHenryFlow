@@ -8,7 +8,7 @@ import Comments from "../../components/Comments"
 import SideBar from "../../components/SideBar";
 import ProfileEdit from "../User/ProfileEdit"
 import PostsList from "../../components/PostsList"
-import PostDetails from "../../components/PostDetails"
+import PostDetails from "../User/PostDetails"
 
 const Drawer = createDrawerNavigator();
 

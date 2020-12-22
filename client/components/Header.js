@@ -7,13 +7,21 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 
 export default function Header({ navigation }) {
+  const USER_LOGIN= '@user_login'
   const [usuario, setUsuario] = useState({});
 
-  useEffect(() => {
+  const logout = () => {
+    AsyncStorage.removeItem(USER_LOGIN)
+    console.log('aaaaaa')
+    navigation.navigate('Login')
+  }
+
+  /* useEffect(() => {
     let user = GetUserLogin();
     setUsuario({
       email: user.email,
@@ -22,7 +30,7 @@ export default function Header({ navigation }) {
       // photoUrl: user.photoUrl,
       // phone: user.phone,
     });
-  }, []);
+  }, []); */
 
   return (
     <View>
@@ -44,7 +52,7 @@ export default function Header({ navigation }) {
           }}
           onPress={navigation.openDrawer}
         >
-          <Text>Bienvenido {usuario.email}</Text>
+         <Text  onPress={logout}>cerrar sesion</Text> 
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
       </SafeAreaView>

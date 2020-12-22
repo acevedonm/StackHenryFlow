@@ -9,29 +9,35 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from "../../styles/styles";
 import { loginUser, GetUserLogin } from "../../../database/controllers/controllerUsers";
 
 export default function Login({ navigation }) {
+
+  const USER_LOGIN= '@user_login'
 
   const validations = yup.object().shape({
     email: yup.string().required("Campo obligatorio"),
     password: yup.string().required("Campo obligatorio"),
   });
 
+ 
+
   const handleSubmit = (values) => {
     loginUser(values)
       .then((user) => {
         console.log("Estas Loggeado");
-        console.log(user);
-        navigation.navigate("Index");
+        AsyncStorage.setItem(USER_LOGIN, JSON.stringify(user) )
+         navigation.navigate("Index");
       })
       .catch((error) => {
         console.log("No fue posible Loggearte");
         console.log(error);
       });
   };
-
+  
+  
   return (
     <>
       <View style={styles.header}>
