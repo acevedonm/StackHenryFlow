@@ -32,6 +32,8 @@ export default function Index({ navigation }) {
       <Drawer.Screen name="Profile" component={Profile} />
       {/* <Drawer.Screen name="Comments" component={Comments} />
       <Drawer.Screen name="PostsList" component={PostsList} />*/}
+       <Drawer.Screen name="Comments" component={Comments} />
+      <Drawer.Screen name="PostsList" component={PostsList} />
       <Drawer.Screen name="PostDetails" component={PostDetails} /> 
       <Drawer.Screen name="Sign out" component={LogOut} />
       {/* <Drawer.Screen name="ProfileEdit" component={ProfileEdit} /> */}

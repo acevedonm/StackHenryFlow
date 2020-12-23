@@ -86,9 +86,13 @@ export default function Header({ navigation }) {
                 : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg"
             }
           />
+
+          
+
           
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
+      
       </SafeAreaView>
       <View style={styles.headerIn}>
         <Image

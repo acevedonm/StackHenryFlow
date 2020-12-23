@@ -16,7 +16,7 @@ export default function NewPostForm() {
   };
 
   useEffect(() => {
-    getUserLogin().then((user) => setUser(user.user));
+    getUserLogin().then((user) => user && setUser(user.user));
   }, [user]);
 
   function getFirstWord(str) {
