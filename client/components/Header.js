@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { styles } from "../styles/styles";
+import { Avatar} from "react-native-paper";
 import {
   View,
   Image,
@@ -12,17 +13,19 @@ import { GetUserLogin } from "../../database/controllers/controllerUsers";
 
 export default function Header({ navigation }) {
   const [usuario, setUsuario] = useState({});
+  const [photo, setPhoto] = useState("");
 
   useEffect(() => {
     let user = GetUserLogin();
     setUsuario({
-      email: user.email,
+      displayName: user.displayName,
       // name: user.username,
       // username: user.displayName,
       // photoUrl: user.photoUrl,
       // phone: user.phone,
     });
-  }, []);
+    setPhoto(user.photoURL)
+  }, [photo]);
 
   return (
     <View>
@@ -44,7 +47,8 @@ export default function Header({ navigation }) {
           }}
           onPress={navigation.openDrawer}
         >
-          <Text>Bienvenido {usuario.email}</Text>
+          <Avatar.Image size={80} source={photo ? photo :"https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg" } />
+          <Text style={styles.welcome}>{usuario.displayName}</Text>
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
       </SafeAreaView>
