@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
-import { Avatar, Title, Caption, Text } from "react-native-paper";
+import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 
-const Profile = ({ route, navigation }) => {
+const Profile = ({ navigation }) => {
   var initialState = {
     username: "",
     name: "",
@@ -16,9 +16,9 @@ const Profile = ({ route, navigation }) => {
   const [usuario, setUsuario] = useState(initialState);
   const [photo, setPhoto] = useState("");
   const handleProfileEdit = () => {
-    // navigation.navigate('ProfileEdit',{
-    //    myData: usuario
-    // })
+     navigation.navigate('ProfileEdit',{
+        myData: usuario
+     })
   };
 
   useEffect(() => {

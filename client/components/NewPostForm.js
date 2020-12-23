@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, View, Text, TextInput,TouchableOpacity} from "react-native";
+import { View, Text, TextInput,TouchableOpacity} from "react-native";
 import { Formik } from "formik";
 import { styles } from "../styles/styles";
 import { CreatePost } from '../../database/controllers/controllerPost'

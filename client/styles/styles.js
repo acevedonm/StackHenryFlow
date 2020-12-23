@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         backgroundColor: `${black}`,
         flex: 1,
+        color: "white",
     },
     h1: {
         color: `${yellow}`,
@@ -132,6 +133,23 @@ export const styles = StyleSheet.create({
     newpost: {
     
 
-    }
+    },
+    containerInputComment:{
+        borderRadius:10,
+        borderColor:'yellow',
+        backgroundColor:'black',
+        padding:8,
+        margin:10,
+        widh:200,
+        height:100,
+        color:'white'
+    },
+    comment:{
+        padding:8,
+        margin:10,
+        widh:200,
+        height:100,
+        color:'white'
+    },
    
 });
