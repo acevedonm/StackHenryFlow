@@ -73,8 +73,7 @@ export default function Login({ navigation }) {
             values,
             errors,
             touched,
-            isValid,
-            setFieldTouched,
+ 
           }) => (
             <View style={styles.form}>
               <Text style={styles.h1}>LOGIN</Text>
