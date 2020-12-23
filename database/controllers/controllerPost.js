@@ -32,13 +32,20 @@ export const searchInPost = async (value) => {
     var array = [];
     var postRef = await firebase.firestore().collection("post").get();
     postRef.docs.forEach((doc) => {
-      var obj = { id: doc.id, ...doc.data() }
-      array.push(obj)
+      var obj = { id: doc.id, ...doc.data() };
+      let title = obj.title;
+      let busqueda = value;
+      let posicion = title.indexOf(busqueda);
+      if (Array.isArray(obj.tags)) {
+        let encontre = obj.tags.find((element) => (element = value));
+        if (encontre) array.push(obj);
+      }
+      if (posicion !== -1) array.push(obj);
     });
-    console.log("array in back: ",array)
-    return array
-  } catch {
-
+    return array;
+  } catch (error) {
+    console.log("Error al buscar post en back");
+    console.log(error);
   }
 };
 
