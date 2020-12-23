@@ -31,14 +31,25 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     body: {
+        textAlign: "center",
         backgroundColor: `${black}`,
         flex: 1,
-        zIndex: -1,
+        color: "white",
     },
     h1: {
         color: `${yellow}`,
         marginTop: 30,
         marginBottom: 20,
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        zIndex: 10
+    },
+    welcome: {
+        color: `${black}`,
+        marginTop: 30,
+        marginBottom: 20,
+        marginRight: 10,
         fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
@@ -122,6 +133,23 @@ export const styles = StyleSheet.create({
     newpost: {
     
 
-    }
+    },
+    containerInputComment:{
+        borderRadius:10,
+        borderColor:'yellow',
+        backgroundColor:'black',
+        padding:8,
+        margin:10,
+        widh:200,
+        height:100,
+        color:'white'
+    },
+    comment:{
+        padding:8,
+        margin:10,
+        widh:200,
+        height:100,
+        color:'white'
+    },
    
 });

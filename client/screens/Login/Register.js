@@ -1,31 +1,39 @@
 import React from "react";
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
-//importo el controller para comunicarme con la base de datos firebase
-import ControllerUser from "../../../database/controllers/controllerUser";
+import { createUser } from "../../../database/controllers/controllerUsers";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
-    email: yup
-      .string().email("Email no válido").required("Campo obligatorio"),
+    email: yup.string().email("Email no válido").required("Campo obligatorio"),
     password: yup
       .string()
-      .min(8, ({ min }) => `La contraseña debe tener al menos ${min} caracteres`)
+      .min(
+        8,
+        ({ min }) => `La contraseña debe tener al menos ${min} caracteres`
+      )
       .required("Campo obligatorio"),
     repeatPassword: yup.string().required("Campo obligatorio"),
   });
 
   const handleRegister = (values, { resetForm }) => {
-    ControllerUser.CreateUser(values)
-    resetForm();
+    if (values.repeatPassword !== values.password) {
+      alert("Passwords do not match");
+    } else {
+      createUser(values)
+        .then((user) => {
+          console.log("Usuario creado con exito");
+          navigation.navigate("Login");
+        })
+        .catch((error) => {
+          console.log("No fue posible crear usuario");
+          console.log(error);
+          alert(error.message);
+        });
+      resetForm();
+    }
   };
 
   return (
@@ -71,7 +79,6 @@ export default function Register({ navigation }) {
               {touched.email && errors.email && (
                 <Text style={styles.errorForm}>{errors.email}</Text>
               )}
-
 
               {/* CAMPO PASSWORD */}
               <Text style={styles.label}>Contraseña</Text>
