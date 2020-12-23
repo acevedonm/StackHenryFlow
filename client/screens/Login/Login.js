@@ -37,7 +37,10 @@ export default function Login({ navigation }) {
   };
   const handlerloginWithGoogle = ()=>{
     loginWithGoogle().then((result) => {
+      console.log(result)
       navigation.navigate("Index")
+      
+      AsyncStorage.setItem(USER_LOGIN, JSON.stringify(result) )
 
     }).catch(function(error) {
       // Handle Errors.
@@ -70,8 +73,7 @@ export default function Login({ navigation }) {
             values,
             errors,
             touched,
-            isValid,
-            setFieldTouched,
+ 
           }) => (
             <View style={styles.form}>
               <Text style={styles.h1}>LOGIN</Text>

@@ -1,27 +1,34 @@
 import { SearchBar } from "react-native-elements";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
+import { searchInPost } from "../../../database/controllers/controllerPost";
 
-export default class App extends React.Component {
-  state = {
-    search: "",
+const Bar = ()=>  {
+  const [ search, setSearch] = useState("")
+
+  const updateSearch = (e) => {
+    setSearch(e)
   };
 
-  updateSearch = (search) => {
-    this.setState({ search });
-  };
+  const buscar = async (busqueda)=>{
+    var result = await searchInPost(busqueda)
+    console.log(result)
+  }
 
-  render() {
-    const { search } = this.state;
-
+  useEffect(()=>{
+    buscar(search)
+  },[search])
+  
     return (
       <View style={{ width: "90%", alignSelf: "center" }}>
         <SearchBar
           placeholder="Buscar..."
-          onChangeText={this.updateSearch}
+          onChangeText={updateSearch}
           value={search}
+          onpre
         />
       </View>
     );
-  }
 }
+
+export default Bar
