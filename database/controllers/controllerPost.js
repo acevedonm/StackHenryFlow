@@ -35,6 +35,7 @@ export const searchInPost = async (value) => {
       var obj = { id: doc.id, ...doc.data() }
       array.push(obj)
     });
+    console.log("array in back: ",array)
     return array
   } catch {
 

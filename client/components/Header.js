@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { styles } from "../styles/styles";
-import { Avatar} from "react-native-paper";
+import { Avatar } from "react-native-paper";
 import {
   View,
   Image,
@@ -8,35 +8,42 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 
 export default function Header({ navigation }) {
-  const USER_LOGIN= '@user_login'
-  const [usuario, setUsuario] = useState({});
+  const USER_LOGIN = "@user_login";
+  const inicialState = {
+    displayName: "",
+    email: "",
+  };
+  const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
 
   const logout = () => {
-    AsyncStorage.removeItem(USER_LOGIN)
-    navigation.navigate('Login')
-  }
+    AsyncStorage.removeItem(USER_LOGIN);
+    navigation.navigate("Login");
+  };
 
-  /* useEffect(() => {
-    let user = GetUserLogin();
-    setUsuario({
-      displayName: user.displayName,
-      // name: user.username,
-      // username: user.displayName,
-      // photoUrl: user.photoUrl,
-      // phone: user.phone,
-    });
-<<<<<<< HEAD
-    setPhoto(user.photoURL)
-  }, [photo]);
-=======
-  }, []); */
->>>>>>> b560aa2216b5f06e8dfdd50f8555a0e0776b69db
+
+  const handlerValor = async () => {
+    let storageUser = await AsyncStorage.getItem(USER_LOGIN);
+    storageUser = JSON.parse(storageUser);
+    console.log(storageUser)
+    if (storageUser) {
+      setUsuario({
+        displayName: storageUser.user.displayName,
+        email: storageUser.user.email,
+      });
+      setPhoto(storageUser.user.photoURL);
+    } else {
+      console.log("Error al pedir user al storage");
+    }
+   }
+  useEffect( () => { 
+    handlerValor();
+  }, []);
 
   return (
     <View>
@@ -54,16 +61,21 @@ export default function Header({ navigation }) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
           }}
           onPress={navigation.openDrawer}
         >
-<<<<<<< HEAD
-          <Avatar.Image size={80} source={photo ? photo :"https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg" } />
+         
+          <Avatar.Image
+            size={80}
+            source={
+              photo
+                ? photo
+                : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg"
+            }
+          />
           <Text style={styles.welcome}>{usuario.displayName}</Text>
-=======
-         <Text  onPress={logout}>cerrar sesion</Text> 
->>>>>>> b560aa2216b5f06e8dfdd50f8555a0e0776b69db
+          <Text onPress={logout}>cerrar sesion</Text>
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
       </SafeAreaView>

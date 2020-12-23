@@ -37,7 +37,10 @@ export default function Login({ navigation }) {
   };
   const handlerloginWithGoogle = ()=>{
     loginWithGoogle().then((result) => {
+      console.log(result)
       navigation.navigate("Index")
+      
+      AsyncStorage.setItem(USER_LOGIN, JSON.stringify(result) )
 
     }).catch(function(error) {
       // Handle Errors.
