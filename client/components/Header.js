@@ -15,11 +15,7 @@ export default function Header({ navigation }) {
   const USER_LOGIN= '@user_login'
   const [usuario, setUsuario] = useState({});
 
-  const logout = () => {
-    AsyncStorage.removeItem(USER_LOGIN)
-    navigation.navigate('Login')
-  }
-
+  
   /* useEffect(() => {
     let user = GetUserLogin();
     setUsuario({
@@ -51,7 +47,7 @@ export default function Header({ navigation }) {
           }}
           onPress={navigation.openDrawer}
         >
-         <Text  onPress={logout}>cerrar sesion</Text> 
+         
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
       </SafeAreaView>
