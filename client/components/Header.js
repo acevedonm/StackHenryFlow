@@ -22,10 +22,7 @@ export default function Header({ navigation }) {
   const [photo, setPhoto] = useState("");
 
 
-  const logout = () => {
-    AsyncStorage.removeItem(USER_LOGIN);
-    navigation.navigate("Login");
-  };
+
 
 
   const handlerValor = async () => {
@@ -89,10 +86,13 @@ export default function Header({ navigation }) {
                 : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg"
             }
           />
-          <Text style={styles.welcome}>{usuario.displayName}</Text>
+
+          
+
+          
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
-        <Text onPress={logout}>cerrar sesion</Text>
+      
       </SafeAreaView>
       <View style={styles.headerIn}>
         <Image
