@@ -90,9 +90,9 @@ export default function Header({ navigation }) {
             }
           />
           <Text style={styles.welcome}>{usuario.displayName}</Text>
-          <Text onPress={logout}>cerrar sesion</Text>
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
+        <Text onPress={logout}>cerrar sesion</Text>
       </SafeAreaView>
       <View style={styles.headerIn}>
         <Image
