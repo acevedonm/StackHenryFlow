@@ -21,6 +21,7 @@ export default function Header({ navigation }) {
   const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
 
+
   const logout = () => {
     AsyncStorage.removeItem(USER_LOGIN);
     navigation.navigate("Login");
@@ -45,6 +46,19 @@ export default function Header({ navigation }) {
     handlerValor();
   }, []);
 
+  
+  /* useEffect(() => {
+    let user = GetUserLogin();
+    setUsuario({
+      email: user.email,
+      // name: user.username,
+      // username: user.displayName,
+      // photoUrl: user.photoUrl,
+      // phone: user.phone,
+    });
+  }, []); */
+
+
   return (
     <View>
       <SafeAreaView
@@ -66,6 +80,7 @@ export default function Header({ navigation }) {
           onPress={navigation.openDrawer}
         >
          
+
           <Avatar.Image
             size={80}
             source={
