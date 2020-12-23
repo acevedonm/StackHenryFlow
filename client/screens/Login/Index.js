@@ -5,7 +5,6 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../User/Home";
 import Profile from "../User/Profile"
 import Comments from "../../components/Comments"
-import SideBar from "../../components/SideBar";
 import ProfileEdit from "../User/ProfileEdit"
 import PostsList from "../../components/PostsList"
 import PostDetails from "../../components/PostDetails"
@@ -22,7 +21,7 @@ export default function Index({ navigation }) {
       <Drawer.Screen name="Comments" component={Comments} />
       <Drawer.Screen name="PostsList" component={PostsList} />
       <Drawer.Screen name="PostDetails" component={PostDetails} />
-      {/* <Drawer.Screen name="ProfileEdit" component={ProfileEdit} /> */}
+     {/* <Drawer.Screen name="ProfileEdit" component={ProfileEdit} /> */}
     </Drawer.Navigator>
   );
 }
