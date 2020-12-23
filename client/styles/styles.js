@@ -45,6 +45,16 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         zIndex: 10
     },
+    welcome: {
+        color: `${black}`,
+        marginTop: 30,
+        marginBottom: 20,
+        marginRight: 10,
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        zIndex: 10
+    },
     h2: {
         color: `${white}`,
         fontSize: 20,
