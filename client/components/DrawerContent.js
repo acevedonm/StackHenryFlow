@@ -35,7 +35,7 @@ export default function DrawerContent(props) {
 
   const logout = () => {
     AsyncStorage.removeItem(USER_LOGIN);
-    navigation.navigate("Login");
+    
   };
 
 

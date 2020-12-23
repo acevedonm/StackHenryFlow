@@ -33,7 +33,7 @@ export default function NewPostForm() {
       >
         {({ values, handleChange, handleSubmit }) => (
           <View style={styles.form}>
-            {user && <Text style={{ color: "#FFF" }}>Hola {getFirstWord(user.displayName)} !</Text>}
+            {user && <Text style={{ color: "#FFF" }}>Hola {getFirstWord(user.displayName)}!</Text>}
             <Text style={{ color: "#FFF" }}>¿Tenés alguna duda?</Text>
 
             <TextInput
