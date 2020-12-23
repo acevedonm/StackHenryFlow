@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
       <View style={styles.body}>
         <Text style={styles.h1}>Stack Henry Flow!</Text>
         <SearchBar />
-        <NewPostForm user={user}/>
+        <NewPostForm navigation={navigation}/>
         <PostsList navigation={navigation}/>
       </View>
     </>
