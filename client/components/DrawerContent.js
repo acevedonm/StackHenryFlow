@@ -27,11 +27,17 @@ export default function DrawerContent(props) {
   };
   const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
+  const [isDarkTheme, setIsDarkTheme] = useState(false)
+  
+  const toggleTheme = ()=>{
+    setIsDarkTheme(!isDarkTheme)
+  }
 
   const logout = () => {
     AsyncStorage.removeItem(USER_LOGIN);
     props.navigation.navigate("Login");
   };
+
 
   const handlerValor = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
@@ -95,7 +101,6 @@ export default function DrawerContent(props) {
                 props.navigation.navigate("Home");
               }}
             />
-
             <DrawerItem
               icon={({ color, size }) => {
                 return (
@@ -103,15 +108,38 @@ export default function DrawerContent(props) {
                 );
               }}
               label="Profile"
+              onPress={()=>{props.navigation.navigate("Profile")}}
+            />
+            <DrawerItem
+              icon={({ color, size }) => {
+                return (
+                  <Icon
+                    name="post"
+                    color={color}
+                    size={size}
+                  />
+                );
+              }}
+              label="My Posts"
               onPress={logout}
             />
+          </Drawer.Section>
+          <Drawer.Section title="Preferences">
+            <TouchableRipple onPress={ ()=>{toggleTheme()}}>
+              <View style={styles.preference}>
+                <Text>Dark Theme</Text>
+                <View pointerEvents="none">
+                <Switch value={isDarkTheme}></Switch>
+                </View>
+              </View>
+            </TouchableRipple>
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({ color, size }) => {
-            <Icon name="exit-to-app" color={color} size={size}></Icon>;
+            return <Icon name="exit-to-app" color={color} size={size}></Icon>
           }}
           label="Sign Out"
           onPress={logout}
