@@ -17,7 +17,7 @@ export default function NewPostForm({ navigation }) {
   };
 
   useEffect(() => {
-    getUserLogin().then((user) => setUser(user.user));
+    getUserLogin().then((user) => user && setUser(user.user));
   }, [user]);
 
   return (
@@ -31,9 +31,11 @@ export default function NewPostForm({ navigation }) {
           {({ values, handleChange, handleSubmit }) => (
             <View style={styles.form}>
               {user && (
-                <Text style={{ color: "#FFF" }}>Hola {user.email} !</Text>
+                <Text style={{ color: "#000", fontWeight: "bold" }}>Hola {user.email} !</Text>
               )}
-              <Text style={{ color: "#FFF" }}>¿Tenés alguna duda?</Text>
+              <Text style={{ color: "#000", marginBottom: 20, fontWeight: "bold" }}>
+                ¿Tenés alguna duda?
+              </Text>
 
               <TextInput
                 placeholder="Haz tu pregunta"

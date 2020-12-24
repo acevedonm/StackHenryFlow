@@ -53,11 +53,11 @@ export default function Login({ navigation }) {
 
   return (
     <>
-      <View style={styles.header}>
+      <View style={styles.headerOut}>
         <Image
           source={require("../../assets/henry.png")}
           resizeMode="contain"
-          style={styles.imgHenry}
+          style={styles.imgHenryOut}
         ></Image>
       </View>
       <View style={styles.body}>

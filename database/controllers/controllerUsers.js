@@ -3,14 +3,7 @@ import "firebase/firestore";
 
 export const createUser = (values) => {
   const { email, password } = values;
-  var ref = firebase.auth().createUserWithEmailAndPassword(email, password);
-  /*     .then((user) => {
-      console.log("Usuario creado con exito");
-    })
-    .catch((error) => {
-      console.log("No fue posible crear usuario");
-      console.log(error);
-    }); */
+  let ref = firebase.auth().createUserWithEmailAndPassword(email, password);
   return ref;
 };
 

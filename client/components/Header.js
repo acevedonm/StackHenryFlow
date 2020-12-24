@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 export default function Header({ navigation }) {
 
   return (
-      <SafeAreaView style={styles.headerIn}>
+      <SafeAreaView style={styles.header}>
         <TouchableOpacity
           style={{
             paddingTop: 10,

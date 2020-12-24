@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { yellow, black, white, lightYellow, errorRed } from './globalsVariables'
+import { yellow, black, white, errorRed } from './globalsVariables'
 
 export const styles = StyleSheet.create({
     container:{
@@ -10,17 +10,13 @@ export const styles = StyleSheet.create({
         color: `${white}`,
         textAlign: "center"
     },
-    header: {
+    headerOut: {
         top: 0,
         left: 0,
         width: "100%",
-        height: 120,
         backgroundColor: `${white}`,
-        overflow: "visible",
-        alignItems: 'center',
-        justifyContent: 'center',
     },
-    headerIn: {
+    header: {
         top: 0,
         left: 0,
         width: "100%",
@@ -33,32 +29,21 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         backgroundColor: `${black}`,
         color: `${white}`,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         flex: 1,
     },
-    h3: {
-        color: `${yellow}`,
-        fontSize: 18,
-        marginVertical: 15,
-        fontWeight: "bold"
-    },
+    
     postList :{
-        color: `${white}`,
-        fontSize: 15
+        color: `${black}`,
+        fontSize: 15,
+        marginBottom: 10
     },
     h1: {
         color: `${yellow}`,
         marginTop: 30,
         marginBottom: 20,
-        fontSize: 30,
-        fontWeight: "bold",
-        textAlign: "center",
-        zIndex: 10
-    },
-    welcome: {
-        color: `${black}`,
-        marginTop: 30,
-        marginBottom: 20,
-        marginRight: 10,
         fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
@@ -71,6 +56,22 @@ export const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 10
     },
+    h3: {
+        color: `${white}`,
+        fontSize: 15,
+        marginVertical: 10,
+        fontWeight: "bold"
+    },
+    welcome: {
+        color: `${black}`,
+        marginTop: 30,
+        marginBottom: 20,
+        marginRight: 10,
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        zIndex: 10
+    },
     form: {
         flex: 1,
         padding: 20,
@@ -78,12 +79,13 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: "#00FFFF",
         borderRadius: 15,
-        backgroundColor: "#00000005",
-        width: "95%",
+        backgroundColor: `${white}`,
+        width: "90%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "2%",
-        marginBottom: "3%"
+        marginVertical: "30%",
+        padding: 20,
+        borderRadius: 10,
     },
     input: {
         borderRadius: 15,
@@ -113,7 +115,6 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         height: 30,
         width: '80%',
-        alignItems: "center",
         justifyContent: "center",
         marginTop: 20,
         marginBottom: 20
@@ -123,12 +124,28 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 5
     },
+    card: {
+        backgroundColor: `${white}`,
+        width: "80%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems:"center",
+        marginVertical: 30,
+        padding: 20,
+        borderRadius: 10,
+    },
     imgHenry: {
         alignSelf: "center",
         width: 200,
         height: 100,
         zIndex: 1,
         marginLeft: -50
+    },
+    imgHenryOut: {
+        alignSelf: "center",
+        width: 200,
+        height: 100,
+        zIndex: 1,
     },
     inputdescription: {
         borderRadius: 15,

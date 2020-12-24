@@ -22,9 +22,10 @@ export default function Posts({ navigation }) {
   return (
     <>
       <Header navigation={navigation} />
-      <View>
+      <View style={styles.body}>
         <SearchBar />
         <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
+        <View style={styles.card}>
         {posts &&
           posts.map((e) => (
             <View key={e.id}>
@@ -38,6 +39,7 @@ export default function Posts({ navigation }) {
               <Text>{e.tag}</Text>
             </View>
           ))}
+          </View>
       </View>
     </>
   );
