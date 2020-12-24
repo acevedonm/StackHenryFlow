@@ -28,7 +28,7 @@ export default function Index({ navigation }) {
   return (
     <Drawer.Navigator 
       drawerContent={(props) => <DrawerContent {...props} />}
-    > 
+    >
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="PostsList" component={PostsList} />

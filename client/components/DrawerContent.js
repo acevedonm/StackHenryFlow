@@ -27,22 +27,21 @@ export default function DrawerContent(props) {
   };
   const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
-  
-  const toggleTheme = ()=>{
-    setIsDarkTheme(!isDarkTheme)
-  }
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
 
   const logout = () => {
     AsyncStorage.removeItem(USER_LOGIN);
     props.navigation.navigate("Login");
   };
 
-
   const handlerValor = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-    console.log(storageUser);
+    
     if (storageUser) {
       setUsuario({
         displayName: storageUser.user.displayName,
@@ -108,28 +107,48 @@ export default function DrawerContent(props) {
                 );
               }}
               label="Profile"
-              onPress={()=>{props.navigation.navigate("Profile")}}
+              onPress={() => {
+                props.navigation.navigate("Profile");
+              }}
             />
             <DrawerItem
               icon={({ color, size }) => {
-                return (
-                  <Icon
-                    name="post"
-                    color={color}
-                    size={size}
-                  />
-                );
+                return <Icon name="plus-box-outline" color={color} size={size} />;
+              }}
+              label="New Post"
+              onPress={() => {
+                props.navigation.navigate("NewPostForm");
+              }}
+            />
+                        <DrawerItem
+              icon={({ color, size }) => {
+                return <Icon name="brain" color={color} size={size} />;
+              }}
+              label="Be a Support"
+              onPress={() => {
+                props.navigation.navigate("PostsList");
+              }}
+            />
+            <DrawerItem
+              icon={({ color, size }) => {
+                return <Icon name="post" color={color} size={size} />;
               }}
               label="My Posts"
-              onPress={logout}
+              onPress={() => {
+                props.navigation.navigate("Home");
+              }}
             />
           </Drawer.Section>
           <Drawer.Section title="Preferences">
-            <TouchableRipple onPress={ ()=>{toggleTheme()}}>
+            <TouchableRipple
+              onPress={() => {
+                toggleTheme();
+              }}
+            >
               <View style={styles.preference}>
                 <Text>Dark Theme</Text>
                 <View pointerEvents="none">
-                <Switch value={isDarkTheme}></Switch>
+                  <Switch value={isDarkTheme}></Switch>
                 </View>
               </View>
             </TouchableRipple>
@@ -139,7 +158,7 @@ export default function DrawerContent(props) {
       <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({ color, size }) => {
-            return <Icon name="exit-to-app" color={color} size={size}></Icon>
+            return <Icon name="exit-to-app" color={color} size={size}></Icon>;
           }}
           label="Sign Out"
           onPress={logout}
