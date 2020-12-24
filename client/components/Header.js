@@ -21,7 +21,6 @@ export default function Header({ navigation }) {
   const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
 
-
   const logout = () => {
     AsyncStorage.removeItem(USER_LOGIN);
     navigation.navigate("Login");
@@ -46,61 +45,26 @@ export default function Header({ navigation }) {
     handlerValor();
   }, []);
 
-  
-  /* useEffect(() => {
-    let user = GetUserLogin();
-    setUsuario({
-      email: user.email,
-      // name: user.username,
-      // username: user.displayName,
-      // photoUrl: user.photoUrl,
-      // phone: user.phone,
-    });
-  }, []); */
-
-
   return (
-    <View>
-      <SafeAreaView
-        style={{
-          backgroundColor: "#FFF",
-          display: "flex",
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            paddingTop: 10,
-            paddingBottom: 20,
-            paddingHorizontal: 20,
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-          onPress={navigation.openDrawer}
-        >
-         
-
-          <Avatar.Image
-            size={80}
-            source={
-              photo
-                ? photo
-                : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg"
-            }
-          />
-          <Text style={styles.welcome}>{usuario.displayName}</Text>
-          <Text onPress={logout}>cerrar sesion</Text>
-          <Icon name="menu" color="#3b3b3b" size={30} />
+      <SafeAreaView style={styles.headerIn}>
+        <TouchableOpacity>
+          <Icon name="menu" color="#3b3b3b" size={0} />
         </TouchableOpacity>
-      </SafeAreaView>
-      <View style={styles.headerIn}>
+        <Text style={styles.welcome}>{usuario.displayName}</Text>
         <Image
           source={require("../assets/henry.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>
-      </View>
-    </View>
+        <TouchableOpacity
+          style={{
+            paddingTop: 10,
+            paddingBottom: 20,
+            paddingHorizontal: 20,
+            alignSelf: "center" }}
+          onPress={navigation.openDrawer} >
+          <Icon name="menu" color="#3b3b3b" size={30} />
+        </TouchableOpacity>
+    </SafeAreaView>
   );
 }
