@@ -11,7 +11,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from "../../styles/styles";
-import { loginUser, GetUserLogin, loginWithGoogle } from "../../../database/controllers/controllerUsers";
+import { loginUser, loginWithGoogle } from "../../../database/controllers/controllerUsers";
 
 export default function Login({ navigation }) {
 
@@ -73,8 +73,7 @@ export default function Login({ navigation }) {
             values,
             errors,
             touched,
-            isValid,
-            setFieldTouched,
+ 
           }) => (
             <View style={styles.form}>
               <Text style={styles.h1}>LOGIN</Text>

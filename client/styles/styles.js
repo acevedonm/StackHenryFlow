@@ -128,6 +128,7 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 100,
         zIndex: 1,
+        marginLeft: -50
     },
     inputdescription: {
         borderRadius: 15,
