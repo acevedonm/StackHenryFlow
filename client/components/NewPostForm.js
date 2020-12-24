@@ -19,6 +19,12 @@ export default function NewPostForm() {
     getUserLogin().then((user) => user && setUser(user.user));
   }, [user]);
 
+  function getFirstWord(str) {
+    let spacePosition = str.indexOf(" ");
+    if (spacePosition === -1) return str;
+    else return str.substr(0, spacePosition);
+  }
+
   return (
     <View style={styles.newpost}>
       <Formik
@@ -27,7 +33,7 @@ export default function NewPostForm() {
       >
         {({ values, handleChange, handleSubmit }) => (
           <View style={styles.form}>
-            {user && <Text style={{ color: "#FFF" }}>Hola {user.email} !</Text>}
+            {user && <Text style={{ color: "#FFF" }}>Hola {getFirstWord(user.displayName)}!</Text>}
             <Text style={{ color: "#FFF" }}>¿Tenés alguna duda?</Text>
 
             <TextInput

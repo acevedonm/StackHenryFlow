@@ -15,7 +15,7 @@ export default function Posts({ navigation }) {
 
   return (
     <View>
-      <Text style={styles.h1}>Ultimas entradas</Text>
+      <Text style={styles.welcome}>Ultimas entradas</Text>
       {posts &&
         posts.map((e) => (
           <View key={e.id}>
