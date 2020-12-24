@@ -79,6 +79,20 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: "#00FFFF",
         borderRadius: 15,
+        backgroundColor: "#00000005",
+        width: "95%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "2%",
+        marginBottom: "3%"
+    },
+    formNewPost: {
+        flex: 1,
+        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: "#00FFFF",
+        borderRadius: 15,
         backgroundColor: `${white}`,
         width: "90%",
         marginLeft: "auto",
@@ -94,6 +108,28 @@ export const styles = StyleSheet.create({
         height: 30,
         width: '80%',
         marginTop: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    inputNewPost: {
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: `${black}`,
+        height: 30,
+        width: '80%',
+        marginVertical: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    inputDescription: {
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: `${black}`,
+        height: 100,
+        width: '80%',
+        marginVertical: 5,
         justifyContent: "center",
         textAlign: "center",
         color: `${white}`
@@ -146,17 +182,6 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 100,
         zIndex: 1,
-    },
-    inputdescription: {
-        borderRadius: 15,
-        borderWidth: 1,
-        borderColor: 'yellow',
-        height: 100,
-        width: '80%',
-        marginTop: 5,
-        justifyContent: "center",
-        textAlign: "center",
-        color: `${white}`
     },
     containerInputComment:{
         borderRadius:10,
