@@ -112,6 +112,28 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         color: `${white}`
     },
+    inputNewPost: {
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: `${black}`,
+        height: 30,
+        width: '80%',
+        marginVertical: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    inputDescription: {
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: `${black}`,
+        height: 100,
+        width: '80%',
+        marginVertical: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
     label: {
         color: `${white}`,
         marginTop: 15,
@@ -160,17 +182,6 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 100,
         zIndex: 1,
-    },
-    inputdescription: {
-        borderRadius: 15,
-        borderWidth: 1,
-        borderColor: 'yellow',
-        height: 100,
-        width: '80%',
-        marginTop: 5,
-        justifyContent: "center",
-        textAlign: "center",
-        color: `${white}`
     },
     containerInputComment:{
         borderRadius:10,

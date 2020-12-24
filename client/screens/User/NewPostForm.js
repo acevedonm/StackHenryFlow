@@ -29,7 +29,7 @@ export default function NewPostForm({ navigation }) {
           onSubmit={handlerPost}
         >
           {({ values, handleChange, handleSubmit }) => (
-            <View style={styles.form}>
+            <View style={styles.formNewPost}>
               {user && (
                 <Text style={{ color: "#000", fontWeight: "bold" }}>Hola {user.email} !</Text>
               )}
@@ -41,17 +41,17 @@ export default function NewPostForm({ navigation }) {
                 placeholder="Haz tu pregunta"
                 onChangeText={handleChange("title")} //update title
                 value={values.title} //recibe valor de input
-                style={styles.input}
+                style={styles.inputNewPost}
               />
               <TextInput
-                style={styles.inputdescription}
+                style={styles.inputDescription}
                 multiline //Permite texto largo
                 placeholder="Agregar una descripción"
                 onChangeText={handleChange("description")}
                 value={values.description}
               />
               <TextInput
-                style={styles.input}
+                style={styles.inputNewPost}
                 placeholder="Agregar etiqueta"
                 onChangeText={handleChange("tags")}
                 value={values.tags}
