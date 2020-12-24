@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Text} from "react-native";
-import SearchBar from "./SearchBar";
+import { View, Text } from "react-native";
+
 import { styles } from "../../styles/styles";
-import NewPostForm from "../../components/NewPostForm";
-import PostsList from "../../components/PostsList";
+
 import Header from "../../components/Header";
 import { GetUserLogin } from "../../../database/controllers/controllerUsers";
 
@@ -11,7 +10,7 @@ const Home = ({ navigation }) => {
   const [user, setUser] = useState(null);
   useEffect(() => {
     let isUser = GetUserLogin();
-    setUser(isUser)
+    setUser(isUser);
     if (user) {
       console.log(user);
     }
@@ -20,10 +19,16 @@ const Home = ({ navigation }) => {
     <>
       <Header navigation={navigation} />
       <View style={styles.body}>
-        <Text style={styles.h1}>Stack Henry Flow!</Text>
-        <SearchBar />
-        <NewPostForm navigation={navigation}/>
-        <PostsList navigation={navigation}/>
+        <Text style={styles.h3}>¿Cual es tu rol hoy?</Text>
+        <Text
+          style={styles.textBody}
+          onPress={() => navigation.navigate("PostsList")}
+        >
+          Quiero ayudar
+        </Text>
+        <Text style={styles.textBody} onPress={() => navigation.navigate("NewPostForm")}>
+          Necesito ayuda
+        </Text>
       </View>
     </>
   );

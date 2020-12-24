@@ -24,17 +24,26 @@ export const styles = StyleSheet.create({
         top: 0,
         left: 0,
         width: "100%",
-        height: 120,
         backgroundColor: `${white}`,
-        overflow: "visible",
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        display: 'flex',
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     body: {
         textAlign: "center",
         backgroundColor: `${black}`,
+        color: `${white}`,
         flex: 1,
-        color: "white",
+    },
+    h3: {
+        color: `${yellow}`,
+        fontSize: 18,
+        marginVertical: 15,
+        fontWeight: "bold"
+    },
+    postList :{
+        color: `${white}`,
+        fontSize: 15
     },
     h1: {
         color: `${yellow}`,
@@ -115,9 +124,11 @@ export const styles = StyleSheet.create({
         marginTop: 5
     },
     imgHenry: {
+        alignSelf: "center",
         width: 200,
-        height: 200,
+        height: 100,
         zIndex: 1,
+        marginLeft: -50
     },
     inputdescription: {
         borderRadius: 15,
@@ -129,10 +140,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         textAlign: "center",
         color: `${white}`
-    },
-    newpost: {
-    
-
     },
     containerInputComment:{
         borderRadius:10,
