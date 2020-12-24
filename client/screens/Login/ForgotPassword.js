@@ -19,11 +19,11 @@ export default function ForgotPassword({ navigation }) {
 
   return (
     <>
-      <View style={styles.header}>
+      <View style={styles.headerOut}>
         <Image
           source={require("../../assets/henry.png")}
           resizeMode="contain"
-          style={styles.imgHenry}
+          style={styles.imgHenryOut}
           onPress={() => navigation.navigate("Home")}
         ></Image>
       </View>

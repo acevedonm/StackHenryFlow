@@ -20,7 +20,7 @@ export default function LogOut({navigation}) {
   
     return (
     <View>
-        
+           
             <DrawerItem 
                 icon={({color, size}) => (
                     <Icon 

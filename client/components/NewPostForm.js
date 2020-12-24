@@ -8,49 +8,55 @@ import { getUserLogin } from "../functions/getUserLogin";
 export default function NewPostForm() {
   const [user, setUser] = useState(null);
 
-  const handlerPost = async (values) => {
+  const handlerPost = async (values, { resetForm }) => {
+    values = { ...values, user: user };
     var posteo = await createPost(values);
-    console.log(posteo);
+    posteo && console.log(posteo);
+    resetForm();
   };
 
   useEffect(() => {
-    getUserLogin().then((user) => setUser(user));
-  }, []);
+    getUserLogin().then((user) => user && setUser(user.user));
+  }, [user]);
+
+  function getFirstWord(str) {
+    let spacePosition = str.indexOf(" ");
+    if (spacePosition === -1) return str;
+    else return str.substr(0, spacePosition);
+  }
 
   return (
     <View style={styles.newpost}>
-        
       <Formik
-        initialValues={{ title: "", description: "", tag: "" }}
+        initialValues={{ title: "", description: "", tags: "" }}
         onSubmit={handlerPost}
       >
-        {(props) => (
+        {({ values, handleChange, handleSubmit }) => (
           <View style={styles.form}>
-            { user && 
-            <Text style={{ color: "#FFF"}}>Hola {user.user.email} !</Text>
-            }
-            <Text style={{ color: "#FFF"}}>¿Tenés alguna duda?</Text>
+            {user && <Text style={{ color: "#FFF" }}>Hola {getFirstWord(user.displayName)}!</Text>}
+            <Text style={{ color: "#FFF" }}>¿Tenés alguna duda?</Text>
+
             <TextInput
               placeholder="Haz tu pregunta"
-              onChangeText={props.handleChange("title")} //update title
-              value={props.values.title} //recibe valor de input
+              onChangeText={handleChange("title")} //update title
+              value={values.title} //recibe valor de input
               style={styles.input}
             />
             <TextInput
               style={styles.inputdescription}
               multiline //Permite texto largo
               placeholder="Agregar una descripción"
-              onChangeText={props.handleChange("description")}
-              value={props.values.description}
+              onChangeText={handleChange("description")}
+              value={values.description}
             />
             <TextInput
               style={styles.input}
               placeholder="Agregar etiqueta"
-              onChangeText={props.handleChange("tag")}
-              value={props.values.tag}
+              onChangeText={handleChange("tags")}
+              value={values.tags}
             />
 
-            <TouchableOpacity style={styles.boton} onPress={props.handleSubmit}>
+            <TouchableOpacity style={styles.boton} onPress={handleSubmit}>
               <Text style={{ fontWeight: "bold" }}>Publicar</Text>
             </TouchableOpacity>
           </View>

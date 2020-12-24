@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { yellow, black, white, lightYellow, errorRed } from './globalsVariables'
+import { yellow, black, white, errorRed } from './globalsVariables'
 
 export const styles = StyleSheet.create({
     container:{
@@ -10,46 +10,40 @@ export const styles = StyleSheet.create({
         color: `${white}`,
         textAlign: "center"
     },
+    headerOut: {
+        top: 0,
+        left: 0,
+        width: "100%",
+        backgroundColor: `${white}`,
+    },
     header: {
         top: 0,
         left: 0,
         width: "100%",
-        height: 120,
         backgroundColor: `${white}`,
-        overflow: "visible",
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    headerIn: {
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: 120,
-        backgroundColor: `${white}`,
-        overflow: "visible",
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        display: 'flex',
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     body: {
         textAlign: "center",
         backgroundColor: `${black}`,
+        color: `${white}`,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         flex: 1,
-        color: "white",
+    },
+    
+    postList :{
+        color: `${black}`,
+        fontSize: 15,
+        marginBottom: 10
     },
     h1: {
         color: `${yellow}`,
         marginTop: 30,
         marginBottom: 20,
-        fontSize: 30,
-        fontWeight: "bold",
-        textAlign: "center",
-        zIndex: 10
-    },
-    welcome: {
-        color: `${black}`,
-        marginTop: 30,
-        marginBottom: 20,
-        marginRight: 10,
         fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
@@ -61,6 +55,22 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 15,
         marginBottom: 10
+    },
+    h3: {
+        color: `${white}`,
+        fontSize: 15,
+        marginVertical: 10,
+        fontWeight: "bold"
+    },
+    welcome: {
+        color: `${black}`,
+        marginTop: 30,
+        marginBottom: 20,
+        marginRight: 10,
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        zIndex: 10
     },
     form: {
         flex: 1,
@@ -76,6 +86,21 @@ export const styles = StyleSheet.create({
         marginTop: "2%",
         marginBottom: "3%"
     },
+    formNewPost: {
+        flex: 1,
+        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: "#00FFFF",
+        borderRadius: 15,
+        backgroundColor: `${white}`,
+        width: "90%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginVertical: "30%",
+        padding: 20,
+        borderRadius: 10,
+    },
     input: {
         borderRadius: 15,
         borderWidth: 1,
@@ -83,6 +108,28 @@ export const styles = StyleSheet.create({
         height: 30,
         width: '80%',
         marginTop: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    inputNewPost: {
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: `${black}`,
+        height: 30,
+        width: '80%',
+        marginVertical: 5,
+        justifyContent: "center",
+        textAlign: "center",
+        color: `${white}`
+    },
+    inputDescription: {
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: `${black}`,
+        height: 100,
+        width: '80%',
+        marginVertical: 5,
         justifyContent: "center",
         textAlign: "center",
         color: `${white}`
@@ -104,7 +151,6 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         height: 30,
         width: '80%',
-        alignItems: "center",
         justifyContent: "center",
         marginTop: 20,
         marginBottom: 20
@@ -114,25 +160,28 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 5
     },
-    imgHenry: {
-        width: 200,
-        height: 200,
-        zIndex: 1,
-    },
-    inputdescription: {
-        borderRadius: 15,
-        borderWidth: 1,
-        borderColor: 'yellow',
-        height: 100,
-        width: '80%',
-        marginTop: 5,
+    card: {
+        backgroundColor: `${white}`,
+        width: "80%",
+        display: "flex",
         justifyContent: "center",
-        textAlign: "center",
-        color: `${white}`
+        alignItems:"center",
+        marginVertical: 30,
+        padding: 20,
+        borderRadius: 10,
     },
-    newpost: {
-    
-
+    imgHenry: {
+        alignSelf: "center",
+        width: 200,
+        height: 100,
+        zIndex: 1,
+        marginLeft: -50
+    },
+    imgHenryOut: {
+        alignSelf: "center",
+        width: 200,
+        height: 100,
+        zIndex: 1,
     },
     containerInputComment:{
         borderRadius:10,

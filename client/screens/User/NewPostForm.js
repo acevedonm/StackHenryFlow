@@ -1,0 +1,69 @@
+import React, { useEffect, useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Formik } from "formik";
+import { styles } from "../../styles/styles";
+import Header from "../../components/Header";
+import { createPost } from "../../../database/controllers/controllerPost";
+import { getUserLogin } from "../../functions/getUserLogin";
+
+export default function NewPostForm({ navigation }) {
+  const [user, setUser] = useState(null);
+
+  const handlerPost = async (values, { resetForm }) => {
+    values = { ...values, user: user };
+    var posteo = await createPost(values);
+    posteo && console.log(posteo);
+    resetForm();
+  };
+
+  useEffect(() => {
+    getUserLogin().then((user) => user && setUser(user.user));
+  }, [user]);
+
+  return (
+    <>
+      <Header navigation={navigation} />
+      <View style={styles.body}>
+        <Formik
+          initialValues={{ title: "", description: "", tags: "" }}
+          onSubmit={handlerPost}
+        >
+          {({ values, handleChange, handleSubmit }) => (
+            <View style={styles.formNewPost}>
+              {user && (
+                <Text style={{ color: "#000", fontWeight: "bold" }}>Hola {user.email} !</Text>
+              )}
+              <Text style={{ color: "#000", marginBottom: 20, fontWeight: "bold" }}>
+                ¿Tenés alguna duda?
+              </Text>
+
+              <TextInput
+                placeholder="Haz tu pregunta"
+                onChangeText={handleChange("title")} //update title
+                value={values.title} //recibe valor de input
+                style={styles.inputNewPost}
+              />
+              <TextInput
+                style={styles.inputDescription}
+                multiline //Permite texto largo
+                placeholder="Agregar una descripción"
+                onChangeText={handleChange("description")}
+                value={values.description}
+              />
+              <TextInput
+                style={styles.inputNewPost}
+                placeholder="Agregar etiqueta"
+                onChangeText={handleChange("tags")}
+                value={values.tags}
+              />
+
+              <TouchableOpacity style={styles.boton} onPress={handleSubmit}>
+                <Text style={{ fontWeight: "bold" }}>Publicar</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </Formik>
+      </View>
+    </>
+  );
+}
