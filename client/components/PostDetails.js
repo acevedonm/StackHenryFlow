@@ -10,9 +10,13 @@ export default function PostDetails(props) {
   return (
     <View>
       <Header navigation={props.navigation} />
-      <Text style={styles.h1}>{data.title}</Text>
-      <Text style={styles.body}>{data.description}</Text>
-      <Comments />
+      <View style={styles.body}>
+        <Text style={styles.h2}>{data.title}</Text>
+        <View style={styles.cardComment}>
+          <Text>{data.description}</Text>
+          <Comments data={data} navigation={props.navigation} />
+        </View>
+      </View>
     </View>
   );
 }

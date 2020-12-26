@@ -43,7 +43,7 @@ export default function Posts({ navigation }) {
                     <Text
                       style={styles.postList}
                       onPress={() =>
-                        navigation.navigate("PostDetails", { data: post })
+                        navigation.navigate("PostDetails", { data: post})
                       }
                     >
                       {post.title.length > 20
