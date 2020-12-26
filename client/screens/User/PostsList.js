@@ -46,6 +46,7 @@ export default function Posts({ navigation }) {
                         navigation.navigate("PostDetails", { data: post})
                       }
                     >
+                      
                       {post.title.length > 20
                         ? `${post.title.substring(0, 20)}...`
                         : post.title}

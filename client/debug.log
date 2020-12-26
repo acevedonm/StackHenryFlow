@@ -5,3 +5,15 @@
 [1224/131249.244:ERROR:settings.cc(321)] Settings magic is not 1129342067
 [1224/132250.122:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
 [1226/092758.440:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1226/133821.007:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1226/135819.071:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1226/135819.071:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1226/135819.770:ERROR:exception_snapshot_win.cc(99)] thread ID 9120 not found in process
+[1226/135819.770:ERROR:exception_snapshot_win.cc(99)] thread ID 9236 not found in process
+[1226/135819.071:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1226/135819.071:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1226/135819.770:ERROR:exception_snapshot_win.cc(99)] thread ID 10236 not found in process
+[1226/135819.071:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1226/135819.770:ERROR:exception_snapshot_win.cc(99)] thread ID 384 not found in process
+[1226/135819.770:ERROR:exception_snapshot_win.cc(99)] thread ID 6064 not found in process
+[1226/184922.848:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
