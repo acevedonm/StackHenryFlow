@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Picker } from "react-native";
 import { Formik } from "formik";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
@@ -11,9 +11,10 @@ export default function NewPostForm({ navigation }) {
 
   const handlerPost = async (values, { resetForm }) => {
     values = { ...values, user: user };
-    var posteo = await createPost(values);
+    let posteo = await createPost(values);
     posteo && console.log(posteo);
     resetForm();
+    navigation.navigate('PostsList')
   };
 
   useEffect(() => {
@@ -25,15 +26,19 @@ export default function NewPostForm({ navigation }) {
       <Header navigation={navigation} />
       <View style={styles.body}>
         <Formik
-          initialValues={{ title: "", description: "", tags: "" }}
+          initialValues={{ title: "", description: "", tag: "Modulo 1" }}
           onSubmit={handlerPost}
         >
-          {({ values, handleChange, handleSubmit }) => (
+          {({ values, handleChange, handleSubmit, setFieldValue }) => (
             <View style={styles.formNewPost}>
               {user && (
-                <Text style={{ color: "#000", fontWeight: "bold" }}>Hola {user.email} !</Text>
+                <Text style={{ color: "#000", fontWeight: "bold" }}>
+                  Hola {user.email} !
+                </Text>
               )}
-              <Text style={{ color: "#000", marginBottom: 20, fontWeight: "bold" }}>
+              <Text
+                style={{ color: "#000", marginBottom: 20, fontWeight: "bold" }}
+              >
                 ¿Tenés alguna duda?
               </Text>
 
@@ -50,12 +55,18 @@ export default function NewPostForm({ navigation }) {
                 onChangeText={handleChange("description")}
                 value={values.description}
               />
-              <TextInput
+              <Text>¿A qué modulo pertenece tu duda?</Text>
+              <Picker
                 style={styles.inputNewPost}
-                placeholder="Agregar etiqueta"
-                onChangeText={handleChange("tags")}
-                value={values.tags}
-              />
+                onValueChange={(itemValue) => setFieldValue("tag", itemValue)}
+              >
+                <Picker.Item label="Modulo 1" value="Modulo 1" key={1} />
+                <Picker.Item label="Modulo 2" value="Modulo 2" key={2} />
+                <Picker.Item label="Modulo 3" value="Modulo 3" key={3} />
+                <Picker.Item label="Modulo 4" value="Modulo 4" key={4} />
+                <Picker.Item label="E-Commerce" value="E-Commerce" key={5} />
+                <Picker.Item label="Proyecto Final" value="Proyecto Final" key={6}/>
+              </Picker>
 
               <TouchableOpacity style={styles.boton} onPress={handleSubmit}>
                 <Text style={{ fontWeight: "bold" }}>Publicar</Text>

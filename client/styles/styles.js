@@ -95,6 +95,8 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: `${white}`,
         width: "90%",
+        height: "100%",
+        minHeight: 300 ,
         marginLeft: "auto",
         marginRight: "auto",
         marginVertical: "30%",
@@ -121,7 +123,7 @@ export const styles = StyleSheet.create({
         marginVertical: 5,
         justifyContent: "center",
         textAlign: "center",
-        color: `${white}`
+        padding: 5
     },
     inputDescription: {
         borderRadius: 10,
@@ -132,7 +134,6 @@ export const styles = StyleSheet.create({
         marginVertical: 5,
         justifyContent: "center",
         textAlign: "center",
-        color: `${white}`
     },
     label: {
         color: `${white}`,
