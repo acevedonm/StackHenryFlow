@@ -2,7 +2,7 @@ import firebase from "firebase";
 import "firebase/firestore";
 
 export const createPost = (values) => {
-    const { title, description, tags, user } = values;
+    const { title, description, tag, user } = values;
     //verificar que los tags sean solo 3
     firebase
       .firestore()
@@ -10,7 +10,7 @@ export const createPost = (values) => {
       .add({
         title: title,
         description: description,
-        tags: tags,
+        tag: tag,
         comment: [],
         userId: user.uid,
         email: user.email,
