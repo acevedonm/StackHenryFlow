@@ -197,6 +197,16 @@ export const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
     },
+    cardComment: {
+        backgroundColor: `${white}`,
+        width: "80%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems:"center",
+        marginVertical: 30,
+        padding: 20,
+        borderRadius: 10,
+    },
     cardPostList: {
         backgroundColor: `${white}`,
         width: "85%",

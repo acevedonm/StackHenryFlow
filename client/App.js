@@ -8,7 +8,7 @@ import Register from "./screens/Login/Register";
 import ForgotPassword from "./screens/Login/ForgotPassword";
 import Index from "./screens/Login/Index";
 // DATABASE //
-import firebase from "../database/firebase"; //esta linea sirve para inicializar el backend
+import firebase from "./database/firebase"; //esta linea sirve para inicializar el backend
 import { getUserLogin } from "./functions/getUserLogin";
 
 const Stack = createStackNavigator();

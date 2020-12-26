@@ -1,7 +1,7 @@
 import { SearchBar } from "react-native-elements";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import { searchInPost } from "../../database/controllers/controllerPost";
+import { searchInPost } from "../database/controllers/controllerPost";
 
 const Bar = ({ onSearch }) => {
   const [search, setSearch] = useState("");
