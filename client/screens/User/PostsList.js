@@ -17,7 +17,7 @@ export default function Posts({ navigation }) {
       .catch((err) => {
         console.log("Error getting posts", err);
       });
-  }, []);
+  }, [posts]);
 
   return (
     <>
