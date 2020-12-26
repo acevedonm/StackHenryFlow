@@ -17,7 +17,7 @@ export default function App() {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    getUserLogin().then( user => user ? setUserId(user.user.uid) : null );
+    getUserLogin().then((user) => (user ? setUserId(user.user.uid) : null));
   }, []);
 
   if (!userId) {

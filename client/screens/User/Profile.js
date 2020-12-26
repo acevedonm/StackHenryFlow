@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   textInput: {
-    border: "1px solid #BBD2C5",
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
