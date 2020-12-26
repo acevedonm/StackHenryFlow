@@ -2,29 +2,29 @@ import firebase from "firebase";
 import "firebase/firestore";
 
 export const createPost = (values) => {
-    const { title, description, tag, user } = values;
-    //verificar que los tags sean solo 3
-    firebase
-      .firestore()
-      .collection("post")
-      .add({
-        title: title,
-        description: description,
-        tag: tag,
-        comment: [],
-        userId: user.uid,
-        email: user.email,
-        name: user.displayName,
-        photo: user.photoURL
-      })
-      .then(() => {
-        console.log("Post creado con exito");
-        return true;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-}
+  const { title, description, tag, user } = values;
+  //verificar que los tags sean solo 3
+  firebase
+    .firestore()
+    .collection("post")
+    .add({
+      title: title,
+      description: description,
+      tag: tag,
+      comment: [],
+      userId: user.uid,
+      email: user.email,
+      name: user.displayName,
+      photo: user.photoURL,
+    })
+    .then(() => {
+      console.log("Post creado con exito");
+      return true;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 export const GetPosts = () => {
   let postRef = firebase.firestore().collection("post").get();
@@ -59,10 +59,8 @@ export const GetPost = (id) => {
 };
 
 export const AddComments = (id, comentario) => {
-  let posteo = firebase.firestore().collection("post").doc(id)
+  let posteo = firebase.firestore().collection("post").doc(id);
   posteo.update({
-    comment: firebase.firestore.FieldValue.arrayUnion(comentario)
-    
-});
-
-}
+    comment: firebase.firestore.FieldValue.arrayUnion(comentario),
+  });
+};

@@ -10,7 +10,7 @@ import {
 import { Formik } from "formik";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
-import { createPost } from "../../../database/controllers/controllerPost";
+import { createPost } from "../../database/controllers/controllerPost";
 import { getUserLogin } from "../../functions/getUserLogin";
 
 export default function NewPostForm({ navigation }) {

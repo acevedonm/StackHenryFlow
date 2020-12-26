@@ -1,10 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const white = "#fff";
-const googleBlue = "#4285f4";
-const buttonActiveBlue = "#1669F2";
-
 const GoogleButton = ({ login }) => {
   return (
     <TouchableOpacity onPress={() => login()} style={styles.googleBtn}>

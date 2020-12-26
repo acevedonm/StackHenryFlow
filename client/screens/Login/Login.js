@@ -14,7 +14,7 @@ import { styles } from "../../styles/styles";
 import {
   loginUser,
   loginWithGoogle,
-} from "../../../database/controllers/controllerUsers";
+} from "../../database/controllers/controllerUsers";
 import BtnGoogle from "../../components/LoginWithGoogle";
 
 export default function Login({ navigation }) {

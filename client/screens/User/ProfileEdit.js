@@ -8,21 +8,21 @@ import {
   StyleSheet,
 } from "react-native";
 import { Text } from "react-native-paper";
-import { GetUserLogin } from "../../../database/controllers/controllerUsers";
+import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 
 const ProfileEdit = (props) => {
-  const { username, name, email, phone, cohorte } = props.route.params.myData;
+  const { name, email, phone, cohorte } = props.route.params.myData;
 
   const handleSubmit = (values) => {
     var user = GetUserLogin();
     console.log("usuariooo", user);
     user
       .updateProfile({
-        displayName: values.username,
+        displayName: values.name,
         email: values.email,
-        name: values.name,
-        phone: values.phone,
+        cohorte: values.cohorte,
+        phoneNumber: values.phone,
       })
       .then(() => {
         console.log("usuario cambiado", user);
@@ -41,7 +41,7 @@ const ProfileEdit = (props) => {
           <Formik
             initialValues={{
               name,
-              username,
+              email,
               cohorte,
               phone,
             }}
@@ -61,10 +61,10 @@ const ProfileEdit = (props) => {
                 <Text style={styles.textLabel}>Usuario</Text>
                 <TextInput
                   style={styles.textInput}
-                  placeholder="Nombre de Usuario"
-                  onChangeText={handleChange("username")}
-                  onBlur={handleBlur("username")}
-                  value={values.username}
+                  placeholder="Email"
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  value={values.email}
                 />
                 <Text style={styles.textLabel}>Cohorte</Text>
                 <TextInput

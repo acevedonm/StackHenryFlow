@@ -3,7 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
-import { createUser } from "../../../database/controllers/controllerUsers";
+import { createUser } from "../../database/controllers/controllerUsers";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({

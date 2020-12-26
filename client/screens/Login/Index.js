@@ -9,7 +9,7 @@ import Comments from "../../components/Comments"
 import DrawerContent from "../../components/DrawerContent";
 import ProfileEdit from "../User/ProfileEdit"
 import PostsList from "../User/PostsList"
-import PostDetails from "../../components/PostDetails"
+import PostDetails from "../User/PostDetails"
 import NewPostForm from "../User/NewPostForm";
 
 const USER_LOGIN= '@user_login'
