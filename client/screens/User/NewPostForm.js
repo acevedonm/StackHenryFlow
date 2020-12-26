@@ -32,15 +32,10 @@ export default function NewPostForm({ navigation }) {
           {({ values, handleChange, handleSubmit, setFieldValue }) => (
             <View style={styles.formNewPost}>
               {user && (
-                <Text style={{ color: "#000", fontWeight: "bold" }}>
-                  Hola {user.email} !
+                <Text style={{ color: "#000", fontWeight: "bold", marginBottom: 20 }}>
+                  ¿Cual es tu duda {user.displayName}?
                 </Text>
               )}
-              <Text
-                style={{ color: "#000", marginBottom: 20, fontWeight: "bold" }}
-              >
-                ¿Tenés alguna duda?
-              </Text>
 
               <TextInput
                 placeholder="Haz tu pregunta"
@@ -65,7 +60,7 @@ export default function NewPostForm({ navigation }) {
                 <Picker.Item label="Modulo 3" value="Modulo 3" key={3} />
                 <Picker.Item label="Modulo 4" value="Modulo 4" key={4} />
                 <Picker.Item label="E-Commerce" value="E-Commerce" key={5} />
-                <Picker.Item label="Proyecto Final" value="Proyecto Final" key={6}/>
+                <Picker.Item label="Proyecto Final" value="Proyecto" key={6}/>
               </Picker>
 
               <TouchableOpacity style={styles.boton} onPress={handleSubmit}>

@@ -33,12 +33,32 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flex: 1,
+        paddingVertical: 10
     },
-    
+    post :{
+        backgroundColor: black,
+        borderRadius: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 10,
+        borderColor: yellow,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-start"
+    },
     postList :{
-        color: `${black}`,
+        color: white,
         fontSize: 15,
-        marginBottom: 10
+        alignSelf: "center",
+        paddingVertical: 10
+    },
+    postTag: {
+        fontWeight: "bold",
+        backgroundColor: `${yellow}`,
+        borderRadius: 100,
+        paddingHorizontal: 10,
+        alignSelf: "center"
     },
     h1: {
         color: `${yellow}`,
@@ -57,7 +77,13 @@ export const styles = StyleSheet.create({
         marginBottom: 10
     },
     h3: {
-        color: `${white}`,
+        color: black,
+        fontSize: 15,
+        marginVertical: 10,
+        fontWeight: "bold"
+    },
+    h4: {
+        color: white,
         fontSize: 15,
         marginVertical: 10,
         fontWeight: "bold"
@@ -106,7 +132,7 @@ export const styles = StyleSheet.create({
     input: {
         borderRadius: 15,
         borderWidth: 1,
-        borderColor: 'yellow',
+        borderColor: yellow,
         height: 30,
         width: '80%',
         marginTop: 5,
@@ -148,7 +174,7 @@ export const styles = StyleSheet.create({
     boton: {
         color: `${black}`,
         fontWeight: "bold",
-        backgroundColor: 'yellow',
+        backgroundColor: `${yellow}`,
         borderRadius: 100,
         height: 30,
         width: '80%',
@@ -167,6 +193,15 @@ export const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems:"center",
+        marginVertical: 30,
+        padding: 20,
+        borderRadius: 10,
+    },
+    cardPostList: {
+        backgroundColor: `${white}`,
+        width: "85%",
+        display: "flex",
+        justifyContent: "center",
         marginVertical: 30,
         padding: 20,
         borderRadius: 10,

@@ -1,7 +1,7 @@
 import { SearchBar } from "react-native-elements";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import { searchInPost } from "../../../database/controllers/controllerPost";
+import { searchInPost } from "../../database/controllers/controllerPost";
 
 const Bar = ()=>  {
   const [ search, setSearch] = useState("")
@@ -20,7 +20,7 @@ const Bar = ()=>  {
   },[search])
   
     return (
-      <View style={{ width: "90%", alignSelf: "center" }}>
+      <View style={{ width: "85%", alignSelf: "center" }}>
         <SearchBar
           placeholder="Buscar..."
           onChangeText={updateSearch}
