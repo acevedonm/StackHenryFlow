@@ -9,47 +9,48 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { styles } from "../../styles/styles";
-import { loginUser, loginWithGoogle } from "../../../database/controllers/controllerUsers";
+import {
+  loginUser,
+  loginWithGoogle,
+} from "../../../database/controllers/controllerUsers";
+import BtnGoogle from "../../components/LoginWithGoogle";
 
 export default function Login({ navigation }) {
-
-  const USER_LOGIN= '@user_login'
+  const USER_LOGIN = "@user_login";
 
   const validations = yup.object().shape({
     email: yup.string().required("Campo obligatorio"),
     password: yup.string().required("Campo obligatorio"),
   });
 
- 
-
   const handleSubmit = (values) => {
     loginUser(values)
       .then((user) => {
-        AsyncStorage.setItem(USER_LOGIN, JSON.stringify(user) )
-         navigation.navigate("Index");
+        AsyncStorage.setItem(USER_LOGIN, JSON.stringify(user));
+        navigation.navigate("Index");
       })
       .catch((error) => {
         console.log(error);
         console.log("No fue posible Loggearte");
       });
   };
-  const handlerloginWithGoogle = ()=>{
-    loginWithGoogle().then((result) => {
-      console.log(result)
-      navigation.navigate("Index")
-      
-      AsyncStorage.setItem(USER_LOGIN, JSON.stringify(result) )
+  const handlerloginWithGoogle = () => {
+    loginWithGoogle()
+      .then((result) => {
+        console.log(result);
+        navigation.navigate("Index");
 
-    }).catch(function(error) {
-      // Handle Errors.
-      alert(error.message);
-      console.log(error)
-      console.log("credential: ",error.credential);
-    });
-   
-  }
+        AsyncStorage.setItem(USER_LOGIN, JSON.stringify(result));
+      })
+      .catch(function (error) {
+        // Handle Errors.
+        alert(error.message);
+        console.log(error);
+        console.log("credential: ", error.credential);
+      });
+  };
 
   return (
     <>
@@ -73,7 +74,6 @@ export default function Login({ navigation }) {
             values,
             errors,
             touched,
- 
           }) => (
             <View style={styles.form}>
               <Text style={styles.h1}>LOGIN</Text>
@@ -112,6 +112,8 @@ export default function Login({ navigation }) {
                 <Text style={{ fontWeight: "bold" }}>Ingresar</Text>
               </TouchableOpacity>
 
+              <BtnGoogle login={handlerloginWithGoogle} />
+
               <TouchableOpacity onPress={() => navigation.navigate("Register")}>
                 <Text style={styles.linkForm}>Registrarse</Text>
               </TouchableOpacity>
@@ -121,11 +123,8 @@ export default function Login({ navigation }) {
               >
                 <Text style={styles.linkForm}>Recuperar contraseña</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => handlerloginWithGoogle()}
-              >
-                <Text style={styles.linkForm}> INGRESAR CON GOOGLE HACER MAS LINDO :D</Text>
-              </TouchableOpacity>
+
+              
             </View>
           )}
         </Formik>
