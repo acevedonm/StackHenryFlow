@@ -57,3 +57,12 @@ export const GetPost = (id) => {
   let postRef = firebase.firestore().collection("post").doc(id).get();
   return postRef;
 };
+
+export const AddComments = (id, comentario) => {
+  let posteo = firebase.firestore().collection("post").doc(id)
+  posteo.update({
+    comment: firebase.firestore.FieldValue.arrayUnion(comentario)
+    
+});
+
+}
