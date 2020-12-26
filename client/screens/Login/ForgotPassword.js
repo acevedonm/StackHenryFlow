@@ -1,20 +1,13 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function ForgotPassword({ navigation }) {
   const validations = yup.object().shape({
-    email: yup.string()
-        .email("Email inválido")
-        .required("Campo obligatorio"),
+    email: yup.string().email("Email inválido").required("Campo obligatorio"),
   });
 
   return (
@@ -42,8 +35,6 @@ export default function ForgotPassword({ navigation }) {
             values,
             errors,
             touched,
-            isValid,
-            setFieldTouched,
           }) => (
             <View style={styles.form}>
               <Text style={styles.h1}>RECUPERAR CONTRASEÑA</Text>
@@ -60,7 +51,7 @@ export default function ForgotPassword({ navigation }) {
 
               <TouchableOpacity style={styles.boton} onPress={handleSubmit}>
                 <Text
-                  style={ { fontWeight: "bold" } }
+                  style={{ fontWeight: "bold" }}
                   onPress={() => navigation.navigate("Login")}
                 >
                   Confirmar
