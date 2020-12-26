@@ -1,8 +1,8 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { yellow, black, white, errorRed } from "./globalsVariables";
 
-const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
 
 export const styles = StyleSheet.create({
   container: {
@@ -222,6 +222,15 @@ export const styles = StyleSheet.create({
     marginVertical: 30,
     padding: 20,
     borderRadius: 10,
+    shadowColor: "#FFF",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 10.0,
+
+    elevation: 24,
   },
   cardPostList: {
     backgroundColor: `${white}`,
@@ -231,6 +240,15 @@ export const styles = StyleSheet.create({
     marginVertical: 30,
     padding: 20,
     borderRadius: 10,
+    shadowColor: "#FFF",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 10.0,
+
+    elevation: 24,
   },
   imgHenry: {
     alignSelf: "center",
@@ -256,10 +274,21 @@ export const styles = StyleSheet.create({
     color: "white",
   },
   comment: {
+    textAlign: "center",
     padding: 8,
     margin: 10,
-    width: 200,
+    width: 230,
     height: 100,
-    color: "white",
+    color: black,
+    borderColor: black,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  comentario: {
+    padding: 10,
+    backgroundColor: "#000",
+    borderRadius: 10,
+    marginBottom: 5,
+    color: "#FFF",
   },
 });

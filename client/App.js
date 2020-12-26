@@ -10,9 +10,6 @@ import Index from "./screens/Login/Index";
 // DATABASE //
 import firebase from "./database/firebase"; //esta linea sirve para inicializar el backend
 import { getUserLogin } from "./functions/getUserLogin";
-// FIX SETTIMEOUT BUG //
-import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['Setting a timer']);
 
 const Stack = createStackNavigator();
 

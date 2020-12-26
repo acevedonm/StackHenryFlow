@@ -27,15 +27,7 @@ export const Comments = (props) => {
           <Text style={{ marginVertical: 10 }}>Comentarios:</Text>
           {comment.map((comentario, i) => {
             return (
-              <Text
-                key={i}
-                style={{
-                  backgroundColor: "#000",
-                  borderRadius: 10,
-                  marginBottom: 5,
-                  color: "#FFF",
-                }}
-              >
+              <Text key={i} style={styles.comentario}>
                 {comentario}
               </Text>
             );

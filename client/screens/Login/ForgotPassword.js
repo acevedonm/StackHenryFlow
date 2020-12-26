@@ -3,7 +3,6 @@ import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
-import { ScrollView } from "react-native-gesture-handler";
 
 export default function ForgotPassword({ navigation }) {
   const validations = yup.object().shape({
