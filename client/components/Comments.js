@@ -15,17 +15,15 @@ export const Comments = (props) => {
     getUserLogin().then((user) =>
       user ? setCurrentUser(user.user.email) : null
     );
-    var date = new Date().getDate(); //Current Date
-    var month = new Date().getMonth() + 1; //Current Month
-    var year = new Date().getFullYear(); //Current Year
-    var hours = new Date().getHours(); //Current Hours
-    var min = new Date().getMinutes(); //Current Minutes
-    var sec = new Date().getSeconds(); //Current Seconds
+    let date = new Date().getDate(); //Current Date
+    let month = new Date().getMonth() + 1; //Current Month
+    let year = new Date().getFullYear(); //Current Year
+    let hours = new Date().getHours(); //Current Hours
+    let min = new Date().getMinutes(); //Current Minutes
+    let sec = new Date().getSeconds(); //Current Seconds
     setCurrentDate(
       date + "/" + month + "/" + year + " " + hours + ":" + min + ":" + sec
     );
-    console.log(currentDate);
-    console.log(currentUser);
   };
 
   const enviarComentario = () => {
@@ -34,6 +32,7 @@ export const Comments = (props) => {
       comentario: comentario,
       user: currentUser,
       fecha: currentDate,
+      valoracion: [],
     };
     AddComments(id, comment);
     setComentario("");
@@ -53,13 +52,13 @@ export const Comments = (props) => {
           {comment.map((comentario, i) => {
             return (
               <View style={styles.comentario} key={i}>
-                <Text style={{color: "#FFF", marginBottom: 5}}>
+                <Text style={{ color: "#FFF", marginBottom: 5 }}>
                   {comentario.comentario}
                 </Text>
-                <Text style={{color: "#FFF", textAlign: "right"}}>
+                <Text style={{ color: "#FFF", textAlign: "right" }}>
                   {comentario.user}
                 </Text>
-                <Text style={{color: "#FFF", textAlign: "right"}}>
+                <Text style={{ color: "#FFF", textAlign: "right" }}>
                   {comentario.fecha}
                 </Text>
               </View>

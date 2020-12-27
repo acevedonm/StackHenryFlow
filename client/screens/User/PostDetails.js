@@ -14,11 +14,25 @@ export default function PostDetails(props) {
         <View style={styles.body}>
           <View style={styles.cardComment}>
             <Text style={styles.h5}>{data.title}</Text>
-            <Text style={[styles.postTag, {alignSelf: "flex-start", fontSize: 12}]}>{data.tag}</Text>
-            <Text style={{ marginTop: 25, fontSize:15, textAlign: "left", marginLeft: 2 }}>{data.description}</Text>
-            <Text style={{ marginTop: 40 }}>
-              Realizado el 26/12 a las 21:26hs por:
+            <Text
+              style={[
+                styles.postTag,
+                { alignSelf: "flex-start", fontSize: 12 },
+              ]}
+            >
+              {data.tag}
             </Text>
+            <Text
+              style={{
+                marginTop: 25,
+                fontSize: 15,
+                textAlign: "left",
+                marginLeft: 2,
+              }}
+            >
+              {data.description}
+            </Text>
+            <Text style={{ marginTop: 40 }}>{data.fecha}</Text>
             <View
               style={{
                 display: "flex",
@@ -27,6 +41,7 @@ export default function PostDetails(props) {
                 borderBottomWidth: 1,
                 borderTopWidth: 1,
                 paddingVertical: 15,
+                width: "90%"
               }}
             >
               <Image

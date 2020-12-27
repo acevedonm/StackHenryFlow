@@ -16,10 +16,25 @@ import { ScrollView } from "react-native-gesture-handler";
 
 export default function NewPostForm({ navigation }) {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [currentDate, setCurrentDate] = useState("");
+
+  const obtenerFecha = () => {
+    getUserLogin().then((user) => user && setCurrentUser(user.user));
+    let date = new Date().getDate(); //Current Date
+    let month = new Date().getMonth() + 1; //Current Month
+    let year = new Date().getFullYear(); //Current Year
+    let hours = new Date().getHours(); //Current Hours
+    let min = new Date().getMinutes(); //Current Minutes
+    let sec = new Date().getSeconds(); //Current Seconds
+    setCurrentDate(
+      "Realizado el " + date + "/" + month + "/" + year + " a las " + hours + ":" + min + ":" + sec + "hs. por:"
+    );
+  };
 
   const handlerPost = async (values, { resetForm }) => {
-    values = { ...values, user: user };
+    obtenerFecha();
+    values = { ...values, user: currentUser, fecha: currentDate };
     let posteo = await createPost(values);
     posteo && console.log(posteo);
     resetForm();
@@ -31,8 +46,8 @@ export default function NewPostForm({ navigation }) {
   };
 
   useEffect(() => {
-    getUserLogin().then((user) => user && setUser(user.user));
-  }, [user]);
+    obtenerFecha();
+  }, []);
 
   return (
     <>
@@ -53,7 +68,7 @@ export default function NewPostForm({ navigation }) {
             >
               {({ values, handleChange, handleSubmit, setFieldValue }) => (
                 <View style={styles.formNewPost}>
-                  {user && (
+                  {currentUser && (
                     <Text
                       style={{
                         color: "#000",
@@ -61,7 +76,7 @@ export default function NewPostForm({ navigation }) {
                         marginBottom: 20,
                       }}
                     >
-                      ¿Cual es tu duda {user.displayName}?
+                      ¿Cual es tu duda {currentUser.displayName}?
                     </Text>
                   )}
 
@@ -78,7 +93,9 @@ export default function NewPostForm({ navigation }) {
                     onChangeText={handleChange("description")}
                     value={values.description}
                   />
-                  <Text style={{ marginTop: 15, marginBottom: 10}}>¿A qué modulo pertenece tu duda?</Text>
+                  <Text style={{ marginTop: 15, marginBottom: 10 }}>
+                    ¿A qué modulo pertenece tu duda?
+                  </Text>
                   <Picker
                     style={styles.inputNewPost}
                     onValueChange={(itemValue) =>
