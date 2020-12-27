@@ -105,6 +105,14 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  h5: {
+    color: black,
+    fontSize: 18,
+    marginTop: 10,
+    marginBottom: 15,
+    fontWeight: "bold",
+    textAlign: "left",
+  },
   welcome: {
     color: `${black}`,
     marginTop: 30,
@@ -283,13 +291,14 @@ export const styles = StyleSheet.create({
   comment: {
     textAlign: "center",
     padding: 8,
-    margin: 10,
-    width: 230,
+    marginVertical: 20,
+    width: 280,
     height: 100,
     color: black,
     borderColor: black,
     borderWidth: 1,
     borderRadius: 5,
+    paddingTop:20
   },
   comentario: {
     padding: 10,
