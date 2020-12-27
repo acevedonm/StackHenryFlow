@@ -30,7 +30,7 @@ export default function Posts({ navigation }) {
     <>
       <Header navigation={navigation} />
       <ScrollView>
-        <View style={styles.body}>
+        <View style={styles.bodyPostList}>
           <SearchBar onSearch={handleSearch} />
           <View style={styles.cardPostList}>
             { loading ? <Text>Cargando posts..</Text> : 
@@ -48,7 +48,7 @@ export default function Posts({ navigation }) {
                     >
                       
                       {post.title.length > 20
-                        ? `${post.title.substring(0, 20)}...`
+                        ? `${post.title.substring(0, 20)}..`
                         : post.title}
                     </Text>
                     <Text style={styles.postTag}>{post.tag}</Text>

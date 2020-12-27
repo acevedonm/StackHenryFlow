@@ -40,65 +40,74 @@ const Profile = ({ navigation }) => {
     <>
       <Header navigation={navigation} />
       <SafeAreaView style={styles.container}>
-        <View style={styles.userInfoSection}>
-          <View
-            style={{
-              flexDirection: "column",
-              marginTop: 15,
-              alignItems: "center",
-            }}
-          >
-            <Avatar.Image
-              size={150}
-              source={
-                photo
-                  ? photo
-                  : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg"
-              }
-            />
-          </View>
-        </View>
-        <View style={styles.userInfoSection}>
-          <View style={styles.row}>
-            <Icon name="account" color="#3b3b3b" size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {usuario.name}
-            </Text>
-          </View>
-          <View style={styles.row}>
-            <Icon name="phone" color="#3b3b3b" size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {usuario.phone}
-            </Text>
-          </View>
-          <View style={styles.row}>
-            <Icon name="email" color="#3b3b3b" size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {usuario.email}
-            </Text>
-          </View>
-          <View style={styles.row}>
-            <Icon name="book-open-outline" color="#3b3b3b" size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {usuario.cohorte}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.userInfoSection}>
-          <TouchableOpacity style={styles.btn} onPress={handleProfileEdit}>
-            <View style={styles.row}>
-              <Icon
-                name="account-edit"
-                style={{ color: "#000000" }}
-                size={20}
+        <View style={styles.body}>
+          <View style={styles.userInfoSection}>
+            <View
+              style={{
+                flexDirection: "column",
+                marginTop: 15,
+                alignItems: "center",
+              }}
+            >
+              <Avatar.Image
+                size={150}
+                source={
+                  photo
+                    ? photo
+                    : {
+                        uri:
+                          "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
+                      }
+                }
               />
-              <Text
-                style={{ marginLeft: 20, color: "#000000", fontWeight: "bold" }}
-              >
-                Editar Perfil
+            </View>
+          </View>
+          <View style={styles.userInfoSection}>
+            <View style={styles.row}>
+              <Icon name="account" color="#3b3b3b" size={20} />
+              <Text style={{ color: "#777777", marginLeft: 20 }}>
+                {usuario.name}
               </Text>
             </View>
-          </TouchableOpacity>
+            <View style={styles.row}>
+              <Icon name="phone" color="#3b3b3b" size={20} />
+              <Text style={{ color: "#777777", marginLeft: 20 }}>
+                {usuario.phone}
+              </Text>
+            </View>
+            <View style={styles.row}>
+              <Icon name="email" color="#3b3b3b" size={20} />
+              <Text style={{ color: "#777777", marginLeft: 20 }}>
+                {usuario.email}
+              </Text>
+            </View>
+            <View style={styles.row}>
+              <Icon name="book-open-outline" color="#3b3b3b" size={20} />
+              <Text style={{ color: "#777777", marginLeft: 20 }}>
+                {usuario.cohorte}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.userInfoSection}>
+            <TouchableOpacity style={styles.btn} onPress={handleProfileEdit}>
+              <View style={styles.row}>
+                <Icon
+                  name="account-edit"
+                  style={{ color: "#000000" }}
+                  size={20}
+                />
+                <Text
+                  style={{
+                    marginLeft: 20,
+                    color: "#000000",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Editar Perfil
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     </>
@@ -106,9 +115,17 @@ const Profile = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  body: {
+    width: "95%",
+    backgroundColor: "#FFF",
+    borderRadius: 10,
+    alignSelf: "center",
+    paddingVertical: 20,
+    marginVertical: 20,
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
   },
   btn: {
     backgroundColor: "#FFFF01",
@@ -118,6 +135,7 @@ const styles = StyleSheet.create({
   },
   userNavigation: {
     flex: 1,
+    backgroundColor: "#FFF",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
