@@ -1,35 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { View, TextInput, Button, Alert, Text } from "react-native";
+import { View, TextInput, Button, Text } from "react-native";
 import { styles } from "../styles/styles";
 import { AddComments } from "../database/controllers/controllerPost";
+import { getUserLogin } from "../functions/getUserLogin";
 
 //Esto se tiene que renderizar en la pantalla postDetail
 export const Comments = (props) => {
-  const { id, comment } = props.data;
+  const [currentDate, setCurrentDate] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
   const [comentario, setComentario] = useState("");
-  const [comentarios, setComentarios] = useState([]);
+  const { id, comment } = props.data;
+
+  const obtenerFecha = () => {
+    getUserLogin().then((user) =>
+      user ? setCurrentUser(user.user.email) : null
+    );
+    let date = new Date().getDate(); //Current Date
+    let month = new Date().getMonth() + 1; //Current Month
+    let year = new Date().getFullYear(); //Current Year
+    let hours = new Date().getHours(); //Current Hours
+    let min = new Date().getMinutes(); //Current Minutes
+    let sec = new Date().getSeconds(); //Current Seconds
+    setCurrentDate(
+      date + "/" + month + "/" + year + " " + hours + ":" + min + ":" + sec
+    );
+  };
 
   const enviarComentario = () => {
-    setComentarios([...comentarios, comentario]);
-    AddComments(id, comentario);
+    obtenerFecha();
+    let comment = {
+      comentario: comentario,
+      user: currentUser,
+      fecha: currentDate,
+      valoracion: [],
+    };
+    AddComments(id, comment);
+    setComentario("");
     props.navigation.navigate("PostsList");
   };
 
   useEffect(() => {
-    console.log(comentarios);
-  }, [comentarios]);
+    obtenerFecha();
+  }, [currentUser]);
 
   return (
     <>
       {/* <Header navigation={navigation} /> */}
       <View style={styles.containerInput}>
         <View>
-          <Text style={{ marginVertical: 10 }}>Comentarios:</Text>
+          <Text style={{ marginBottom: 10, marginTop: 30 }}>Comentarios:</Text>
           {comment.map((comentario, i) => {
             return (
-              <Text key={i} style={styles.comentario}>
-                {comentario}
-              </Text>
+              <View style={styles.comentario} key={i}>
+                <Text style={{ color: "#FFF", marginBottom: 5 }}>
+                  {comentario.comentario}
+                </Text>
+                <Text style={{ color: "#FFF", textAlign: "right" }}>
+                  {comentario.user}
+                </Text>
+                <Text style={{ color: "#FFF", textAlign: "right" }}>
+                  {comentario.fecha}
+                </Text>
+              </View>
             );
           })}
         </View>
