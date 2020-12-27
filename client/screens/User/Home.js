@@ -10,13 +10,14 @@ const Home = ({ navigation }) => {
     let isUser = GetUserLogin();
     setUser(isUser);
   }, [user]);
+  
   return (
     <>
       <Header navigation={navigation} />
       <View style={styles.body}>
         <Text style={styles.h1}>¡BIENVENIDO!</Text>
         <View style={styles.card}>
-        <Text style={styles.h3}>¿CUAL VA A SER TU ROL HOY?</Text>
+        <Text style={styles.h3}>¿Cual va a ser tu rol hoy?</Text>
           <TouchableOpacity
             style={styles.boton}
             onPress={() => navigation.navigate("NewPostForm")}

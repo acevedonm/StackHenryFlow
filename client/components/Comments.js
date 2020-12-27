@@ -7,17 +7,12 @@ import { AddComments } from "../database/controllers/controllerPost";
 export const Comments = (props) => {
   const { id, comment } = props.data;
   const [comentario, setComentario] = useState("");
-  const [comentarios, setComentarios] = useState([]);
 
   const enviarComentario = () => {
-    setComentarios([...comentarios, comentario]);
     AddComments(id, comentario);
+    setComentario("")
     props.navigation.navigate("PostsList");
   };
-
-  useEffect(() => {
-    console.log(comentarios);
-  }, [comentarios]);
 
   return (
     <>
