@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, ScrollView } from "react-native";
-import { GetPosts } from "../../../database/controllers/controllerPost";
+import { GetPosts } from "../../database/controllers/controllerPost";
 import { styles } from "../../styles/styles";
 // COMPONENTS //
 import Header from "../../components/Header";

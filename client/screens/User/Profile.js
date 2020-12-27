@@ -2,61 +2,60 @@ import React, { useEffect, useState } from "react";
 import { View, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { GetUserLogin } from "../../../database/controllers/controllerUsers";
+import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 
 const Profile = ({ navigation }) => {
   var initialState = {
-    username: "",
     name: "",
     email: "",
+    cohorte: "",
     password: "",
-    phone: "+54 123456789",
+    phone: "",
   };
   const [usuario, setUsuario] = useState(initialState);
   const [photo, setPhoto] = useState("");
   const handleProfileEdit = () => {
-     navigation.navigate('ProfileEdit',{
-        myData: usuario
-     })
+    navigation.navigate("ProfileEdit", {
+      myData: usuario,
+    });
   };
 
   useEffect(() => {
     var user = GetUserLogin();
-    
+
     if (user) {
       setUsuario({
-        username: user.displayName,
         email: user.email,
-        name: user.username,
-        phone: user.phone,
+        name: user.displayName,
+        cohorte: user.cohorte,
+        phoneNumber: user.phone,
       });
-      setPhoto(user.photoURL)
+      setPhoto(user.photoURL);
     } else {
-      console.log("no hay nada");
+      console.log("No se encontró usuario");
     }
   }, [photo]);
   return (
     <>
-   
       <Header navigation={navigation} />
       <SafeAreaView style={styles.container}>
         <View style={styles.userInfoSection}>
-          <View style={{ flexDirection: "row", marginTop: 15 }}>
-            <Avatar.Image size={80} source={photo ? photo :"https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg" } />
-            <View style={{ marginLeft: 20 }}>
-              <Title
-                style={[
-                  styles.title,
-                  {
-                    marginTop: 15,
-                    marginBottom: 5,
-                  },
-                ]}
-              >
-                {usuario.username}
-              </Title>
-            </View>
+          <View
+            style={{
+              flexDirection: "column",
+              marginTop: 15,
+              alignItems: "center",
+            }}
+          >
+            <Avatar.Image
+              size={150}
+              source={
+                photo
+                  ? photo
+                  : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg"
+              }
+            />
           </View>
         </View>
         <View style={styles.userInfoSection}>
@@ -76,6 +75,12 @@ const Profile = ({ navigation }) => {
             <Icon name="email" color="#3b3b3b" size={20} />
             <Text style={{ color: "#777777", marginLeft: 20 }}>
               {usuario.email}
+            </Text>
+          </View>
+          <View style={styles.row}>
+            <Icon name="book-open-outline" color="#3b3b3b" size={20} />
+            <Text style={{ color: "#777777", marginLeft: 20 }}>
+              {usuario.cohorte}
             </Text>
           </View>
         </View>
@@ -119,7 +124,7 @@ const styles = StyleSheet.create({
   },
   userInfoSection: {
     paddingHorizontal: 30,
-    marginVertical: 20,
+    marginVertical: 10,
   },
   title: {
     fontSize: 24,
@@ -144,7 +149,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   textInput: {
-    border: "1px solid #BBD2C5",
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,

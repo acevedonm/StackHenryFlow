@@ -1,17 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const white = "#fff";
-const googleBlue = "#4285f4";
-const buttonActiveBlue = "#1669F2";
-
 const GoogleButton = ({ login }) => {
   return (
     <TouchableOpacity onPress={() => login()} style={styles.googleBtn}>
       <View style={styles.googleIconWrapper}>
         <Image
           style={styles.googleIcon}
-          source="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+          source={{uri: 'https://1000marcas.net/wp-content/uploads/2020/02/Google-S%C3%ADmbolo.jpg'}}
         />
         <Text style={styles.btnText}> Ingresar con Google</Text>
       </View>
@@ -39,7 +35,7 @@ const styles = StyleSheet.create({
     marginTop: 1,
     marginLeft: 1,
     borderRadius: 2,
-    backgroundColor: "FFF",
+    backgroundColor: "#FFF",
   },
   googleIcon: {
     width: 18,
