@@ -28,7 +28,7 @@ export const createPost = (values) => {
 };
 
 export const GetPosts = () => {
-  let postRef = firebase.firestore().collection("post").get();
+  let postRef = firebase.firestore().collection("post").orderBy("fecha", "desc").get();
   return postRef;
 };
 
