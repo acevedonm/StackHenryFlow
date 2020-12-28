@@ -15,6 +15,7 @@ export const Comments = (props) => {
   const { id, comment } = props.data;
 
   const obtenerFecha = () => {
+    console.log(comment)
     getUserLogin().then((user) =>
       user ? setCurrentUser(user.user.email) : null
     );
