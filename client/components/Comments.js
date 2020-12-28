@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, TextInput, Button, Text } from "react-native";
 import { styles } from "../styles/styles";
-import { AddComments } from "../database/controllers/controllerPost";
+import { AddComments, AddLike } from "../database/controllers/controllerPost";
 import { getUserLogin } from "../functions/getUserLogin";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -23,9 +23,8 @@ export const Comments = (props) => {
     let year = new Date().getFullYear(); //Current Year
     let hours = new Date().getHours(); //Current Hours
     let min = new Date().getMinutes(); //Current Minutes
-    let sec = new Date().getSeconds(); //Current Seconds
     setCurrentDate(
-      date + "/" + month + "/" + year + " " + hours + ":" + min + ":" + sec
+      date + "/" + month + "/" + year + " " + hours + ":" + min
     );
   };
 
@@ -48,16 +47,18 @@ export const Comments = (props) => {
       setCount(() => count + 1)
       console.log(count)
       setMeGusta(true)
+      AddLike(id,count)
     } else {
       setCount(() => count - 1)
     console.log(count)
       setMeGusta(false)
+      AddLike(id,count)
     }
     
   }
   useEffect(() => {
     obtenerFecha();
-  }, [currentUser]);
+  }, [currentUser, meGusta]);
 
   return (
     <>

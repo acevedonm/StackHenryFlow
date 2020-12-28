@@ -28,9 +28,20 @@ export const createPost = (values) => {
 };
 
 export const GetPosts = () => {
-  let postRef = firebase.firestore().collection("post").get();
+  let postRef = firebase.firestore().collection("post").orderBy("fecha", "desc").get();
   return postRef;
 };
+
+
+export const GetMyPosts = () => {
+  let postRef = firebase.firestore().collection("post")
+  let user = firebase.auth().currentUser;
+
+  var query = postRef.where("userId","==",user.uid).get()
+  console.log(user)
+  return query;
+};
+
 
 export const searchInPost = async (value) => {
   try {
@@ -63,5 +74,14 @@ export const AddComments = (id, comentario) => {
   let posteo = firebase.firestore().collection("post").doc(id);
   posteo.update({
     comment: firebase.firestore.FieldValue.arrayUnion(comentario),
+  });
+};
+
+export const AddLike = (id,count) => {
+  let posteo = firebase.firestore().collection("post").doc(id);
+  posteo.update({
+    comment: {
+      likes: firebase.firestore.FieldValue.increment(count),
+    } 
   });
 };

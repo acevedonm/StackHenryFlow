@@ -11,7 +11,7 @@ import ProfileEdit from "../User/ProfileEdit"
 import PostsList from "../User/PostsList"
 import PostDetails from "../User/PostDetails"
 import NewPostForm from "../User/NewPostForm";
-import Likes from "../../components/Likes"
+import MyPosts from "../User/MyPosts"
 
 const USER_LOGIN= '@user_login'
 const Drawer = createDrawerNavigator();
@@ -33,10 +33,10 @@ export default function Index({ navigation }) {
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="PostsList" component={PostsList} />
+      <Drawer.Screen name="MyPosts" component={MyPosts} />
       <Drawer.Screen name="PostDetails" component={PostDetails} /> 
       <Drawer.Screen name="ProfileEdit" component={ProfileEdit} />
       <Drawer.Screen name="NewPostForm" component={NewPostForm} />
-      <Drawer.Screen name="Likes" component={Likes} />
     </Drawer.Navigator>
   );
 }

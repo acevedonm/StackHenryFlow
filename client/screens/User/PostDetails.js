@@ -13,35 +13,32 @@ export default function PostDetails(props) {
       <ScrollView>
         <View style={styles.body}>
           <View style={styles.cardComment}>
-            <Text style={styles.h5}>{data.title}</Text>
-            <Text
-              style={[
-                styles.postTag,
-                { alignSelf: "flex-start", fontSize: 12 },
-              ]}
-            >
+            <Text style={[styles.h5, { alignSelf: "flex-start" }]}>
+              {data.title}
+            </Text>
+            <Text style={[ styles.postTag, { alignSelf: "flex-start", fontSize: 12 } ]}>
               {data.tag}
             </Text>
             <Text
               style={{
                 marginTop: 25,
                 fontSize: 15,
-                textAlign: "left",
+                alignSelf: "flex-start",
                 marginLeft: 2,
               }}
             >
               {data.description}
             </Text>
-            <Text style={{ marginTop: 40 }}>{data.fecha}</Text>
+            <Text style={{ marginTop: 40, alignSelf: "flex-start" }}>{data.fecha}</Text>
             <View
               style={{
                 display: "flex",
                 flexDirection: "row",
-                marginTop: 10,
+                marginTop: 15,
                 borderBottomWidth: 1,
                 borderTopWidth: 1,
                 paddingVertical: 15,
-                width: "90%"
+                width: "90%",
               }}
             >
               <Image

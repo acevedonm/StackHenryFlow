@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, ScrollView } from "react-native";
-import { GetPosts } from "../../database/controllers/controllerPost";
+import { GetMyPosts } from "../../database/controllers/controllerPost";
 import { styles } from "../../styles/styles";
 // COMPONENTS //
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 
-export default function Posts({ navigation }) {
+export default function MyPosts({ navigation }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+ 
 
   const handleSearch = (data) => {
     setPosts(data);
   };
 
+
+
   useEffect(() => {
     setLoading(true);
-    GetPosts()
-      .then((posts) => {
-        setPosts(posts.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+     GetMyPosts().then((myPost) => {
+        setPosts(myPost.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
       .then(() => setLoading(false))
       .catch((err) => {
         console.log("Error getting posts", err);
       });
+    
   }, []);
 
   return (
@@ -45,8 +48,7 @@ export default function Posts({ navigation }) {
                       onPress={() =>
                         navigation.navigate("PostDetails", { data: post})
                       }
-                    > 
-                      
+                    >
                       {post.title.length > 20
                         ? `${post.title.substring(0, 20)}..`
                         : post.title}
