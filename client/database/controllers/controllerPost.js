@@ -32,6 +32,17 @@ export const GetPosts = () => {
   return postRef;
 };
 
+
+export const GetMyPosts = () => {
+  let postRef = firebase.firestore().collection("post")
+  let user = firebase.auth().currentUser;
+
+  var query = postRef.where("userId","==",user.uid).get()
+  console.log(user)
+  return query;
+};
+
+
 export const searchInPost = async (value) => {
   try {
     var array = [];
