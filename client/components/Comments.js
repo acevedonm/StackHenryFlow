@@ -20,9 +20,8 @@ export const Comments = (props) => {
     let year = new Date().getFullYear(); //Current Year
     let hours = new Date().getHours(); //Current Hours
     let min = new Date().getMinutes(); //Current Minutes
-    let sec = new Date().getSeconds(); //Current Seconds
     setCurrentDate(
-      date + "/" + month + "/" + year + " " + hours + ":" + min + ":" + sec
+      date + "/" + month + "/" + year + " " + hours + ":" + min
     );
   };
 

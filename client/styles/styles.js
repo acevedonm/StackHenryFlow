@@ -228,6 +228,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.40,
     shadowRadius: 7.0,
     elevation: 24,
+    minHeight: windowHeight * 0.5
   },
   cardComment: {
     backgroundColor: `${white}`,
@@ -246,13 +247,14 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.40,
     shadowRadius: 7.0,
     elevation: 24,
+    minHeight: windowHeight * 0.5
   },
   cardPostList: {
     backgroundColor: `${white}`,
     color: black,
     width: "90%",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     marginVertical: 30,
     padding: 20,
     borderRadius: 10,
@@ -264,6 +266,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.40,
     shadowRadius: 7.0,
     elevation: 24,
+    minHeight: windowHeight * 0.6
   },
   imgHenry: {
     alignSelf: "center",
