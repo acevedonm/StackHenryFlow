@@ -26,9 +26,8 @@ export default function NewPostForm({ navigation }) {
     let year = new Date().getFullYear(); //Current Year
     let hours = new Date().getHours(); //Current Hours
     let min = new Date().getMinutes(); //Current Minutes
-    let sec = new Date().getSeconds(); //Current Seconds
     setCurrentDate(
-      "Realizado el " + date + "/" + month + "/" + year + " a las " + hours + ":" + min + ":" + sec + "hs. por:"
+      "Realizado el " + date + "/" + month + "/" + year + " a las " + hours + ":" + min + "hs. por:"
     );
   };
 
