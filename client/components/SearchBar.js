@@ -25,7 +25,7 @@ const Bar = ({ onSearch }) => {
         placeholder="Buscar..."
         onChangeText={updateSearch}
         value={search}
-        onpre
+        
       />
     </View>
   );

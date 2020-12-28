@@ -138,7 +138,7 @@ export default function DrawerContent(props) {
               }}
               label="My Posts"
               onPress={() => {
-                props.navigation.navigate("Home");
+                props.navigation.navigate("MyPosts");
               }}
             />
           </Drawer.Section>
