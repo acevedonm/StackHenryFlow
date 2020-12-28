@@ -45,7 +45,7 @@ export default function Posts({ navigation }) {
                       onPress={() =>
                         navigation.navigate("PostDetails", { data: post})
                       }
-                    >
+                    > { post.name}
                       
                       {post.title.length > 20
                         ? `${post.title.substring(0, 20)}..`

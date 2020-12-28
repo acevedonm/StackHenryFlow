@@ -3,12 +3,15 @@ import { View, TextInput, Button, Text } from "react-native";
 import { styles } from "../styles/styles";
 import { AddComments } from "../database/controllers/controllerPost";
 import { getUserLogin } from "../functions/getUserLogin";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 //Esto se tiene que renderizar en la pantalla postDetail
 export const Comments = (props) => {
   const [currentDate, setCurrentDate] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [comentario, setComentario] = useState("");
+  const [meGusta, setMeGusta]= useState(false)
+  const [count, setCount] = useState(0)
   const { id, comment } = props.data;
 
   const obtenerFecha = () => {
@@ -32,13 +35,26 @@ export const Comments = (props) => {
       comentario: comentario,
       user: currentUser,
       fecha: currentDate,
-      valoracion: [],
+      likes: count,
     };
     AddComments(id, comment);
     setComentario("");
     props.navigation.navigate("PostsList");
   };
 
+
+  const onChageLike = () => {
+    if(meGusta === false){
+      setCount(() => count + 1)
+      console.log(count)
+      setMeGusta(true)
+    } else {
+      setCount(() => count - 1)
+    console.log(count)
+      setMeGusta(false)
+    }
+    
+  }
   useEffect(() => {
     obtenerFecha();
   }, [currentUser]);
@@ -61,6 +77,7 @@ export const Comments = (props) => {
                 <Text style={{ color: "#FFF", textAlign: "right" }}>
                   {comentario.fecha}
                 </Text>
+                <Button title="me gusta" color="#000000" onPress={onChageLike} /> 
               </View>
             );
           })}
