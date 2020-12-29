@@ -310,4 +310,7 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     color: "#FFF",
   },
+  contain2: {
+            flex: 1
+        }
 });
