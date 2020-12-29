@@ -27,7 +27,17 @@ export default function NewPostForm({ navigation }) {
     let hours = new Date().getHours(); //Current Hours
     let min = new Date().getMinutes(); //Current Minutes
     setCurrentDate(
-      "Realizado el " + year + "/" + month + "/" + date + " a las " + hours + ":" + min + "hs. por:"
+      "Realizado el " +
+        year +
+        "/" +
+        month +
+        "/" +
+        date +
+        " a las " +
+        hours +
+        ":" +
+        min +
+        "hs. por:"
     );
   };
 
@@ -41,7 +51,7 @@ export default function NewPostForm({ navigation }) {
     setTimeout(() => {
       setLoading(false);
       navigation.navigate("PostsList");
-    }, 2000);
+    }, 2500);
   };
 
   useEffect(() => {
