@@ -4,6 +4,8 @@ import "firebase/firestore";
 export const createPost = (values) => {
   const { title, description, tag, user, fecha } = values;
   //verificar que los tags sean solo 3
+
+  
   firebase
     .firestore()
     .collection("post")
@@ -49,8 +51,8 @@ export const searchInPost = async (value) => {
     var postRef = await firebase.firestore().collection("post").get();
     postRef.docs.forEach((doc) => {
       var obj = { id: doc.id, ...doc.data() };
-      let title = obj.title;
-      let busqueda = value;
+      let title = obj.title.toUpperCase();
+      let busqueda = value.toUpperCase();
       let posicion = title.indexOf(busqueda);
       if (Array.isArray(obj.tags)) {
         let encontre = obj.tags.find((element) => (element = value));
