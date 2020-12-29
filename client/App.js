@@ -10,7 +10,7 @@ import Index from "./screens/Login/Index";
 // DATABASE //
 import firebase from "./database/firebase"; //esta linea sirve para inicializar el backend
 import { getUserLogin } from "./functions/getUserLogin";
-
+import Video from './components/VideoPlayerView';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -28,6 +28,8 @@ export default function App() {
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="Index" component={Index} />
+          <Stack.Screen name="Video" component={Video} />
+
         </Stack.Navigator>
       </NavigationContainer>
     );

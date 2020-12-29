@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
+import VideoPlayerView from "../../components/VideoPlayerView";
 
 const Home = ({ navigation }) => {
   const [user, setUser] = useState(null);
@@ -32,9 +33,12 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.boton}
+            onPress={() => navigation.navigate("VideoPlayerView")}
+
             // onPress={() => navigation.navigate("Material")}
           >
             <Text style={{ fontWeight: "bold" }}>Vine a buscar material</Text>
+            <VideoPlayerView/>
           </TouchableOpacity>
         </View>
       </View>
