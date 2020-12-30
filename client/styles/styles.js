@@ -303,12 +303,17 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingTop:20
   },
-  separator: {
+  separatorPostList: {
     height: 1,
     width: "70%",
     backgroundColor: "#CED0CE",
     marginLeft: "15%",
     marginRight: "15%"
+  },
+  spinnerVerticalPagination: {
+    paddingVertical: 20,
+      borderTopWidth: 1,
+      borderColor: "#CED0CE"
   },
   comentario: {
     padding: 10,

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, ScrollView, FlatList } from "react-native";
+import { Text, View, ScrollView, FlatList, ActivityIndicator } from "react-native";
 import { GetPosts } from "../../database/controllers/controllerPost";
 import { styles } from "../../styles/styles";
 // COMPONENTS //
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
-import { Avatar, ListItem, List } from 'react-native-elements'
+import { Avatar, ListItem } from 'react-native-elements'
 
 export default function PostsList({ navigation }) {
   const [posts, setPosts] = useState([]);
@@ -44,10 +44,16 @@ export default function PostsList({ navigation }) {
   const renderSeparator = () => {
     return (
       <View
-        style={styles.separator}
+        style={styles.separatorPostList}
       />
     );
   };
+  const renderFooter = ()=>{
+    if (!loading) return null 
+    return <View style={styles.spinnerVerticalPagination}>
+      <ActivityIndicator animating size="small" ></ActivityIndicator>
+    </View>
+  }
 
 const renderList = ()=>(
   <>
@@ -58,6 +64,7 @@ const renderList = ()=>(
           data={posts}
           renderItem={renderItem}
           ItemSeparatorComponent={renderSeparator}
+          ListFooterComponent={renderFooter}
         />
   ) : (
       <Text>No se encontraron resultados..</Text>
