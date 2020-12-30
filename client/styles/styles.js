@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    minHeight: windowHeight * 0.813,
+    minHeight: windowHeight * 0.85,
     paddingVertical: 10,
   },
   bodyPostList: {
@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
   },
   h2: {
     color: `${white}`,
-    fontSize: 20,
+    fontSize: 18,
     textAlign: "center",
     marginTop: 15,
     marginBottom: 10,

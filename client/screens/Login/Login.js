@@ -117,7 +117,7 @@ export default function Login({ navigation }) {
                 <TouchableOpacity
                   onPress={() => navigation.navigate("ForgotPassword")}
                 >
-                  <Text style={styles.linkForm}>Recuperar contraseña</Text>
+                  <Text style={styles.linkForm}>¿Olvidaste tu contraseña?</Text>
                 </TouchableOpacity>
               </View>
             )}
