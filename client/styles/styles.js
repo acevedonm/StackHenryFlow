@@ -303,6 +303,13 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingTop:20
   },
+  separator: {
+    height: 1,
+    width: "70%",
+    backgroundColor: "#CED0CE",
+    marginLeft: "15%",
+    marginRight: "15%"
+  },
   comentario: {
     padding: 10,
     backgroundColor: "#000",

@@ -30,45 +30,50 @@ export default function PostsList({ navigation }) {
   }, []);
 
 
-  const keyExtractor = (item, index) => index.toString()
-
+  const keyExtractor = item => item.id
   const renderItem = ({ item }) => (
-    <ListItem bottomDivider >
-      <Avatar title={item.title[0]} source={item.photo && { uri: item.photo }}/>
+    <ListItem bottomDivider containerStyle={{ borderBottomWidth: 1.5 }}>
+      <Avatar rounded title={item.title[0]} source={{uri: item.photo ? item.photo:"https://cutt.ly/hjrVYr8"}}/>
       <ListItem.Content>
         <ListItem.Title>{item.title}</ListItem.Title>
-        <ListItem.Subtitle>{item.tag}</ListItem.Subtitle>
+        <ListItem.Subtitle style={{fontSize : 10}}>{item.tag}</ListItem.Subtitle>
       </ListItem.Content>
       <ListItem.Chevron />
     </ListItem>
   )
+  const renderSeparator = () => {
+    return (
+      <View
+        style={styles.separator}
+      />
+    );
+  };
 
+const renderList = ()=>(
+  <>
+  <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
+  {posts && posts.length >= 1 ? (
+        <FlatList
+          keyExtractor={keyExtractor}
+          data={posts}
+          renderItem={renderItem}
+          ItemSeparatorComponent={renderSeparator}
+        />
+  ) : (
+      <Text>No se encontraron resultados..</Text>
+    )}
+</>
+)
 
   return (
     <>
-      {console.log("Set Post: ", posts)}
       <Header navigation={navigation} />
       <ScrollView>
         <View style={styles.bodyPostList}>
           <SearchBar onSearch={handleSearch} />
           <View style={styles.cardPostList}>
             {loading ? <Text>Cargando posts..</Text> :
-              <>
-                <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
-                {posts && posts.length >= 1 ? (
-                  <>
-                    <>
-                      <FlatList
-                        keyExtractor={keyExtractor}
-                        data={posts}
-                        renderItem={renderItem}
-                      />
-                    </>
-                  </>
-                ) : (
-                    <Text>No se encontraron resultados..</Text>
-                  )}
-              </>
+              renderList()
             }
           </View>
         </View>
