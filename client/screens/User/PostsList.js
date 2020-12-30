@@ -15,6 +15,7 @@ export default function Posts({ navigation }) {
   };
 
   useEffect(() => {
+    console.log("cargando")
     setLoading(true);
     GetPosts()
       .then((posts) => {
