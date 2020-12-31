@@ -16,7 +16,6 @@ import {
   DrawerContentScrollView,
 } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { yellow } from "../styles/globalsVariables";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function DrawerContent(props) {
@@ -38,10 +37,10 @@ export default function DrawerContent(props) {
     props.navigation.navigate("Login");
   };
 
-  const handlerValor = async () => {
+  const getUser = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-    
+
     if (storageUser) {
       setUsuario({
         displayName: storageUser.user.displayName,
@@ -53,7 +52,7 @@ export default function DrawerContent(props) {
     }
   };
   useEffect(() => {
-    handlerValor();
+    getUser();
   }, []);
 
   return (
@@ -71,7 +70,9 @@ export default function DrawerContent(props) {
                 size={50}
               />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
-                <Title>{usuario.displayName}</Title>
+                {usuario.displayName ?
+                <Title>{usuario.displayName.length < 18 ? usuario.displayName : `${usuario.displayName.substring(0,18)}..`}</Title>
+                : <Title>Bienvenido!</Title> }
                 <Caption>{usuario.email}</Caption>
               </View>
             </View>
@@ -113,14 +114,16 @@ export default function DrawerContent(props) {
             />
             <DrawerItem
               icon={({ color, size }) => {
-                return <Icon name="plus-box-outline" color={color} size={size} />;
+                return (
+                  <Icon name="plus-box-outline" color={color} size={size} />
+                );
               }}
               label="New Post"
               onPress={() => {
                 props.navigation.navigate("NewPostForm");
               }}
             />
-                        <DrawerItem
+            <DrawerItem
               icon={({ color, size }) => {
                 return <Icon name="brain" color={color} size={size} />;
               }}
@@ -135,7 +138,7 @@ export default function DrawerContent(props) {
               }}
               label="My Posts"
               onPress={() => {
-                props.navigation.navigate("Home");
+                props.navigation.navigate("MyPosts");
               }}
             />
           </Drawer.Section>

@@ -9,8 +9,9 @@ import Comments from "../../components/Comments"
 import DrawerContent from "../../components/DrawerContent";
 import ProfileEdit from "../User/ProfileEdit"
 import PostsList from "../User/PostsList"
-import PostDetails from "../../components/PostDetails"
+import PostDetails from "../User/PostDetails"
 import NewPostForm from "../User/NewPostForm";
+import MyPosts from "../User/MyPosts"
 
 const USER_LOGIN= '@user_login'
 const Drawer = createDrawerNavigator();
@@ -32,6 +33,7 @@ export default function Index({ navigation }) {
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="PostsList" component={PostsList} />
+      <Drawer.Screen name="MyPosts" component={MyPosts} />
       <Drawer.Screen name="PostDetails" component={PostDetails} /> 
       <Drawer.Screen name="ProfileEdit" component={ProfileEdit} />
       <Drawer.Screen name="NewPostForm" component={NewPostForm} />
