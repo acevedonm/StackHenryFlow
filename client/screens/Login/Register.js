@@ -135,7 +135,7 @@ export default function Register({ navigation }) {
                   onPress={() => navigation.navigate("Login")}
                 >
                   <Text style={styles.linkForm}>
-                    Ya tenes cuenta? Inicia Sesion
+                    Ya tenés cuenta? Iniciá sesión
                   </Text>
                 </TouchableOpacity>
               </View>
