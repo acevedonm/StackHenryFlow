@@ -2,9 +2,9 @@ import React, { Component} from 'react';
 import {StyleSheet,Text, View, Image} from 'react-native';
 
 class MusicApp extends Component {
-    render(){
+    render() {
         return (
-            <View style={{flex: 1, backgroundColor:'white'}}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={{...StyleSheet.absoluteFill}}>
                     <Image
                     source={require('../../assets/animacion.png')}

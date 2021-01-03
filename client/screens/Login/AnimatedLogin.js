@@ -23,7 +23,7 @@ function cacheImages(images) {
 //     );
 // }
 
-export default class AnimatedLogin extends React.Component{
+ class AnimatedLogin extends React.Component{
     constructor(){
         super()
         this.state={
@@ -47,7 +47,7 @@ export default class AnimatedLogin extends React.Component{
                 />
             );
         }
-        return <MusicApp/>
+        return <MusicApp />
     }
 }
 
@@ -61,3 +61,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 })
+
+export default AnimatedLogin;
