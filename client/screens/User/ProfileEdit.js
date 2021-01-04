@@ -10,9 +10,11 @@ import {
 import { Text } from "react-native-paper";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
+import DarkThemeContext from '../../DarkThemeContext'
 
 const ProfileEdit = (props) => {
   const { name, email, phone, cohorte } = props.route.params.myData;
+  const isDarkMode = React.useContext(DarkThemeContext);
 
   const handleSubmit = (values) => {
     var user = GetUserLogin();

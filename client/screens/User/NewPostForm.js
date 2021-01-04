@@ -13,8 +13,11 @@ import Header from "../../components/Header";
 import { createPost } from "../../database/controllers/controllerPost";
 import { getUserLogin } from "../../functions/getUserLogin";
 import { ScrollView } from "react-native-gesture-handler";
+import DarkThemeContext from '../../DarkThemeContext'
 
 export default function NewPostForm({ navigation }) {
+  const isDarkMode = React.useContext(DarkThemeContext);
+
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentDate, setCurrentDate] = useState("");

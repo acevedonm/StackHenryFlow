@@ -19,6 +19,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function DrawerContent(props) {
+  console.log('dddraweeeeeeee', props.isDarkMode)
   const USER_LOGIN = "@user_login";
   const inicialState = {
     displayName: "",
@@ -26,10 +27,9 @@ export default function DrawerContent(props) {
   };
   const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+    props.route?.params?.toggleTheme()
   };
 
   const logout = () => {
@@ -151,7 +151,7 @@ export default function DrawerContent(props) {
               <View style={styles.preference}>
                 <Text>Dark Theme</Text>
                 <View pointerEvents="none">
-                  <Switch value={isDarkTheme}></Switch>
+                  <Switch value={props.isDarkMode}></Switch>
                 </View>
               </View>
             </TouchableRipple>

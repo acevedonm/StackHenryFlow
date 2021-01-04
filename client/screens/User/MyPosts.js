@@ -5,8 +5,10 @@ import { styles } from "../../styles/styles";
 // COMPONENTS //
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
+import DarkThemeContext from '../../DarkThemeContext'
 
 export default function MyPosts({ navigation }) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
  
