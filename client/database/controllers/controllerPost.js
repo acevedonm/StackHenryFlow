@@ -79,11 +79,12 @@ export const AddComments = (id, comentario) => {
   });
 };
 
-export const AddLike = (id,count) => {
-  let posteo = firebase.firestore().collection("post").doc(id);
-  posteo.update({
-    comment: {
-      likes: firebase.firestore.FieldValue.increment(count),
-    } 
+export const AddLike = (id, commentId, userId) => {
+  console.log(userId)
+  let refComentario = firebase.firestore().collection("post").doc(id).collection("comment").doc(commentId);
+  refComentario.update({
+    likes: firebase.firestore.FieldValue.arrayUnion({userId: userId}),
   });
 };
+
+

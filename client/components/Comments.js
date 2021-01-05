@@ -10,12 +10,9 @@ export const Comments = (props) => {
   const [currentDate, setCurrentDate] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [comentario, setComentario] = useState("");
-  const [meGusta, setMeGusta]= useState(false)
-  const [count, setCount] = useState(0)
   const { id, comment } = props.data;
 
   const obtenerFecha = () => {
-    console.log(comment)
     getUserLogin().then((user) =>
       user ? setCurrentUser(user.user.email) : null
     );
@@ -35,7 +32,7 @@ export const Comments = (props) => {
       comentario: comentario,
       user: currentUser,
       fecha: currentDate,
-      likes: count,
+      likes: [],
     };
     AddComments(id, comment);
     setComentario("");
@@ -43,23 +40,19 @@ export const Comments = (props) => {
   };
 
 
-  const onChageLike = () => {
-    if(meGusta === false){
-      setCount(() => count + 1)
-      console.log(count)
-      setMeGusta(true)
-      AddLike(id,count)
-    } else {
-      setCount(() => count - 1)
-    console.log(count)
-      setMeGusta(false)
-      AddLike(id,count)
-    }
-    
+
+  const onChageLike = async () => {
+   const respuesta= await getUserLogin()
+     let userId=  respuesta.user.uid
+     console.log(userId)
+    AddLike(id, comment.id ,userId)
+  
+   
+    console.log('entro a la funcion de likes')
   }
   useEffect(() => {
     obtenerFecha();
-  }, [currentUser, meGusta]);
+  }, [currentUser]);
 
   return (
     <>
@@ -67,7 +60,7 @@ export const Comments = (props) => {
       <View style={styles.containerInput}>
         <View>
           <Text style={{ marginBottom: 10, marginTop: 30 }}>Comentarios:</Text>
-          {comment.map((comentario, i) => {
+          { Array.isArray(comment) ? comment.map((comentario, i) => {
             return (
               <View style={styles.comentario} key={i}>
                 <Text style={{ color: "#FFF", marginBottom: 5 }}>
@@ -79,10 +72,11 @@ export const Comments = (props) => {
                 <Text style={{ color: "#FFF", textAlign: "right" }}>
                   {comentario.fecha}
                 </Text>
+                
                 <Button title="me gusta" color="#000000" onPress={onChageLike} /> 
               </View>
             );
-          })}
+          }): <> </> } 
         </View>
         <TextInput
           placeholder="Escribe un comentario..."
@@ -95,6 +89,7 @@ export const Comments = (props) => {
         <Button title="Comentar" color="#000000" onPress={enviarComentario} />
       </View>
     </>
+          
   );
 };
 
