@@ -32,7 +32,7 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.boton}
-            // onPress={() => navigation.navigate("Material")}
+            onPress={() => navigation.navigate("Videos")}
           >
             <Text style={{ fontWeight: "bold" }}>Vine a buscar material</Text>
           </TouchableOpacity>
