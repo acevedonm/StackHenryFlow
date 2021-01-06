@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, Text } from "react-native";
 // NAVIGATION //
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -16,11 +17,14 @@ import DarkThemeContext from './DarkThemeContext'
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    getUserLogin().then((user) => (user ? setUserId(user.user.uid) : null));
+    getUserLogin()
+      .then((user) => (user ? setUserId(user.user.uid) : null))
+      .then(() => setLoading(false));
   }, []);
 
   useEffect(async() => {
@@ -41,6 +45,12 @@ export default function App() {
 
 
 return (
+  loading ? (
+    <>
+      <ActivityIndicator size="large" color="#FFFF01" />
+      <Text style={{ color: "#FFF", marginTop: 15 }}>Cargando..</Text>
+    </>
+  ) : 
   !userId ?  <NavigationContainer>
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen  name="Login" component={Login}/>

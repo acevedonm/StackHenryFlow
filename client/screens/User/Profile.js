@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 import DarkThemeContext from '../../DarkThemeContext'
+import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 
 const Profile = ({ navigation }) => {
   const isDarkMode = React.useContext(DarkThemeContext);
@@ -42,8 +43,8 @@ const Profile = ({ navigation }) => {
   return (
     <>
       <Header navigation={navigation} />
-      <SafeAreaView style={isDarkMode ? styles.containerDark : styles.container}>
-        <View style={styles.body}>
+      <SafeAreaView style={styles.body}>
+        <View >
           <View style={styles.userInfoSection}>
             <View
               style={{
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: `${white}`,
   },
   containerDark: {
     flex: 1,

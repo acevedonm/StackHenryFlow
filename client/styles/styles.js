@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { yellow, black, white, errorRed } from "./globalsVariables";
+import { yellow, black, white, errorRed, gray } from "./globalsVariables";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
@@ -18,32 +18,35 @@ export const styles = StyleSheet.create({
     left: 0,
     paddingTop: 20,
     width: "100%",
-    backgroundColor: `${white}`,
+    backgroundColor: `${yellow}`,
   },
   header: {
     top: 0,
     left: 0,
-    paddingTop: 20,
+    paddingTop: 2,
     width: "100%",
-    backgroundColor: `${white}`,
+    backgroundColor: `${yellow}`,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    
+      
   },
   body: {
     textAlign: "center",
-    backgroundColor: `${black}`,
+    backgroundColor: `${white}`,
     color: `${white}`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    minHeight: windowHeight * 0.813,
+    minHeight: windowHeight * 0.85,
     paddingVertical: 10,
+    
   },
   bodyPostList: {
     textAlign: "center",
-    backgroundColor: `${black}`,
+    backgroundColor: `${white}`,
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -85,7 +88,7 @@ export const styles = StyleSheet.create({
   },
   h2: {
     color: `${white}`,
-    fontSize: 20,
+    fontSize: 18,
     textAlign: "center",
     marginTop: 15,
     marginBottom: 10,
@@ -144,7 +147,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderColor: "#00FFFF",
     borderRadius: 15,
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -173,6 +176,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
     padding: 5,
+    
   },
   inputDescription: {
     borderRadius: 10,
@@ -212,7 +216,7 @@ export const styles = StyleSheet.create({
     marginTop: 5,
   },
   card: {
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     width: "90%",
     display: "flex",
     justifyContent: "center",
@@ -250,7 +254,7 @@ export const styles = StyleSheet.create({
     minHeight: windowHeight * 0.5
   },
   cardPostList: {
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     color: black,
     width: "90%",
     display: "flex",
@@ -270,15 +274,15 @@ export const styles = StyleSheet.create({
   },
   imgHenry: {
     alignSelf: "center",
-    width: 200,
-    height: 100,
+    width: 124,
+    height: 50,
     zIndex: 1,
     marginLeft: -50,
   },
   imgHenryOut: {
     alignSelf: "center",
-    width: 200,
-    height: 100,
+    width: 124,
+    height: 50,
     zIndex: 1,
   },
   containerInputComment: {
@@ -303,11 +307,46 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingTop:20
   },
+  separatorPostList: {
+    height: 1,
+    width: "70%",
+    backgroundColor: "#CED0CE",
+    marginLeft: "15%",
+    marginRight: "15%"
+  },
+  spinnerVerticalPagination: {
+    paddingVertical: 20,
+      borderTopWidth: 1,
+      borderColor: "#CED0CE"
+  },
   comentario: {
     padding: 10,
     backgroundColor: "#000",
     borderRadius: 10,
     marginBottom: 5,
     color: "#FFF",
+  },
+  containerSearch: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "#329999",
+    borderRadius: 8,
+    border: "none",
+    overflow: "hidden",
+  },
+  input:{
+    backgroundColor: "transparent",
+    border: "none",
+    color: "#fff",
+    // margin: 0.25rem 0.5rem,
+    paddingLeft: 16,
+    fontSize: 16,
+    width: 6,
+    placeholder:{
+      color: "#4c2882 ",
+    },
+    focus: {
+      outline: "none",
+    },
   },
 });

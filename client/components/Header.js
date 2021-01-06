@@ -9,15 +9,15 @@ export default function Header({ navigation }) {
       <SafeAreaView style={styles.header}>
         <TouchableOpacity
           style={{
-            paddingTop: 10,
-            paddingBottom: 20,
+            paddingTop: 5,
+            paddingBottom: 5,
             paddingHorizontal: 20,
             alignSelf: "center" }}
           onPress={navigation.openDrawer} >
           <Icon name="menu" color="#3b3b3b" size={30} />
         </TouchableOpacity>
         <Image
-          source={require("../assets/henry.png")}
+          source={require("../assets/henry3.png")}
           resizeMode="contain"
           style={styles.imgHenry}
         ></Image>

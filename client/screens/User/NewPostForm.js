@@ -14,6 +14,7 @@ import { createPost } from "../../database/controllers/controllerPost";
 import { getUserLogin } from "../../functions/getUserLogin";
 import { ScrollView } from "react-native-gesture-handler";
 import DarkThemeContext from '../../DarkThemeContext'
+import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 
 export default function NewPostForm({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
@@ -30,7 +31,17 @@ export default function NewPostForm({ navigation }) {
     let hours = new Date().getHours(); //Current Hours
     let min = new Date().getMinutes(); //Current Minutes
     setCurrentDate(
-      "Realizado el " + year + "/" + month + "/" + date + " a las " + hours + ":" + min + "hs. por:"
+      "Realizado el " +
+        year +
+        "/" +
+        month +
+        "/" +
+        date +
+        " a las " +
+        hours +
+        ":" +
+        min +
+        "hs. por:"
     );
   };
 
@@ -44,7 +55,7 @@ export default function NewPostForm({ navigation }) {
     setTimeout(() => {
       setLoading(false);
       navigation.navigate("PostsList");
-    }, 2000);
+    }, 2500);
   };
 
   useEffect(() => {
