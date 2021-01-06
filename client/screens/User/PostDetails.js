@@ -3,8 +3,10 @@ import { View, Text, ScrollView, Image } from "react-native";
 import Comments from "../../components/Comments";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
+import DarkThemeContext from '../../DarkThemeContext'
 
 export default function PostDetails(props) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const { data } = props.route.params;
 
   return (

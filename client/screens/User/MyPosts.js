@@ -7,7 +7,10 @@ import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 import { Avatar, ListItem } from 'react-native-elements'
 
-export default function PostsList({ navigation }) {
+import DarkThemeContext from '../../DarkThemeContext'
+
+export default function MyPosts({ navigation }) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 

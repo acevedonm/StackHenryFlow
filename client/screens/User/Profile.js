@@ -4,9 +4,12 @@ import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
+import DarkThemeContext from '../../DarkThemeContext'
 import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 
 const Profile = ({ navigation }) => {
+  const isDarkMode = React.useContext(DarkThemeContext);
+
   var initialState = {
     name: "",
     email: "",
@@ -22,7 +25,7 @@ const Profile = ({ navigation }) => {
     });
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     var user = GetUserLogin();
 
     if (user) {
@@ -127,6 +130,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: `${white}`,
+  },
+  containerDark: {
+    flex: 1,
+    backgroundColor: "#000",
   },
   btn: {
     backgroundColor: "#FFFF01",
