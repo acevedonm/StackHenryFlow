@@ -4,8 +4,10 @@ import Comments from "../../components/Comments";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
 import { GetComments} from "../../database/controllers/controllerPost"
+import DarkThemeContext from '../../DarkThemeContext'
 
 export default function PostDetails(props) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const { data } = props.route.params;
 
   const [comments, setComments] = useState([])
