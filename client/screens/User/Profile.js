@@ -24,7 +24,7 @@ const Profile = ({ navigation }) => {
     });
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     var user = GetUserLogin();
 
     if (user) {
