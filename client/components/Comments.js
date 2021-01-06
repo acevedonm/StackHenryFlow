@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, TextInput, Button, Text } from "react-native";
 import { styles } from "../styles/styles";
-import { AddComments, AddLike, GetComments } from "../database/controllers/controllerPost";
+import { AddComments, AddLike, GetComments, DeleteComment } from "../database/controllers/controllerPost";
 import { getUserLogin } from "../functions/getUserLogin";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -58,6 +58,16 @@ export const Comments = (props) => {
    
     console.log('entro a la funcion de likes')
   }
+
+  const deleteComment = async(commentId) => {
+    DeleteComment(id,commentId)
+    console.log('entro en eliinar comentario')
+  }
+
+  const updateComment = async (commentId) => {
+    console.log('entro en editar comentario')
+  }
+
   useEffect(() => {
     obtenerFecha();
     obtenercomentarios();
@@ -88,6 +98,8 @@ export const Comments = (props) => {
                 
                 
                 <Button title="me gusta" color="#000000" onPress={() => onChageLike(comentario.id)} /> 
+                <Button title="eliminar" color="#000000" onPress={() => deleteComment(comentario.id)} />
+                <Button title="editar" color="#000000" onPress={() => updateComment(comentario.id)} />
               </View>
             );
           }): <> </> } 

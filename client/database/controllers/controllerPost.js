@@ -85,15 +85,20 @@ export const AddComments = (id, props) => {
   });
 };
 
-export const AddLike = (id, comment, userId) => {
+export const AddLike = (id, commentId, userId) => {
  
-     let refComentario = firebase.firestore().collection("post").doc(id).collection("comment").doc(comment)
+     let refComentario = firebase.firestore().collection("post").doc(id).collection("comment").doc(commentId)
   refComentario.update({ 
     likes: firebase.firestore.FieldValue.arrayUnion({usuario:userId}),
   });
+};
 
-    
- 
+export const DeleteComment = (id,commentId) => {
+ console.log(id, commentId)
+  let refComentario = firebase.firestore().collection("post").doc(id)
+ var removeComment= refComentario.update({ 
+ commentId: firebase.firestore.FieldValue.delete(),
+});
 };
 
 
