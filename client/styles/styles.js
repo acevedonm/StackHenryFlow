@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   bodyPostList: {
     textAlign: "center",
-    backgroundColor: `${black}`,
+    backgroundColor: `${white}`,
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -254,7 +254,7 @@ export const styles = StyleSheet.create({
     minHeight: windowHeight * 0.5
   },
   cardPostList: {
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     color: black,
     width: "90%",
     display: "flex",
