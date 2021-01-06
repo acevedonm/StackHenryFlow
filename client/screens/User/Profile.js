@@ -4,6 +4,7 @@ import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
+import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 
 const Profile = ({ navigation }) => {
   var initialState = {
@@ -39,8 +40,8 @@ const Profile = ({ navigation }) => {
   return (
     <>
       <Header navigation={navigation} />
-      <SafeAreaView style={styles.container}>
-        <View style={styles.body}>
+      <SafeAreaView style={styles.body}>
+        <View >
           <View style={styles.userInfoSection}>
             <View
               style={{
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: `${white}`,
   },
   btn: {
     backgroundColor: "#FFFF01",

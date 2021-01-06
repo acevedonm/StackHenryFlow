@@ -13,6 +13,7 @@ import Header from "../../components/Header";
 import { createPost } from "../../database/controllers/controllerPost";
 import { getUserLogin } from "../../functions/getUserLogin";
 import { ScrollView } from "react-native-gesture-handler";
+import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 
 export default function NewPostForm({ navigation }) {
   const [loading, setLoading] = useState(false);
