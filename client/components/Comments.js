@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { View, TextInput, Button, Text } from "react-native";
 import { styles } from "../styles/styles";
-import { AddComments, AddLike } from "../database/controllers/controllerPost";
+import { AddComments, AddLike, GetComments } from "../database/controllers/controllerPost";
 import { getUserLogin } from "../functions/getUserLogin";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 //Esto se tiene que renderizar en la pantalla postDetail
 export const Comments = (props) => {
   const [currentDate, setCurrentDate] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [comentario, setComentario] = useState("");
-  const { id, comment } = props.data;
+  const [ com, setCom] =useState([])
+  const { id } = props.data;
+
+  const obtenercomentarios = () => {
+    GetComments(id).then((coment) => {
+      setCom(coment.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+    })
+  }
+
 
   const obtenerFecha = () => {
     getUserLogin().then((user) =>
@@ -40,18 +49,18 @@ export const Comments = (props) => {
   };
 
 
-
-  const onChageLike = async () => {
+  const onChageLike = async (commentId) => {
    const respuesta= await getUserLogin()
      let userId=  respuesta.user.uid
-     console.log(userId)
-    AddLike(id, comment.id ,userId)
+    
+    AddLike(id, commentId ,userId)
   
    
     console.log('entro a la funcion de likes')
   }
   useEffect(() => {
     obtenerFecha();
+    obtenercomentarios();
   }, [currentUser]);
 
   return (
@@ -60,11 +69,12 @@ export const Comments = (props) => {
       <View style={styles.containerInput}>
         <View>
           <Text style={{ marginBottom: 10, marginTop: 30 }}>Comentarios:</Text>
-          { Array.isArray(comment) ? comment.map((comentario, i) => {
+          { Array.isArray(com) ? com.map((comentario) => {
+            
             return (
-              <View style={styles.comentario} key={i}>
+              <View style={styles.comentario} key={comentario.id}>
                 <Text style={{ color: "#FFF", marginBottom: 5 }}>
-                  {comentario.comentario}
+                  {comentario.texto}
                 </Text>
                 <Text style={{ color: "#FFF", textAlign: "right" }}>
                   {comentario.user}
@@ -72,8 +82,12 @@ export const Comments = (props) => {
                 <Text style={{ color: "#FFF", textAlign: "right" }}>
                   {comentario.fecha}
                 </Text>
+                <Text style={{ color: "#FFF", textAlign: "right" }}>
+                  {comentario.likes.length}
+                </Text>
                 
-                <Button title="me gusta" color="#000000" onPress={onChageLike} /> 
+                
+                <Button title="me gusta" color="#000000" onPress={() => onChageLike(comentario.id)} /> 
               </View>
             );
           }): <> </> } 
