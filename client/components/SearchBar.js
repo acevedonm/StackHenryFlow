@@ -21,12 +21,13 @@ const Bar = ({ onSearch }) => {
   }, [search]);
 
   return (
-    <View style={styles.containerSearch}>
+    <View >
       <SearchBar
         placeholder="Buscar..."
         onChangeText={updateSearch}
         value={search}
-        
+        lightTheme={true}
+ 
       />
     </View>
   );

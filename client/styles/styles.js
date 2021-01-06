@@ -147,7 +147,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderColor: "#00FFFF",
     borderRadius: 15,
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
