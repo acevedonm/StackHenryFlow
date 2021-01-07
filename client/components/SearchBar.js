@@ -21,13 +21,18 @@ const Bar = ({ onSearch }) => {
   }, [search]);
 
   return (
-    <View >
+
+    <View>
       <SearchBar
+
         placeholder="Buscar..."
         onChangeText={updateSearch}
         value={search}
         lightTheme={true}
- 
+        platform={"ios"}
+        // inputContainerStyle={{ borderRadius: 50,backgroundColor: 'transparent'}}
+         containerStyle={{ borderRadius: 50,backgroundColor: 'transparent'}}
+
       />
     </View>
   );
