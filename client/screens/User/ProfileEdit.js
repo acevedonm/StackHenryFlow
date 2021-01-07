@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
+
 import {
   View,
   SafeAreaView,
@@ -7,25 +8,28 @@ import {
   TextInput,
   StyleSheet,
 } from "react-native";
-import { Text } from "react-native-paper";
-import { GetUserLogin } from "../../database/controllers/controllerUsers";
+import { Avatar, Title, Text } from "react-native-paper";
+import { GetUserLogin,updateUser } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 import DarkThemeContext from '../../DarkThemeContext'
 import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
+import UserPermissions from "../../utilities/userPermissions"
+import * as ImagePicker from "expo-image-picker"
+
 
 const ProfileEdit = (props) => {
-  const { name, email, phone, cohorte } = props.route.params.myData;
+  const { name, email, phoneNumber, cohorte } = props.route.params.myData;
+  const [photo, setPhoto] = useState("");
   const isDarkMode = React.useContext(DarkThemeContext);
 
   const handleSubmit = (values) => {
     var user = GetUserLogin();
     console.log("usuariooo", user);
-    user
-      .updateProfile({
+    updateUser({
         displayName: values.name,
         email: values.email,
-        cohorte: values.cohorte,
-        phoneNumber: values.phone,
+        phoneNumber: values.phoneNumber,
+        photoURL: photo
       })
       .then(() => {
         console.log("usuario cambiado", user);
@@ -35,6 +39,31 @@ const ProfileEdit = (props) => {
       });
     props.navigation.navigate("Profile");
   };
+
+  const handlerPickAvatar = async () =>{
+    UserPermissions.getCameraPermission()
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowEditing: true,
+      aspect: [4,3]
+    })
+
+    if(!result.cancelled){
+      setPhoto(result.uri) 
+    }
+  } 
+
+
+  useEffect(() => {
+    var user = GetUserLogin();
+    if (user) {
+      if(user.photoURL){
+        setPhoto(user.photoURL)
+      } 
+    } else {
+      console.log("No se encontró usuario");
+    }
+  }, [photo]);
 
   return (
     <>
@@ -46,13 +75,28 @@ const ProfileEdit = (props) => {
               name,
               email,
               cohorte,
-              phone,
+              phoneNumber
             }}
             onSubmit={(values) => handleSubmit(values)}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <View style={styles.form}>
-                <Text style={!isDarkMode ? styles.textLabel : styles.darkTextLabel}>Nombre</Text>
+
+            <TouchableOpacity onPress={handlerPickAvatar}>
+              <Avatar.Image
+                size={150}
+                source={
+                  photo
+                    ? {uri: photo}
+                    : {
+                        uri:
+                          "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
+                      }
+                }
+              />
+              </TouchableOpacity>
+             <Text style={!isDarkMode ? styles.textLabel : styles.darkTextLabel}>Nombre</Text>
+
                 <TextInput
                   style={!isDarkMode ? styles.textInput : styles.darkTextInput}
                   placeholder="Nombre"
@@ -88,7 +132,7 @@ const ProfileEdit = (props) => {
                   placeholder="Telefono - Opcional"
                   onChangeText={handleChange("phone")}
                   onBlur={handleBlur("phone")}
-                  value={values.phone}
+                  value={values.phoneNumber}
                 />
                 <View style={styles.containerBoton}>
                   <TouchableOpacity style={styles.boton} onPress={handleSubmit}>

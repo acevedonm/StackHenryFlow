@@ -21,6 +21,9 @@ import DarkThemeContext from '../DarkThemeContext'
 import { yellow, black, white, errorRed, gray } from "../styles/globalsVariables";
 
 
+import firebase from "firebase";
+import "firebase/firestore";
+
 export default function DrawerContent(props) {
   
   console.log('dddraweeeeeeee', props.isDarkMode)
@@ -44,33 +47,43 @@ export default function DrawerContent(props) {
   const getUser = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-
+    console.log("StorageUser: ",storageUser )
     if (storageUser) {
+
+        if(storageUser.user.photoURL){
+          setPhoto(storageUser.user.photoURL)
+        } 
       setUsuario({
         displayName: storageUser.user.displayName,
         email: storageUser.user.email,
       });
-      setPhoto(storageUser.user.photoURL);
+      //setPhoto(storageUser.user.photoURL);
     } else {
       console.log("Error al pedir user al storage");
     }
   };
   useEffect(() => {
     getUser();
-  }, []);
+      
+
+}, [photo]);
+
   const isDarkMode = React.useContext(DarkThemeContext);
   return (
     <View style={!isDarkMode ? { flex: 1 } : { flex: 1, backgroundColor: 'black' }}>
+
       <DrawerContentScrollView {...props}>
         <View style={!isDarkMode ? styles.drawerContent : styles.darkDrawerContent}>
           <View style={!isDarkMode ?  styles.userInfoSection : styles.darkUserInfoSection}>
             <View style={{ flexDirection: "row", marginTop: 15 }}>
               <Avatar.Image
-                source={{
-                  uri: photo
-                    ? photo
-                    : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
-                }}
+                source={ photo
+                  ? {uri: photo}
+                  : {
+                      uri:
+                        "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
+                    }
+              }
                 size={50}
               />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
@@ -164,13 +177,10 @@ export default function DrawerContent(props) {
                 toggleTheme();
               }}
             >
-<<<<<<< HEAD
-              <View style={!isDarkMode ? styles.preference : styles.darkPreference}>
-                <Text>Dark Theme</Text>
-=======
-              <View style={styles.preference}>
+
+             <View style={!isDarkMode ? styles.preference : styles.darkPreference}>
                 <Text>Modo nocturno</Text>
->>>>>>> dev
+
                 <View pointerEvents="none">
                   <Switch value={props.isDarkMode}></Switch>
                 </View>

@@ -51,6 +51,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     minHeight: windowHeight * 0.813,
     paddingVertical: 20,
+    borderRadius:24
   },
   post: {
     backgroundColor: `${white}`,
