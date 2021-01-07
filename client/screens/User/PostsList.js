@@ -14,8 +14,10 @@ import SearchBar from "../../components/SearchBar";
 import { Avatar, ListItem } from "react-native-elements";
 
 import DarkThemeContext from '../../DarkThemeContext'
+import { darkStyles } from "../../styles/darkStyles";
 
 export default function Posts({ navigation }) {
+  console.log('POSTS LIST!!!!')
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,7 +29,7 @@ export default function Posts({ navigation }) {
   });
 
   const handleSearch = (data) => {
-    //setPosts(data);
+    setPosts(data);
   };
 
   const firebaseRequest = (j) => {
@@ -75,7 +77,7 @@ export default function Posts({ navigation }) {
   const renderItem = ({ item }) => (
     <ListItem
       bottomDivider
-      containerStyle={{ borderBottomWidth: 1.5 }}
+      containerStyle={!isDarkMode ? styles.listItemContainer : darkStyles.listItemContainer}
       onPress={() => navigation.navigate("PostDetails", { data: item })}
     >
       <Avatar
@@ -126,7 +128,7 @@ export default function Posts({ navigation }) {
   const renderList = () => (
     <>
     {console.log("refreshing: ", pagination.refreshing)}
-      <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
+      <Text style={!isDarkMode ? styles.h3 : darkStyles.darkH3text}>ULTIMAS ENTRADAS</Text>
       {posts && posts.length >= 1 ? (
         <FlatList
           keyExtractor={keyExtractor}
@@ -150,36 +152,11 @@ export default function Posts({ navigation }) {
     {console.log("lo que ghay en post: ", posts)}
       <Header navigation={navigation} />
       <ScrollView>
-        <View style={styles.bodyPostList}>
+        <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>
           <SearchBar onSearch={handleSearch} />
-          <View style={styles.cardPostList}>
-            { loading ? <Text>Cargando posts..</Text> : 
-            <>
-            <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
-            {posts && posts.length >= 1 ? (
-              <>
-                {posts.map((post) => (
-                  <View key={post.id} style={styles.post}>
-                    <Text
-                      style={styles.postList}
-                      onPress={() =>
-                        navigation.navigate("PostDetails", { data: post})
-                      }
-                    > 
-                      
-                      {post.title.length > 20
-                        ? `${post.title.substring(0, 20)}..`
-                        : post.title}
-                    </Text>
-                    <Text style={styles.postTag}>{post.tag}</Text>
-                  </View>
-                ))}
-              </>
-            ) : (
-              <Text>No se encontraron resultados..</Text>
-            )}
-            </>
-            }
+          <View style={!isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList}>
+            {loading ? <Text>Cargando posts..</Text> : renderList()}
+
           </View>
         </View>
       </ScrollView>

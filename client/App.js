@@ -28,21 +28,26 @@ export default function App() {
   }, []);
 
   useEffect(async() => {
-    const theme = await AsyncStorage.getItem('DARK_MODE')
+    let theme = await AsyncStorage.getItem('DARK_MODE')
     if (theme === null) {
        AsyncStorage.setItem('DARK_MODE', false);
     } else {
+      theme = (theme === "true")
       setIsDarkMode(theme)
     }
   }, []);
 
   async function toggleTheme() {
     const current = await AsyncStorage.getItem('DARK_MODE')
+    console.log('current',current)
     const currentIsDarkMode = current == 'false' ? false : true
+    console.log('currentIsDarkMode',currentIsDarkMode)
+    console.log('tonces seteoo',!currentIsDarkMode)
+
     await AsyncStorage.setItem('DARK_MODE', !currentIsDarkMode);
     setIsDarkMode(!currentIsDarkMode)
   };
-
+  console.log('sdfsfsdfsdfsdf', isDarkMode)
 
 return (
   loading ? (
