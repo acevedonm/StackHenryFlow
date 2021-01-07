@@ -18,6 +18,9 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import firebase from "firebase";
+import "firebase/firestore";
+
 export default function DrawerContent(props) {
   const USER_LOGIN = "@user_login";
   const inicialState = {
@@ -40,33 +43,41 @@ export default function DrawerContent(props) {
   const getUser = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-
+    console.log("StorageUser: ",storageUser )
     if (storageUser) {
+
+        if(storageUser.user.photoURL){
+          setPhoto(storageUser.user.photoURL)
+        } 
       setUsuario({
         displayName: storageUser.user.displayName,
         email: storageUser.user.email,
       });
-      setPhoto(storageUser.user.photoURL);
+      //setPhoto(storageUser.user.photoURL);
     } else {
       console.log("Error al pedir user al storage");
     }
   };
   useEffect(() => {
     getUser();
-  }, []);
+  }, [photo]);
 
   return (
+    
     <View style={{ flex: 1 }}>
+      {console.log("lo que hay en photo: ", photo)}
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
             <View style={{ flexDirection: "row", marginTop: 15 }}>
               <Avatar.Image
-                source={{
-                  uri: photo
-                    ? photo
-                    : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
-                }}
+                source={ photo
+                  ? {uri: photo}
+                  : {
+                      uri:
+                        "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
+                    }
+              }
                 size={50}
               />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>

@@ -98,7 +98,7 @@ const ProfileEdit = (props) => {
                   placeholder="Nombre"
                   onChangeText={handleChange("name")}
                   onBlur={handleBlur("name")}
-                  value={name}
+                  value={values.name}
                 />
 
                 <Text style={styles.textLabel}>Usuario</Text>
@@ -107,7 +107,7 @@ const ProfileEdit = (props) => {
                   placeholder="Email"
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
-                  value={email}
+                  value={values.email}
                 />
                 <Text style={styles.textLabel}>Cohorte</Text>
                 <TextInput
@@ -115,7 +115,7 @@ const ProfileEdit = (props) => {
                   placeholder="Cohorte"
                   onChangeText={handleChange("cohorte")}
                   onBlur={handleBlur("cohorte")}
-                  value={cohorte}
+                  value={values.cohorte}
                 />
                 <Text style={styles.textLabel}>Telefono</Text>
                 <TextInput
@@ -123,7 +123,7 @@ const ProfileEdit = (props) => {
                   placeholder="Telefono - Opcional"
                   onChangeText={handleChange("phone")}
                   onBlur={handleBlur("phone")}
-                  value={phoneNumber}
+                  value={values.phoneNumber}
                 />
                 <View style={styles.containerBoton}>
                   <TouchableOpacity style={styles.boton} onPress={handleSubmit}>
