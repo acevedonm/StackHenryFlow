@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text} from "react-native";
+import { View, Text } from "react-native";
 import { Video } from 'expo-av';
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";

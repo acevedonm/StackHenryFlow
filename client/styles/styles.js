@@ -355,18 +355,10 @@ export const styles = StyleSheet.create({
   },
   containerVideo: {
     display:"flex",
-    width:800,
-    height:500,
+    width:300,
+    height:200,
     marginTop:20,
     alignSelf: "center",
-  },
-  containerVideoOut: {
-    display:"flex",
-    width:80,
-    height:50,
-    marginTop:20,
-    alignSelf: "center",
-
   },
   containerVideo2: {
     display:"flex",
