@@ -325,8 +325,8 @@ darkH1: {
   },
   darkSeparatorPostList: {
     height: 1,
+    color:black,
     width: "70%",
-    backgroundColor:`${yellow}` ,
     marginLeft: "15%",
     marginRight: "15%"
   },
@@ -376,5 +376,26 @@ darkH1: {
   },
   darkScroll:{
     backgroundColor:`${black}`
+  },
+  bodydark:{
+    backgroundColor:black
+  },
+  h1classesdark:{
+    color: `${yellow}`,
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:20
+  },
+  h2classesdark:{
+    color: `${yellow}`,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:28,
+    marginBottom:20,
   }
+  
 });
