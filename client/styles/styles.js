@@ -337,7 +337,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#329999",
     borderRadius: 8,
-    border: "none",
+    //border: "none",
     overflow: "hidden",
   },
   // STYLES VIDEOS DE CLASES
