@@ -334,19 +334,44 @@ export const styles = StyleSheet.create({
     border: "none",
     overflow: "hidden",
   },
-  input:{
-    backgroundColor: "transparent",
-    border: "none",
-    color: "#fff",
-    // margin: 0.25rem 0.5rem,
-    paddingLeft: 16,
-    fontSize: 16,
-    width: 6,
-    placeholder:{
-      color: "#4c2882 ",
-    },
-    focus: {
-      outline: "none",
-    },
+  // STYLES VIDEOS DE CLASES
+  h1clases: {
+    color: `${black}`,
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:20
   },
+  h2clases: {
+    color: `${black}`,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:28,
+    marginBottom:20,
+  
+  },
+  containerVideo: {
+    display:"flex",
+    width:800,
+    height:500,
+    marginTop:20,
+    alignSelf: "center",
+  },
+  containerVideoOut: {
+    display:"flex",
+    width:80,
+    height:50,
+    marginTop:20,
+    alignSelf: "center",
+
+  },
+  containerVideo2: {
+    display:"flex",
+    width:800,
+    height:500,
+    alignSelf: "center",
+  }
 });
