@@ -11,6 +11,8 @@ import {
 import { Avatar, Title, Text } from "react-native-paper";
 import { GetUserLogin,updateUser } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
+import DarkThemeContext from '../../DarkThemeContext'
+import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 import UserPermissions from "../../utilities/userPermissions"
 import * as ImagePicker from "expo-image-picker"
 
@@ -18,7 +20,7 @@ import * as ImagePicker from "expo-image-picker"
 const ProfileEdit = (props) => {
   const { name, email, phoneNumber, cohorte } = props.route.params.myData;
   const [photo, setPhoto] = useState("");
-
+  const isDarkMode = React.useContext(DarkThemeContext);
 
   const handleSubmit = (values) => {
     var user = GetUserLogin();
@@ -92,7 +94,7 @@ const ProfileEdit = (props) => {
                 }
               />
               </TouchableOpacity>
-                <Text style={styles.textLabel}>Nombre completo</Text>
+                <Text style={styles.textLabel}>Nombre</Text>
                 <TextInput
                   style={styles.textInput}
                   placeholder="Nombre"
@@ -100,8 +102,9 @@ const ProfileEdit = (props) => {
                   onBlur={handleBlur("name")}
                   value={values.name}
                 />
+                <Text style={styles.textLabel2}>Para ayudar a que las personas descubran tu cuenta, usa el nombre por el que te conoce la gente.</Text>
 
-                <Text style={styles.textLabel}>Usuario</Text>
+                <Text style={styles.textLabel}>Nombre de usuario</Text>
                 <TextInput
                   style={styles.textInput}
                   placeholder="Email"
@@ -109,6 +112,8 @@ const ProfileEdit = (props) => {
                   onBlur={handleBlur("email")}
                   value={values.email}
                 />
+                <Text style={styles.textLabel2}>Podrás volver a cambiar tu nombre de usuario.</Text>
+
                 <Text style={styles.textLabel}>Cohorte</Text>
                 <TextInput
                   style={styles.textInput}
@@ -117,6 +122,8 @@ const ProfileEdit = (props) => {
                   onBlur={handleBlur("cohorte")}
                   value={values.cohorte}
                 />
+                <Text style={styles.textLabel2}>Cohort al que perteneces.</Text>
+
                 <Text style={styles.textLabel}>Telefono</Text>
                 <TextInput
                   style={styles.textInput}
@@ -150,7 +157,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   boton: {
-    marginTop: 10,
+    marginTop: 28,
     width: 180,
     height: 40,
     backgroundColor: "#FFFF01",
@@ -167,15 +174,31 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   textLabel: {
-    color: "#777777",
+    color: `${black}`,
     marginBottom: 5,
     marginTop: 5,
+    fontWeight: "bold",
   },
   textInput: {
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: `${black}`,
+    height: 30,
+    width: "80%",
+    marginVertical: 5,
+    justifyContent: "center",
+    textAlign: "center",
+    padding: 5,
   },
+  textLabel2 : {
+    color: "#8e8e8e",
+    fontSize: 12,
+    lineHeight: 14,
+    marginBottom: 10,
+    marginTop: 0,
+    marginBottom: 10,
+
+  }
 });
 
 export default ProfileEdit;

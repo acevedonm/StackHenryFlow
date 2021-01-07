@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { yellow, black, white, errorRed } from "./globalsVariables";
+import { yellow, black, white, errorRed, gray } from "./globalsVariables";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
@@ -18,32 +18,35 @@ export const styles = StyleSheet.create({
     left: 0,
     paddingTop: 20,
     width: "100%",
-    backgroundColor: `${white}`,
+    backgroundColor: `${yellow}`,
   },
   header: {
     top: 0,
     left: 0,
-    paddingTop: 20,
+    paddingTop: 2,
     width: "100%",
-    backgroundColor: `${white}`,
+    backgroundColor: `${yellow}`,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    
+      
   },
   body: {
     textAlign: "center",
-    backgroundColor: `${black}`,
-    color: `${white}`,
+    backgroundColor: `${white}`,
+    color: `${black}`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
     minHeight: windowHeight * 0.85,
     paddingVertical: 10,
+    
   },
   bodyPostList: {
     textAlign: "center",
-    backgroundColor: `${black}`,
+    backgroundColor: `${white}`,
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -51,7 +54,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   post: {
-    backgroundColor: black,
+    backgroundColor: `${white}`,
+    color: `${black}`,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -63,7 +67,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   postList: {
-    color: white,
+    color: `${black}`,
     fontSize: 15,
     alignSelf: "center",
     paddingVertical: 10,
@@ -77,7 +81,7 @@ export const styles = StyleSheet.create({
     fontSize: 11,
   },
   h1: {
-    color: `${yellow}`,
+    color: `${black}`,
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
@@ -136,6 +140,7 @@ export const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: "2%",
     marginBottom: "3%",
+    color:`${black}`,
   },
   formNewPost: {
     flex: 1,
@@ -144,7 +149,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderColor: "#00FFFF",
     borderRadius: 15,
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -161,18 +166,21 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     justifyContent: "center",
     textAlign: "center",
-    color: `${white}`,
+    color: `${black}`,
+    backgroundColor: `${black}`,
   },
   inputNewPost: {
     borderRadius: 8,
     borderWidth: 1,
     borderColor: `${black}`,
+    backgroundColor: `${gray}`,
     height: 30,
     width: "80%",
     marginVertical: 5,
     justifyContent: "center",
     textAlign: "center",
     padding: 5,
+    
   },
   inputDescription: {
     borderRadius: 10,
@@ -207,12 +215,12 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkForm: {
-    color: `${white}`,
+    color: `${black}`,
     marginBottom: 10,
     marginTop: 5,
   },
   card: {
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     width: "90%",
     display: "flex",
     justifyContent: "center",
@@ -250,7 +258,7 @@ export const styles = StyleSheet.create({
     minHeight: windowHeight * 0.5
   },
   cardPostList: {
-    backgroundColor: `${white}`,
+    backgroundColor: `${gray}`,
     color: black,
     width: "90%",
     display: "flex",
@@ -270,15 +278,15 @@ export const styles = StyleSheet.create({
   },
   imgHenry: {
     alignSelf: "center",
-    width: 200,
-    height: 100,
+    width: 124,
+    height: 50,
     zIndex: 1,
     marginLeft: -50,
   },
   imgHenryOut: {
     alignSelf: "center",
-    width: 200,
-    height: 100,
+    width: 124,
+    height: 50,
     zIndex: 1,
   },
   containerInputComment: {
@@ -322,4 +330,44 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     color: "#FFF",
   },
+  containerSearch: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "#329999",
+    borderRadius: 8,
+    border: "none",
+    overflow: "hidden",
+  },
+  // STYLES VIDEOS DE CLASES
+  h1clases: {
+    color: `${black}`,
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:20
+  },
+  h2clases: {
+    color: `${black}`,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:28,
+    marginBottom:20,
+  
+  },
+  containerVideo: {
+    display:"flex",
+    width:300,
+    height:200,
+    marginTop:20,
+    alignSelf: "center",
+  },
+  containerVideo2: {
+    display:"flex",
+    width:300,
+    height:200,
+    alignSelf: "center",
+  }
 });

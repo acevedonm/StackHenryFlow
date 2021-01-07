@@ -4,9 +4,13 @@ import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
+import DarkThemeContext from '../../DarkThemeContext'
+import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
 
 
 const Profile = ({ navigation }) => {
+  const isDarkMode = React.useContext(DarkThemeContext);
+
   var initialState = {
     name: "",
     email: "",
@@ -23,8 +27,7 @@ const Profile = ({ navigation }) => {
     });
   };
 
-
-  useEffect(() => {
+  useEffect(() => { 
     var user = GetUserLogin();
 
     if (user) {
@@ -44,8 +47,8 @@ const Profile = ({ navigation }) => {
   return (
     <>
       <Header navigation={navigation} />
-      <SafeAreaView style={styles.container}>
-        <View style={styles.body}>
+      <SafeAreaView style={styles.body}>
+        <View >
           <View style={styles.userInfoSection}>
             <View
               style={{
@@ -131,6 +134,10 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   container: {
+    flex: 1,
+    backgroundColor: `${white}`,
+  },
+  containerDark: {
     flex: 1,
     backgroundColor: "#000",
   },
