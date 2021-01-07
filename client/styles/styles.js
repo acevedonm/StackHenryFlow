@@ -54,7 +54,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   post: {
-    backgroundColor: black,
+    backgroundColor: `${white}`,
+    color: `${black}`,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -66,7 +67,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   postList: {
-    color: white,
+    color: `${black}`,
     fontSize: 15,
     alignSelf: "center",
     paddingVertical: 10,
@@ -172,6 +173,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: `${black}`,
+    backgroundColor: `${gray}`,
     height: 30,
     width: "80%",
     marginVertical: 5,
