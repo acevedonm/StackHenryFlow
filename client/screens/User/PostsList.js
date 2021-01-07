@@ -14,8 +14,10 @@ import SearchBar from "../../components/SearchBar";
 import { Avatar, ListItem } from "react-native-elements";
 
 import DarkThemeContext from '../../DarkThemeContext'
+import { darkStyles } from "../../styles/darkStyles";
 
 export default function Posts({ navigation }) {
+  console.log('POSTS LIST!!!!')
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -75,7 +77,7 @@ export default function Posts({ navigation }) {
   const renderItem = ({ item }) => (
     <ListItem
       bottomDivider
-      containerStyle={{ borderBottomWidth: 1.5 }}
+      containerStyle={!isDarkMode ? styles.listItemContainer : darkStyles.listItemContainer}
       onPress={() => navigation.navigate("PostDetails", { data: item })}
     >
       <Avatar
@@ -126,7 +128,7 @@ export default function Posts({ navigation }) {
   const renderList = () => (
     <>
     {console.log("refreshing: ", pagination.refreshing)}
-      <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
+      <Text style={!isDarkMode ? styles.h3 : darkStyles.darkH3text}>ULTIMAS ENTRADAS</Text>
       {posts && posts.length >= 1 ? (
         <FlatList
           keyExtractor={keyExtractor}
@@ -150,8 +152,12 @@ export default function Posts({ navigation }) {
     {console.log("lo que ghay en post: ", posts)}
       <Header navigation={navigation} />
       <ScrollView>
-        <View style={styles.bodyPostList}>
+        <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>
           <SearchBar onSearch={handleSearch} />
+<<<<<<< HEAD
+          <View style={!isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList}>
+            {loading ? <Text>Cargando posts..</Text> : renderList()}
+=======
           <View style={styles.cardPostList}>
             { loading ? <Text>Cargando posts..</Text> : 
             <>
@@ -180,6 +186,7 @@ export default function Posts({ navigation }) {
             )}
             </>
             }
+>>>>>>> dev
           </View>
         </View>
       </ScrollView>
