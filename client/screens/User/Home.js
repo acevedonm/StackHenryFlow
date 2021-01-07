@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import DarkThemeContext from '../../DarkThemeContext'
 
+
 const Home = ({ navigation }) => {
   const isDarkMode = React.useContext(DarkThemeContext);
   const [user, setUser] = useState(null);
@@ -35,7 +36,9 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.boton}
-            // onPress={() => navigation.navigate("Material")}
+            // onPress={() => navigation.navigate("Videos")}
+            onPress={() => navigation.navigate("Videos")}
+
           >
             <Text style={{ fontWeight: "bold" }}>Vine a buscar material</Text>
           </TouchableOpacity>

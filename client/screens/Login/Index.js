@@ -12,7 +12,9 @@ import PostsList from "../User/PostsList"
 import PostDetails from "../User/PostDetails"
 import NewPostForm from "../User/NewPostForm";
 import MyPosts from "../User/MyPosts"
+import Videos from "../User/Videos";
 import DarkThemeContext from '../../DarkThemeContext'
+
 
 const USER_LOGIN= '@user_login'
 const Drawer = createDrawerNavigator();
@@ -39,6 +41,7 @@ export default function Index(props) {
       <Drawer.Screen name="PostDetails" component={PostDetails}  /> 
       <Drawer.Screen name="ProfileEdit" component={ProfileEdit}  />
       <Drawer.Screen name="NewPostForm" component={NewPostForm} />
+      <Drawer.Screen name="Videos" component={Videos} />
     </Drawer.Navigator>
   );
 }

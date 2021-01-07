@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   body: {
     textAlign: "center",
     backgroundColor: `${white}`,
-    color: `${white}`,
+    color: `${black}`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -53,7 +53,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   post: {
-    backgroundColor: black,
+    backgroundColor: `${white}`,
+    color: `${black}`,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -65,7 +66,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   postList: {
-    color: white,
+    color: `${black}`,
     fontSize: 15,
     alignSelf: "center",
     paddingVertical: 10,
@@ -140,6 +141,7 @@ export const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: "2%",
     marginBottom: "3%",
+    color:`${black}`,
   },
   formNewPost: {
     flex: 1,
@@ -165,12 +167,14 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     justifyContent: "center",
     textAlign: "center",
-    color: `${white}`,
+    color: `${black}`,
+    backgroundColor: `${black}`,
   },
   inputNewPost: {
     borderRadius: 8,
     borderWidth: 1,
     borderColor: `${black}`,
+    backgroundColor: `${gray}`,
     height: 30,
     width: "80%",
     marginVertical: 5,
@@ -212,7 +216,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkForm: {
-    color: `${white}`,
+    color: `${black}`,
     marginBottom: 10,
     marginTop: 5,
   },
@@ -335,19 +339,36 @@ export const styles = StyleSheet.create({
     border: "none",
     overflow: "hidden",
   },
-  input:{
-    backgroundColor: "transparent",
-    border: "none",
-    color: "#fff",
-    // margin: 0.25rem 0.5rem,
-    paddingLeft: 16,
-    fontSize: 16,
-    width: 6,
-    placeholder:{
-      color: "#4c2882 ",
-    },
-    focus: {
-      outline: "none",
-    },
+  // STYLES VIDEOS DE CLASES
+  h1clases: {
+    color: `${black}`,
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:20
   },
+  h2clases: {
+    color: `${black}`,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    zIndex: 10,
+    marginTop:28,
+    marginBottom:20,
+  
+  },
+  containerVideo: {
+    display:"flex",
+    width:300,
+    height:200,
+    marginTop:20,
+    alignSelf: "center",
+  },
+  containerVideo2: {
+    display:"flex",
+    width:300,
+    height:200,
+    alignSelf: "center",
+  }
 });
