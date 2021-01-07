@@ -362,8 +362,8 @@ export const styles = StyleSheet.create({
   },
   containerVideo2: {
     display:"flex",
-    width:800,
-    height:500,
+    width:300,
+    height:200,
     alignSelf: "center",
   }
 });
