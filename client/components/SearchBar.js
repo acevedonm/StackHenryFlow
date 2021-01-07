@@ -21,7 +21,7 @@ const Bar = ({ onSearch }) => {
   }, [search]);
 
   return (
-    <View >
+    <View>
       <SearchBar
         placeholder="Buscar..."
         onChangeText={updateSearch}
