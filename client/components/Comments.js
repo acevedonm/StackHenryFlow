@@ -44,19 +44,23 @@ export const Comments = (props) => {
     };
     AddComments(id, comment);
     setComentario("");
-    props.navigation.navigate("PostsList");
+    obtenercomentarios();
   };
 
   const onChageLike = async (commentId) => {
    const respuesta= await getUserLogin()
      let userId=  respuesta.user.uid
     AddLike(id, commentId ,userId)
+    setTimeout(() => { console.log("esperando")}, 1000)
+    obtenercomentarios();
   }
 
   const dislike = async(commentId) => {
      const respuesta= await getUserLogin()
      let userId=  respuesta.user.uid
     Dislike(id,commentId, userId)
+    setTimeout(() => { console.log("esperando")}, 1000)
+    obtenercomentarios();
   }
   const obtenerLikes = async (likes) => {
     const respuesta= await getUserLogin()
