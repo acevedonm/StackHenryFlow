@@ -13,8 +13,10 @@ import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 import { Avatar, ListItem } from "react-native-elements";
 
+import DarkThemeContext from '../../DarkThemeContext'
 
-export default function PostsList({ navigation }) {
+export default function Posts({ navigation }) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({
@@ -151,7 +153,33 @@ export default function PostsList({ navigation }) {
         <View style={styles.bodyPostList}>
           <SearchBar onSearch={handleSearch} />
           <View style={styles.cardPostList}>
-            {loading ? <Text>Cargando posts..</Text> : renderList()}
+            { loading ? <Text>Cargando posts..</Text> : 
+            <>
+            <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
+            {posts && posts.length >= 1 ? (
+              <>
+                {posts.map((post) => (
+                  <View key={post.id} style={styles.post}>
+                    <Text
+                      style={styles.postList}
+                      onPress={() =>
+                        navigation.navigate("PostDetails", { data: post})
+                      }
+                    > 
+                      
+                      {post.title.length > 20
+                        ? `${post.title.substring(0, 20)}..`
+                        : post.title}
+                    </Text>
+                    <Text style={styles.postTag}>{post.tag}</Text>
+                  </View>
+                ))}
+              </>
+            ) : (
+              <Text>No se encontraron resultados..</Text>
+            )}
+            </>
+            }
           </View>
         </View>
       </ScrollView>
