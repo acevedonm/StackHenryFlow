@@ -96,7 +96,7 @@ export default function DrawerContent(props) {
               icon={({ color, size }) => (
                 <Icon name="home-outline" color={color} size={size} />
               )}
-              label="Home"
+              label="Inicio"
               onPress={() => {
                 props.navigation.navigate("Home");
               }}
@@ -107,7 +107,7 @@ export default function DrawerContent(props) {
                   <Icon name="account-outline" color={color} size={size} />
                 );
               }}
-              label="Profile"
+              label="Perfil"
               onPress={() => {
                 props.navigation.navigate("Profile");
               }}
@@ -118,7 +118,7 @@ export default function DrawerContent(props) {
                   <Icon name="plus-box-outline" color={color} size={size} />
                 );
               }}
-              label="New Post"
+              label="Nuevo posteo"
               onPress={() => {
                 props.navigation.navigate("NewPostForm");
               }}
@@ -127,7 +127,7 @@ export default function DrawerContent(props) {
               icon={({ color, size }) => {
                 return <Icon name="brain" color={color} size={size} />;
               }}
-              label="Be a Support"
+              label="Preguntas"
               onPress={() => {
                 props.navigation.navigate("PostsList");
               }}
@@ -136,7 +136,7 @@ export default function DrawerContent(props) {
               icon={({ color, size }) => {
                 return <Icon name="post" color={color} size={size} />;
               }}
-              label="My Posts"
+              label="Mis preguntas"
               onPress={() => {
                 props.navigation.navigate("MyPosts");
               }}
@@ -149,7 +149,7 @@ export default function DrawerContent(props) {
               }}
             >
               <View style={styles.preference}>
-                <Text>Dark Theme</Text>
+                <Text>Modo nocturno</Text>
                 <View pointerEvents="none">
                   <Switch value={props.isDarkMode}></Switch>
                 </View>
@@ -163,7 +163,7 @@ export default function DrawerContent(props) {
           icon={({ color, size }) => {
             return <Icon name="exit-to-app" color={color} size={size}></Icon>;
           }}
-          label="Sign Out"
+          label="Cerrar sesión"
           onPress={logout}
         ></DrawerItem>
       </Drawer.Section>
