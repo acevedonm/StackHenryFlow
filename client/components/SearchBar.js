@@ -21,8 +21,10 @@ const Bar = ({ onSearch }) => {
   }, [search]);
 
   return (
-    <View style= {{borderRadius: 50}}>
-      <SearchBar style= {{borderRadius: 50, backgroundColor: 'none'}}
+
+    <View>
+      <SearchBar
+
         placeholder="Buscar..."
         onChangeText={updateSearch}
         value={search}

@@ -45,11 +45,11 @@ const Profile = ({ navigation }) => {
     }
   }, [photo]);
   return (
-    <>
-      <Header navigation={navigation} />
-      <SafeAreaView style={styles.body}>
-        <View >
-          <View style={styles.userInfoSection}>
+    <View style ={!isDarkMode ? styles.container : styles.darkContainer}>
+    <Header navigation={navigation} />
+      <SafeAreaView style={!isDarkMode ? styles.body : styles.darkbody }>
+        <View style ={!isDarkMode ? styles.container : styles.darkContainer}>
+          <View style={!isDarkMode ? styles.userInfoSection : styles.darkUserInfoSection }>
             <View
               style={{
                 flexDirection: "column",
@@ -72,28 +72,28 @@ const Profile = ({ navigation }) => {
              
             </View>
           </View>
-          <View style={styles.userInfoSection}>
-            <View style={styles.row}>
-              <Icon name="account" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+          <View style={!isDarkMode ? styles.userInfoSection : styles.darkUserInfoSections}>
+            <View style={!styles.row}>
+              <Icon name="account" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.name}
               </Text>
             </View>
             <View style={styles.row}>
-              <Icon name="phone" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="phone" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.phone}
               </Text>
             </View>
             <View style={styles.row}>
-              <Icon name="email" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="email" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.email}
               </Text>
             </View>
             <View style={styles.row}>
-              <Icon name="book-open-outline" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="book-open-outline" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.cohorte}
               </Text>
             </View>
@@ -120,7 +120,7 @@ const Profile = ({ navigation }) => {
           </View>
         </View>
       </SafeAreaView>
-    </>
+    </View>
   );
 };
 
@@ -133,11 +133,20 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginVertical: 20,
   },
+  darkbody:{
+    width: "95%",
+    backgroundColor: `${black}`,
+    borderRadius: 10,
+    alignSelf: "center",
+    paddingVertical: 20,
+    marginVertical: 20,
+
+  },
   container: {
     flex: 1,
     backgroundColor: `${white}`,
   },
-  containerDark: {
+  darkContainer: {
     flex: 1,
     backgroundColor: "#000",
   },
