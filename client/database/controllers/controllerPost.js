@@ -13,7 +13,6 @@ export const createPost = (values) => {
       title: title,
       description: description,
       tag: tag,
-      comment: [],
       userId: user.uid,
       email: user.email,
       name: user.displayName,
@@ -71,10 +70,35 @@ export const GetPost = (id) => {
   let postRef = firebase.firestore().collection("post").doc(id).get();
   return postRef;
 };
+export const GetComments = (id) => {
+  let commentRef = firebase.firestore().collection("post").doc(id).collection("comment").orderBy("likes", "desc").get();
+  return commentRef;
+};
 
-export const AddComments = (id, comentario) => {
-  let posteo = firebase.firestore().collection("post").doc(id);
-  posteo.update({
-    comment: firebase.firestore.FieldValue.arrayUnion(comentario),
+export const AddComments = (id, props) => {
+  const {comentario, user, fecha,likes} = props
+  let posteo = firebase.firestore().collection("post").doc(id).collection("comment").add({
+    texto: comentario,
+    likes,
+    user,
+    fecha
   });
 };
+
+export const AddLike = (id, commentId, userId) => {
+ 
+     let refComentario = firebase.firestore().collection("post").doc(id).collection("comment").doc(commentId)
+  refComentario.update({ 
+    likes: firebase.firestore.FieldValue.arrayUnion({usuario:userId}),
+  });
+};
+
+export const DeleteComment = (id,commentId) => {
+ console.log(id, commentId)
+  let refComentario = firebase.firestore().collection("post").doc(id)
+ var removeComment= refComentario.update({ 
+ commentId: firebase.firestore.FieldValue.delete(),
+});
+};
+
+
