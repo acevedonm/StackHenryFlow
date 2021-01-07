@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   body: {
     textAlign: "center",
     backgroundColor: `${white}`,
-    color: `${white}`,
+    color: `${black}`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     fontSize: 11,
   },
   h1: {
-    color: `${yellow}`,
+    color: `${black}`,
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
@@ -139,6 +139,7 @@ export const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: "2%",
     marginBottom: "3%",
+    color:`${black}`,
   },
   formNewPost: {
     flex: 1,
@@ -164,7 +165,8 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     justifyContent: "center",
     textAlign: "center",
-    color: `${white}`,
+    color: `${black}`,
+    backgroundColor: `${black}`,
   },
   inputNewPost: {
     borderRadius: 8,
@@ -211,7 +213,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkForm: {
-    color: `${white}`,
+    color: `${black}`,
     marginBottom: 10,
     marginTop: 5,
   },
