@@ -12,11 +12,9 @@ import PostsList from "../User/PostsList"
 import PostDetails from "../User/PostDetails"
 import NewPostForm from "../User/NewPostForm";
 import MyPosts from "../User/MyPosts"
-<<<<<<< HEAD
 import Videos from "../User/Videos";
-=======
 import DarkThemeContext from '../../DarkThemeContext'
->>>>>>> 0237b50d838b9763ac0e48f0b43f74c2d25f7e03
+
 
 const USER_LOGIN= '@user_login'
 const Drawer = createDrawerNavigator();
