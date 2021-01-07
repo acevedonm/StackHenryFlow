@@ -5,14 +5,16 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
 
+
 const Profile = ({ navigation }) => {
   var initialState = {
     name: "",
     email: "",
     cohorte: "",
     password: "",
-    phone: "",
+    phoneNumber: "",
   };
+
   const [usuario, setUsuario] = useState(initialState);
   const [photo, setPhoto] = useState("");
   const handleProfileEdit = () => {
@@ -20,6 +22,7 @@ const Profile = ({ navigation }) => {
       myData: usuario,
     });
   };
+
 
   useEffect(() => {
     var user = GetUserLogin();
@@ -29,9 +32,11 @@ const Profile = ({ navigation }) => {
         email: user.email,
         name: user.displayName,
         cohorte: user.cohorte,
-        phoneNumber: user.phone,
+        phoneNumber: user.phoneNumber,
       });
-      setPhoto(user.photoURL);
+      if(user.photoURL){
+        setPhoto(user.photoURL)
+      } 
     } else {
       console.log("No se encontró usuario");
     }
@@ -49,17 +54,19 @@ const Profile = ({ navigation }) => {
                 alignItems: "center",
               }}
             >
+             
               <Avatar.Image
                 size={150}
                 source={
                   photo
-                    ? photo
+                    ? {uri: photo}
                     : {
                         uri:
                           "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
                       }
                 }
               />
+             
             </View>
           </View>
           <View style={styles.userInfoSection}>
