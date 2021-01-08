@@ -186,6 +186,8 @@ darkH1: {
     borderRadius: 8,
     borderWidth: 1,
     borderColor: `${yellow}`,
+    backgroundColor: `${black}`,
+    color: `${white}`,
     height: 30,
     width: "80%",
     marginVertical: 5,
