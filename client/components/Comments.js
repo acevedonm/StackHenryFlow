@@ -92,18 +92,18 @@ export const Comments = (props) => {
                   {comentario.user} - {comentario.fecha} 
                   </Text>
 
-                  <Text style={{ color: "#FFF", marginVertical: 10 }}>
+                  <Text style={{ color: "#FFF", marginTop: 20, marginBottom: 10 }}>
                     {comentario.texto}
                   </Text>
       
-                  <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", marginTop: 20}}>
+                  <View style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 20}}>
                   <Icon
                     name="thumb-up"
                     size={20}
                     color="yellow"
                     onPress={() => onChageLike(comentario.id)}
                   />
-                  <Text style={{ color: "#FFF", textAlign: "center" }}>
+                  <Text style={{ color: "#FFF", textAlign: "center", marginHorizontal: 20 }}>
                     {(obtenerLikes(comentario.likes), comentario.likes.length)}
                   </Text>
                   <Icon

@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from "react";
 // NAVIGATION //
 import { createDrawerNavigator } from "@react-navigation/drawer";
 // COMPONENTS //
 import Home from "../User/Home";
 import Profile from "../User/Profile"
-import Comments from "../../components/Comments"
 import DrawerContent from "../../components/DrawerContent";
 import ProfileEdit from "../User/ProfileEdit"
 import PostsList from "../User/PostsList"
@@ -15,18 +13,7 @@ import MyPosts from "../User/MyPosts"
 import Videos from "../User/Videos";
 import DarkThemeContext from '../../DarkThemeContext'
 
-
-const USER_LOGIN= '@user_login'
 const Drawer = createDrawerNavigator();
-
-function LogOut({navigation}) {
-  useEffect(() => {
-    AsyncStorage.removeItem(USER_LOGIN)
-    navigation.navigate('Login')
-
-  },[])
-  return null;
-}
 
 export default function Index(props) {
   const isDarkMode = React.useContext(DarkThemeContext);
