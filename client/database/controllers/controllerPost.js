@@ -43,6 +43,15 @@ export const GetMyPosts = () => {
   return query;
 };
 
+export const GetMyLikes = (id, commentId) => {
+  let likeRef = firebase.firestore().collection("post").doc(id).collection("comments").doc(commentId)
+  let user = firebase.auth().currentUser;
+
+  var query = likeRef.where( like= "usuario","==",user.uid).get()
+  console.log(likeRef)
+  return query;
+};
+
 
 export const searchInPost = async (value) => {
   try {
@@ -91,6 +100,14 @@ export const AddLike = (id, commentId, userId) => {
   refComentario.update({ 
     likes: firebase.firestore.FieldValue.arrayUnion({usuario:userId}),
   });
+};
+
+export const Dislike = (id, commentId, userId) => {
+ 
+  let refComentario = firebase.firestore().collection("post").doc(id).collection("comment").doc(commentId)
+refComentario.update({ 
+ likes: firebase.firestore.FieldValue.arrayRemove({usuario:userId}),
+});
 };
 
 export const DeleteComment = (id,commentId) => {
