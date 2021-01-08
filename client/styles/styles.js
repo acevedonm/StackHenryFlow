@@ -302,7 +302,7 @@ export const styles = StyleSheet.create({
     height: 100,
     color: "white",
   },
-  comment: {
+  inputComment: {
     textAlign: "center",
     padding: 8,
     marginVertical: 20,
@@ -312,7 +312,8 @@ export const styles = StyleSheet.create({
     borderColor: black,
     borderWidth: 1,
     borderRadius: 5,
-    paddingTop:20
+    paddingTop:20,
+    alignSelf: "center",
   },
   separatorPostList: {
     height: 1,
@@ -328,10 +329,10 @@ export const styles = StyleSheet.create({
   },
   comentario: {
     padding: 10,
-    backgroundColor: "#000",
+    backgroundColor:`${gray}`,
     borderRadius: 10,
     marginBottom: 5,
-    color: "#FFF",
+    color: "red",
   },
   containerSearch: {
     display: "flex",
@@ -372,5 +373,20 @@ export const styles = StyleSheet.create({
     width:300,
     height:200,
     alignSelf: "center",
+  },
+  userAndData:{
+    color: "black", 
+    textAlign: "center", 
+    marginTop: 5,
+  },
+  comentarios:{
+    color: "black",
+    marginTop: 20,
+    marginBottom: 10
+  },
+  tituloComentarios:{
+    marginBottom: 10,
+    marginTop: 30,
+    fontWeight: "bold",
   }
 });

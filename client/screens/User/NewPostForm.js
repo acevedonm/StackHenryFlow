@@ -99,12 +99,15 @@ export default function NewPostForm({ navigation }) {
                 >
                   {currentUser && (
                     <Text
-                      style={{
-                        color: !isDarkMode ? "#000" : yellow,
+
+                      style={!isDarkMode ?{
+                        color: "black",
                         fontWeight: "bold",
                         marginBottom: 20,
-                        fontSize: 20
-                      }}
+                      } : {color: "yellow",
+                      fontWeight: "bold",
+                      marginBottom: 20,}}
+
                     >
                       ¿Cuál es tu duda?
                     </Text>
@@ -131,14 +134,9 @@ export default function NewPostForm({ navigation }) {
                     onChangeText={handleChange("description")}
                     value={values.description}
                   />
-                  <Text
-                    style={{
-                      marginTop: 15,
-                      marginBottom: 10,
-                      color: !isDarkMode ? "#000" : yellow,
-                      fontWeight: "bold"
-                    }}
-                  >
+
+                  <Text style={!isDarkMode ? {marginTop: 15, marginBottom: 10, color:"black", fontWeight:"bold"} :{marginTop: 15, marginBottom: 10, color:"yellow", fontWeight:"bold"}}>
+
                     ¿A qué modulo pertenece tu duda?
                   </Text>
                   <Picker
