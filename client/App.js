@@ -3,7 +3,6 @@ import { ActivityIndicator, Text } from "react-native";
 // NAVIGATION //
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import createSwitchNavigator from "react-navigation";
 // SCREENS //
 import Login from "./screens/Login/Login";
 import Register from "./screens/Login/Register";
@@ -15,6 +14,7 @@ import { getUserLogin } from "./functions/getUserLogin";
 //DARK MODE//
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DarkThemeContext from "./DarkThemeContext";
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -75,6 +75,8 @@ export default function App() {
                 initialParams={{ toggleTheme, isDarkMode }}
               />
               <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Register" component={Register} />
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             </>
           )}
         </Stack.Navigator>

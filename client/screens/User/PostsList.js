@@ -15,7 +15,6 @@ import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 import { Avatar, ListItem } from "react-native-elements";
-
 import DarkThemeContext from '../../DarkThemeContext'
 import { darkStyles } from "../../styles/darkStyles";
 
@@ -80,7 +79,7 @@ export default function Posts({ navigation }) {
         source={{ uri: item.photo ? item.photo : "https://cutt.ly/hjrVYr8" }}
       />
       <ListItem.Content>
-        <ListItem.Title>{item.title}</ListItem.Title>
+        <ListItem.Title>{item.title.length > 23 ? item.title.substring(0,22)+".." : item.title}</ListItem.Title>
         <ListItem.Subtitle style={{ fontSize: 10 }}>
           {item.tag}
         </ListItem.Subtitle>
