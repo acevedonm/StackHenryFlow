@@ -46,7 +46,6 @@ export default function DrawerContent(props) {
   const getUser = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-    console.log("StorageUser: ", storageUser);
     if (storageUser) {
       if (storageUser.user.photoURL) {
         setPhoto(storageUser.user.photoURL);

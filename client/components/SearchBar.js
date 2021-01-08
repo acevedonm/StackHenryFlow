@@ -12,8 +12,11 @@ const Bar = ({ onSearch }) => {
   };
 
   const buscar = async (busqueda) => {
-    var result = await searchInPost(busqueda);
-    onSearch(result)
+    if(busqueda){
+      var result = await searchInPost(busqueda);
+      onSearch(result)
+    }
+
   };
 
   useEffect(() => {

@@ -13,14 +13,19 @@ import Header from "../../components/Header";
 import { createPost } from "../../database/controllers/controllerPost";
 import { getUserLogin } from "../../functions/getUserLogin";
 import { ScrollView } from "react-native-gesture-handler";
-import DarkThemeContext from '../../DarkThemeContext'
-import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
+import DarkThemeContext from "../../DarkThemeContext";
+import {
+  yellow,
+  black,
+  white,
+  errorRed,
+  gray,
+} from "../../styles/globalsVariables";
 import { darkStyles } from "../../styles/darkStyles";
 // import DarkThemeContext from '../../DarkThemeContext'
 
 export default function NewPostForm({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
-
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentDate, setCurrentDate] = useState("");
@@ -77,14 +82,24 @@ export default function NewPostForm({ navigation }) {
               </Text>
             </>
           ) : (
-            <Formik style={!isDarkMode ? styles.formikInput : darkStyles.darkFormikInput}
+            <Formik
+              style={
+                !isDarkMode ? styles.formikInput : darkStyles.darkFormikInput
+              }
               initialValues={{ title: "", description: "", tag: "Modulo 1" }}
               onSubmit={handlerPost}
             >
               {({ values, handleChange, handleSubmit, setFieldValue }) => (
-                <View style={!isDarkMode ? styles.formNewPost : darkStyles.darkFormNewPost}>
+                <View
+                  style={
+                    !isDarkMode
+                      ? styles.formNewPost
+                      : darkStyles.darkFormNewPost
+                  }
+                >
                   {currentUser && (
                     <Text
+
                       style={!isDarkMode ?{
                         color: "black",
                         fontWeight: "bold",
@@ -92,6 +107,7 @@ export default function NewPostForm({ navigation }) {
                       } : {color: "yellow",
                       fontWeight: "bold",
                       marginBottom: 20,}}
+
                     >
                       ¿Cual es tu duda?
                     </Text>
@@ -101,21 +117,34 @@ export default function NewPostForm({ navigation }) {
                     placeholder="Haz tu pregunta"
                     onChangeText={handleChange("title")} //update title
                     value={values.title} //recibe valor de input
-                    style={!isDarkMode ? styles.inputNewPost : darkStyles.darkInputNewPost}
+                    style={
+                      !isDarkMode
+                        ? styles.inputNewPost
+                        : darkStyles.darkInputNewPost
+                    }
                   />
                   <TextInput
-                    style={!isDarkMode ? styles.inputDescription : darkStyles.darkInputDescription}
+                    style={
+                      !isDarkMode
+                        ? styles.inputDescription
+                        : darkStyles.darkInputDescription
+                    }
                     multiline //Permite texto largo
                     placeholder="Agregar una descripción"
                     onChangeText={handleChange("description")}
                     value={values.description}
                   />
+
                   <Text style={!isDarkMode ? {marginTop: 15, marginBottom: 10, color:"black", fontWeight:"bold"} :{marginTop: 15, marginBottom: 10, color:"yellow", fontWeight:"bold"}}>
+
                     ¿A qué modulo pertenece tu duda?
                   </Text>
                   <Picker
-                  
-                    style={!isDarkMode ? styles.inputNewPost : darkStyles.darkInputNewPost}
+                    style={
+                      !isDarkMode
+                        ? styles.inputNewPost
+                        : darkStyles.darkInputNewPost
+                    }
                     onValueChange={(itemValue) =>
                       setFieldValue("tag", itemValue)
                     }
@@ -129,7 +158,6 @@ export default function NewPostForm({ navigation }) {
                       label="Proyecto Final"
                       value="Proyecto"
                       key={6}
-                      
                     />
                   </Picker>
 

@@ -18,7 +18,7 @@ import * as ImagePicker from "expo-image-picker"
 
 
 const ProfileEdit = (props) => {
-  const { name, email, phoneNumber, cohorte } = props.route.params.myData;
+  const { name, email, phoneNumber, cohorte, photoURL } = props.route.params.myData;
   const [photo, setPhoto] = useState("");
   const isDarkMode = React.useContext(DarkThemeContext);
 
@@ -53,8 +53,10 @@ const ProfileEdit = (props) => {
     }
   } 
 
-
+//  SACAR LA URL FOTO DE LO QUE VIENE EN props.route.params.myData;
+// Y SETEAR ESO EN EL USEEFFECT
   useEffect(() => {
+    //setPhoto(photoURL)
     var user = GetUserLogin();
     if (user) {
       if(user.photoURL){
@@ -63,7 +65,7 @@ const ProfileEdit = (props) => {
     } else {
       alert("Usuario no existente")
     }
-  }, [photo]);
+  }, []);
 
   return (
     <>
