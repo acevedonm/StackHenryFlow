@@ -7,7 +7,7 @@ import {
   FlatList,
   ActivityIndicator,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { GetSomethingsPosts } from "../../database/controllers/controllerPost";
 import { styles } from "../../styles/styles";
@@ -15,49 +15,48 @@ import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 import { Avatar, ListItem } from "react-native-elements";
-import DarkThemeContext from '../../DarkThemeContext'
+import DarkThemeContext from "../../DarkThemeContext";
 import { darkStyles } from "../../styles/darkStyles";
 
 export default function Posts({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [flag, setFlag] = useState(false)
+  const [flag, setFlag] = useState(false);
   const [pagination, setPagination] = useState({
     refreshing: false,
     seed: 1,
-    error: null
+    error: null,
   });
-  const [page, setPage] = useState(5)
+  const [page, setPage] = useState(5);
 
   const handleSearch = (data) => {
-    if(data.length > 0){
-      setFlag(true)
+    if (data.length > 0) {
+      setFlag(true);
     } else {
-      setFlag(false)
+      setFlag(false);
     }
-   setPosts(data);
+    setPosts(data);
   };
 
   const firebaseRequest = () => {
     //setLoading(true)
     setTimeout(() => {
       GetSomethingsPosts(page)
-      .then((posts) => {
-        setPage(page+3)
-        setPosts(posts.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      })
-      .then(() => {
-        setLoading(false);
-        setPagination({...pagination, refreshing: false });
-      })
-      .catch((error) => {
-        console.log("Error getting posts", error);
-        setLoading(false);
-        setPagination({ ...pagination, error, refreshing: false });
-      });
+        .then((posts) => {
+          setPage(page + 3);
+          setPosts(posts.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        })
+        .then(() => {
+          setLoading(false);
+          setPagination({ ...pagination, refreshing: false });
+        })
+        .catch((error) => {
+          console.log("Error getting posts", error);
+          setLoading(false);
+          setPagination({ ...pagination, error, refreshing: false });
+        });
     }, 1500);
-
   };
 
   useEffect(() => {
@@ -70,7 +69,9 @@ export default function Posts({ navigation }) {
   const renderItem = ({ item }) => (
     <ListItem
       bottomDivider
-      style={!isDarkMode ? styles.listItemContainer : darkStyles.listItemContainer}
+      style={
+        !isDarkMode ? styles.listItemContainer : darkStyles.listItemContainer
+      }
       onPress={() => navigation.navigate("PostDetails", { data: item })}
     >
       <Avatar
@@ -79,8 +80,12 @@ export default function Posts({ navigation }) {
         source={{ uri: item.photo ? item.photo : "https://cutt.ly/hjrVYr8" }}
       />
       <ListItem.Content>
-        <ListItem.Title>{item.title.length > 23 ? item.title.substring(0,22)+".." : item.title}</ListItem.Title>
-        <ListItem.Subtitle style={{ fontSize: 10 }}>
+        <ListItem.Title>
+          {item.title.length > 21
+            ? item.title.substring(0, 20) + ".."
+            : item.title}
+        </ListItem.Title>
+        <ListItem.Subtitle style={{ fontSize: 14, color: "grey" }}>
           {item.tag}
         </ListItem.Subtitle>
       </ListItem.Content>
@@ -98,20 +103,22 @@ export default function Posts({ navigation }) {
           activeOpacity={0.9}
           onPress={firebaseRequest}
           //On Click of button calling getData function to load more data
-          style={stylesLocal.loadMoreBtn}>
+          style={stylesLocal.loadMoreBtn}
+        >
           <Text style={stylesLocal.btnText}>Cargar Más</Text>
           {loading ? (
-            <ActivityIndicator color="white" style={{marginLeft: 8}} />
+            <ActivityIndicator color="white" style={{ marginLeft: 8 }} />
           ) : null}
         </TouchableOpacity>
       </View>
     );
   };
 
-
   const renderList = () => (
     <>
-      <Text style={!isDarkMode ? styles.h3 : darkStyles.darkH3text}>ULTIMAS ENTRADAS</Text>
+      <Text style={!isDarkMode ? styles.h3 : darkStyles.darkH3text}>
+        ULTIMAS ENTRADAS
+      </Text>
       {posts && posts.length >= 1 ? (
         <FlatList
           keyExtractor={keyExtractor}
@@ -130,9 +137,17 @@ export default function Posts({ navigation }) {
     <>
       <Header navigation={navigation} />
       <ScrollView>
-        <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>
-          <SearchBar onSearch={handleSearch}/>
-          <View style={!isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList}>
+        <View
+          style={
+            !isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList
+          }
+        >
+          <SearchBar onSearch={handleSearch} />
+          <View
+            style={
+              !isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList
+            }
+          >
             {/* loading ? <Text>Cargando posts..</Text> : */ renderList()}
           </View>
         </View>
@@ -141,29 +156,28 @@ export default function Posts({ navigation }) {
   );
 }
 
-
 const stylesLocal = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    justifyContent: "center",
     flex: 1,
   },
   footer: {
     padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
   loadMoreBtn: {
     padding: 10,
-    backgroundColor: 'black',
+    backgroundColor: "black",
     borderRadius: 4,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnText: {
-    color: 'white',
+    color: "white",
     fontSize: 15,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

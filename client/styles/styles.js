@@ -78,7 +78,8 @@ export const styles = StyleSheet.create({
     borderRadius: 100,
     paddingHorizontal: 8,
     alignSelf: "center",
-    fontSize: 11,
+    fontSize: 14,
+    width: "100%"
   },
   listItemContainer: { borderBottomWidth: 1.5 },
   h1: {

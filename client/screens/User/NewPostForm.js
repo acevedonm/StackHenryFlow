@@ -106,7 +106,7 @@ export default function NewPostForm({ navigation }) {
                         fontSize: 20
                       }}
                     >
-                      ¿Cual es tu duda?
+                      ¿Cuál es tu duda?
                     </Text>
                   )}
 
