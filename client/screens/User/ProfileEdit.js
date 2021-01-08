@@ -61,7 +61,7 @@ const ProfileEdit = (props) => {
         setPhoto(user.photoURL)
       } 
     } else {
-      console.log("No se encontró usuario");
+      alert("Usuario no existente")
     }
   }, [photo]);
 

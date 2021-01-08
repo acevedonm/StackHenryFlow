@@ -160,7 +160,7 @@ darkH1: {
     justifyContent: "center",
     borderColor: "#00FFFF",
     borderRadius: 15,
-    backgroundColor: black,
+    color: yellow,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -327,10 +327,11 @@ darkH1: {
   },
   darkSeparatorPostList: {
     height: 1,
-    color:black,
+    color: black,
     width: "70%",
     marginLeft: "15%",
-    marginRight: "15%"
+    marginRight: "15%",
+    
   },
   darkSpinnerVerticalPagination: {
     paddingVertical: 20,

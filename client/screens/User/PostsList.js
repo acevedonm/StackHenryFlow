@@ -101,7 +101,7 @@ export default function Posts({ navigation }) {
     </ListItem>
   );
   const renderSeparator = () => {
-    return <View style={styles.separatorPostList} />;
+    return <View style={!isDarkMode ? styles.separatorPostList : darkStyles.darkSeparatorPostList} />;
   };
   const renderFooter = () => {
     //if (!loading) return null;
