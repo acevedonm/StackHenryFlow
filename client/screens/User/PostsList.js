@@ -20,7 +20,6 @@ import DarkThemeContext from '../../DarkThemeContext'
 import { darkStyles } from "../../styles/darkStyles";
 
 export default function Posts({ navigation }) {
-  console.log('POSTS LIST!!!!')
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,7 +29,7 @@ export default function Posts({ navigation }) {
     seed: 1,
     error: null
   });
-  const [page, setPage] = useState(3)
+  const [page, setPage] = useState(5)
 
   const handleSearch = (data) => {
     if(data.length > 0){
@@ -38,7 +37,7 @@ export default function Posts({ navigation }) {
     } else {
       setFlag(false)
     }
-    setPosts(data);
+   setPosts(data);
   };
 
   const firebaseRequest = () => {
@@ -113,7 +112,6 @@ export default function Posts({ navigation }) {
 
   const renderList = () => (
     <>
-    {console.log("refreshing: ", pagination.refreshing)}
       <Text style={!isDarkMode ? styles.h3 : darkStyles.darkH3text}>ULTIMAS ENTRADAS</Text>
       {posts && posts.length >= 1 ? (
         <FlatList
