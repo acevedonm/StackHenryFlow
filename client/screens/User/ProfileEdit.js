@@ -53,7 +53,8 @@ const ProfileEdit = (props) => {
     }
   } 
 
-
+//  SACAR LA URL FOTO DE LO QUE VIENE EN props.route.params.myData;
+// Y SETEAR ESO EN EL USEEFFECT
   useEffect(() => {
     var user = GetUserLogin();
     if (user) {
