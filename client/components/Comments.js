@@ -83,16 +83,20 @@ export const Comments = (props) => {
       {/* <Header navigation={navigation} /> */}
       <View style={styles.containerInput}>
         <View>
-          <Text style={{ marginBottom: 10, marginTop: 30 }}>Comentarios:</Text>
+                                                                                  {/* PASAR A DARK ESTE TITULO "Comentarios:" */}
+          <Text style={styles.tituloComentarios}>Comentarios:</Text>
           {Array.isArray(com) ? (
             com.map((comentario) => {
               return (
                 <View style={styles.comentario} key={comentario.id}>
-                  <Text style={{ color: "#FFF", textAlign: "center", marginTop: 5 }}>
+
+                                                                                   {/* PASAR A DARK userData */}
+                  <Text style={styles.userAndData}>
                   {comentario.user} - {comentario.fecha} 
                   </Text>
-
-                  <Text style={{ color: "#FFF", marginTop: 20, marginBottom: 10 }}>
+                  
+                                                                                    {/* PASAR A DAR comentario */}
+                  <Text style={styles.comentarios}>
                     {comentario.texto}
                   </Text>
       
@@ -103,7 +107,7 @@ export const Comments = (props) => {
                     color="yellow"
                     onPress={() => onChageLike(comentario.id)}
                   />
-                  <Text style={{ color: "#FFF", textAlign: "center", marginHorizontal: 20 }}>
+                  <Text style={{ color: "black", textAlign: "center", marginHorizontal: 20 }}>
                     {(obtenerLikes(comentario.likes), comentario.likes.length)}
                   </Text>
                   <Icon
@@ -120,9 +124,11 @@ export const Comments = (props) => {
             <> </>
           )}
         </View>
+
         <TextInput
           placeholder="Escribe un comentario..."
-          style={styles.comment}
+                                                                          // PASAR A DARK inputComment
+          style={styles.inputComment}
           multiline={true}
           numberOfLines={4}
           onChangeText={(comentario) => setComentario(comentario)}
