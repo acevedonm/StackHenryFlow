@@ -4,9 +4,14 @@ import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
-import DarkThemeContext from '../../DarkThemeContext'
-import { yellow, black, white, errorRed, gray } from "../../styles/globalsVariables";
-
+import DarkThemeContext from "../../DarkThemeContext";
+import {
+  yellow,
+  black,
+  white,
+  errorRed,
+  gray,
+} from "../../styles/globalsVariables";
 
 const Profile = ({ navigation }) => {
   const isDarkMode = React.useContext(DarkThemeContext);
@@ -27,7 +32,7 @@ const Profile = ({ navigation }) => {
     });
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     var user = GetUserLogin();
 
     if (user) {
@@ -37,19 +42,23 @@ const Profile = ({ navigation }) => {
         cohorte: user.cohorte,
         phoneNumber: user.phoneNumber,
       });
-      if(user.photoURL){
-        setPhoto(user.photoURL)
-      } 
+      if (user.photoURL) {
+        setPhoto(user.photoURL);
+      }
     } else {
       console.log("No se encontró usuario");
     }
   }, [photo]);
   return (
-    <View style ={!isDarkMode ? styles.container : styles.darkContainer}>
-    <Header navigation={navigation} />
-      <SafeAreaView style={!isDarkMode ? styles.body : styles.darkbody }>
-        <View style ={!isDarkMode ? styles.container : styles.darkContainer}>
-          <View style={!isDarkMode ? styles.userInfoSection : styles.darkUserInfoSection }>
+    <View style={!isDarkMode ? styles.container : styles.darkContainer}>
+      <Header navigation={navigation} />
+      <SafeAreaView style={!isDarkMode ? styles.body : styles.darkbody}>
+        <View style={!isDarkMode ? styles.container : styles.darkContainer}>
+          <View
+            style={
+              !isDarkMode ? styles.userInfoSection : styles.darkUserInfoSection
+            }
+          >
             <View
               style={{
                 flexDirection: "column",
@@ -57,23 +66,25 @@ const Profile = ({ navigation }) => {
                 alignItems: "center",
               }}
             >
-             
               <Avatar.Image
                 size={150}
                 source={
                   photo
-                    ? {uri: photo}
+                    ? { uri: photo }
                     : {
                         uri:
                           "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
                       }
                 }
               />
-             
             </View>
           </View>
-          <View style={!isDarkMode ? styles.userInfoSection : styles.darkUserInfoSections}>
-            <View style={!styles.row}>
+          <View
+            style={
+              !isDarkMode ? styles.userInfoSection : styles.darkUserInfoSections
+            }
+          >
+            <View style={styles.row}>
               <Icon name="account" color="gray" size={20} />
               <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.name}
@@ -133,14 +144,13 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginVertical: 20,
   },
-  darkbody:{
+  darkbody: {
     width: "95%",
     backgroundColor: `${black}`,
     borderRadius: 10,
     alignSelf: "center",
     paddingVertical: 20,
     marginVertical: 20,
-
   },
   container: {
     flex: 1,

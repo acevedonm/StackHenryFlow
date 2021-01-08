@@ -55,6 +55,7 @@ export default function App() {
     <DarkThemeContext.Provider value={isDarkMode}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {console.log("Entre en APP")}
           {!userId ? (
             <>
               <Stack.Screen name="Login" component={Login} />
