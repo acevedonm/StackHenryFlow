@@ -160,16 +160,15 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   input: {
-    borderRadius: 15,
+   border: "none",
     borderWidth: 1,
-    borderColor: yellow,
+    // borderColor: yellow,
     height: 30,
     width: "80%",
     marginTop: 5,
     justifyContent: "center",
     textAlign: "center",
     color: `${black}`,
-    backgroundColor: `${black}`,
   },
   inputNewPost: {
     borderRadius: 8,
@@ -195,7 +194,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   label: {
-    color: `${white}`,
+    color: `${black}`,
     marginTop: 15,
   },
   errorForm: {
@@ -220,6 +219,7 @@ export const styles = StyleSheet.create({
     color: `${black}`,
     marginBottom: 10,
     marginTop: 5,
+    fontWeight: "bold",
   },
   card: {
     backgroundColor: `${gray}`,

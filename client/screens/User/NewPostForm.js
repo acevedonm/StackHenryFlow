@@ -112,6 +112,7 @@ export default function NewPostForm({ navigation }) {
                     ¿A qué modulo pertenece tu duda?
                   </Text>
                   <Picker
+                  
                     style={!isDarkMode ? styles.inputNewPost : darkStyles.darkInputNewPost}
                     onValueChange={(itemValue) =>
                       setFieldValue("tag", itemValue)
@@ -126,6 +127,7 @@ export default function NewPostForm({ navigation }) {
                       label="Proyecto Final"
                       value="Proyecto"
                       key={6}
+                      
                     />
                   </Picker>
 
