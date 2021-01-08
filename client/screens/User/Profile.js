@@ -26,6 +26,7 @@ const Profile = ({ navigation }) => {
 
   const [usuario, setUsuario] = useState(initialState);
   const [photo, setPhoto] = useState("");
+  const [provider, setProvider] = useState("");
   const handleProfileEdit = () => {
     navigation.navigate("ProfileEdit", {
       myData: usuario,
@@ -34,7 +35,11 @@ const Profile = ({ navigation }) => {
 
   useEffect(() => {
     var user = GetUserLogin();
-
+    if (user != null) {
+      user.providerData.forEach(function (profile) {
+        setProvider(profile.providerId)
+      });
+    }
     if (user) {
       setUsuario({
         email: user.email,
@@ -109,26 +114,28 @@ const Profile = ({ navigation }) => {
               </Text>
             </View>
           </View>
-          <View style={styles.userInfoSection}>
-            <TouchableOpacity style={styles.btn} onPress={handleProfileEdit}>
-              <View style={styles.row}>
-                <Icon
-                  name="account-edit"
-                  style={{ color: "#000000" }}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    marginLeft: 20,
-                    color: "#000000",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Editar Perfil
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          {provider !== "google.com" ? 
+                      <View style={styles.userInfoSection}>
+                      <TouchableOpacity style={styles.btn} onPress={handleProfileEdit}>
+                        <View style={styles.row}>
+                          <Icon
+                            name="account-edit"
+                            style={{ color: "#000000" }}
+                            size={20}
+                          />
+                          <Text
+                            style={{
+                              marginLeft: 20,
+                              color: "#000000",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Editar Perfil
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+          : <></>}
         </View>
       </SafeAreaView>
     </View>

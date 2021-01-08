@@ -85,6 +85,11 @@ export const GetPost = (id) => {
   let postRef = firebase.firestore().collection("post").doc(id).get();
   return postRef;
 };
+
+export const GetSomethingsPosts = (pagination) => {
+  let postRef = firebase.firestore().collection("post").limit(pagination).get();
+  return postRef;
+};
 export const GetComments = (id) => {
   let commentRef = firebase
     .firestore()
