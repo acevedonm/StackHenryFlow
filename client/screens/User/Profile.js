@@ -84,12 +84,10 @@ const Profile = ({ navigation }) => {
               />
             </View>
           </View>
-          <View
-            style={
-              !isDarkMode ? styles.userInfoSection : styles.darkUserInfoSections
-            }
-          >
+
+          <View style={!isDarkMode ? styles.userInfoSection : styles.darkUserInfoSection}>
             <View style={styles.row}>
+
               <Icon name="account" color="gray" size={20} />
               <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.name}
@@ -181,6 +179,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   userInfoSection: {
+    paddingHorizontal: 30,
+    marginVertical: 10,
+  }, darkUserInfoSection: {
     paddingHorizontal: 30,
     marginVertical: 10,
   },
