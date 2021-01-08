@@ -21,6 +21,7 @@ export default function Posts({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [flag, setFlag] = useState(false)
   const [pagination, setPagination] = useState({
     refreshing: false,
     seed: 1,
@@ -29,6 +30,11 @@ export default function Posts({ navigation }) {
   });
 
   const handleSearch = (data) => {
+    if(data.length > 0){
+      setFlag(true)
+    } else {
+      setFlag(false)
+    }
     setPosts(data);
   };
 
@@ -138,7 +144,7 @@ export default function Posts({ navigation }) {
           ListFooterComponent={renderFooter}
           refreshing={pagination.refreshing}
           onRefresh={handleRefresh}
-          onEndReached={handleLoadMore}
+          onEndReached={flag ? null : handleLoadMore}
           onEndReachedThreshold={3}
         />
       ) : (
@@ -149,7 +155,6 @@ export default function Posts({ navigation }) {
 
   return (
     <>
-    {console.log("lo que ghay en post: ", posts)}
       <Header navigation={navigation} />
       <ScrollView>
         <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>
