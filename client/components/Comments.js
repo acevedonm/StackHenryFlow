@@ -104,7 +104,7 @@ export const Comments = (props) => {
                   <Icon
                     name="thumb-up"
                     size={20}
-                    color="yellow"
+                    color="black"
                     onPress={() => onChageLike(comentario.id)}
                   />
                   <Text style={{ color: "black", textAlign: "center", marginHorizontal: 20 }}>
@@ -113,7 +113,7 @@ export const Comments = (props) => {
                   <Icon
                     name="thumb-down"
                     size={20}
-                    color="yellow"
+                    color="black"
                     onPress={() => dislike(comentario.id)}
                   />
                   </View>
