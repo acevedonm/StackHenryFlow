@@ -1,43 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import Comments from "../../components/Comments";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
-import { GetComments} from "../../database/controllers/controllerPost"
-import DarkThemeContext from '../../DarkThemeContext'
+import { GetComments } from "../../database/controllers/controllerPost";
+import DarkThemeContext from "../../DarkThemeContext";
 
 export default function PostDetails(props) {
   const isDarkMode = React.useContext(DarkThemeContext);
   const { data } = props.route.params;
 
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    GetComments(data.id).then((respuesta)=> setComments(respuesta.docs))
-  },[])
+    GetComments(data.id).then((respuesta) => setComments(respuesta.docs));
+  }, []);
   return (
     <>
       <Header navigation={props.navigation} />
       <ScrollView>
         <View style={styles.body}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("PostsList")}
+          >
+            <Text style={{ marginTop: 20, fontSize: 14 }}>Volver a Posts</Text>
+          </TouchableOpacity>
           <View style={styles.cardComment}>
-            <Text style={[styles.h5, { alignSelf: "flex-start" }]}>
+            <Text style={styles.h5}>
               {data.title}
             </Text>
-            <Text style={[ styles.postTag, { alignSelf: "flex-start", fontSize: 12 } ]}>
+            <Text
+              style={[
+                styles.postTag,
+                { alignSelf: "flex-start", fontSize: 12 },
+              ]}
+            >
               {data.tag}
             </Text>
             <Text
               style={{
                 marginTop: 25,
                 fontSize: 15,
+                textAlign: "left",
                 alignSelf: "flex-start",
                 marginLeft: 2,
               }}
             >
               {data.description}
             </Text>
-            <Text style={{ marginTop: 40, alignSelf: "flex-start" }}>{data.fecha}</Text>
+            <Text style={{ marginTop: 40, alignSelf: "flex-start" }}>
+              {data.fecha}
+            </Text>
             <View
               style={{
                 display: "flex",
@@ -46,7 +59,7 @@ export default function PostDetails(props) {
                 borderBottomWidth: 1,
                 borderTopWidth: 1,
                 paddingVertical: 15,
-                width: "90%",
+                width: "100%",
               }}
             >
               <Image
@@ -68,7 +81,11 @@ export default function PostDetails(props) {
                 <Text>{data.email}</Text>
               </View>
             </View>
-            <Comments data={data} comments={comments} navigation={props.navigation} />
+            <Comments
+              data={data}
+              comments={comments}
+              navigation={props.navigation}
+            />
           </View>
         </View>
       </ScrollView>
