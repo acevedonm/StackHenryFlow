@@ -13,9 +13,7 @@ export default function MyPosts({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log("my posts: ", isDarkMode);
 
-  console.log("darkStyles: ", darkStyles);
   const handleSearch = (data) => {
     setPosts(data);
   };
