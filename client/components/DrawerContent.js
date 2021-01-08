@@ -46,7 +46,6 @@ export default function DrawerContent(props) {
   const getUser = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-    console.log("StorageUser: ",storageUser )
     if (storageUser) {
 
         if(storageUser.user.photoURL){
@@ -58,7 +57,7 @@ export default function DrawerContent(props) {
       });
       //setPhoto(storageUser.user.photoURL);
     } else {
-      console.log("Error al pedir user al storage");
+     
     }
   };
   useEffect(() => {
@@ -68,7 +67,6 @@ export default function DrawerContent(props) {
 }, [photo]);
 
   const isDarkMode = React.useContext(DarkThemeContext);
-    console.log('dddraweeeeeeee',isDarkMode)
 
   return (
     <View style={!isDarkMode ? { flex: 1 } : { flex: 1, backgroundColor: 'black' }}>

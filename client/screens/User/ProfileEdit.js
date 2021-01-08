@@ -24,7 +24,7 @@ const ProfileEdit = (props) => {
 
   const handleSubmit = (values) => {
     var user = GetUserLogin();
-    console.log("usuariooo", user);
+    
     updateUser({
         displayName: values.name,
         email: values.email,
@@ -32,10 +32,10 @@ const ProfileEdit = (props) => {
         photoURL: photo
       })
       .then(() => {
-        console.log("usuario cambiado", user);
+        
       })
       .catch(function (error) {
-        console.log("no se pudo actualizar los datos".error);
+        
       });
     props.navigation.navigate("Profile");
   };
@@ -61,7 +61,7 @@ const ProfileEdit = (props) => {
         setPhoto(user.photoURL)
       } 
     } else {
-      console.log("No se encontró usuario");
+     
     }
   }, [photo]);
 

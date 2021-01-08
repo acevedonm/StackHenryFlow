@@ -64,10 +64,10 @@ export const Comments = (props) => {
     likes.map((laik)=>{
       if(userId==laik.usuario){
        
-        console.log(laik.usuario)
+      
       } else {
      
-        console.log('no ta')
+       
       }
     })
      

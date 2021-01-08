@@ -29,12 +29,12 @@ export default function Register({ navigation }) {
     } else {
       createUser(values)
         .then((user) => {
-          console.log("Usuario creado con exito");
+          ("Usuario creado con exito");
           navigation.navigate("Login");
         })
         .catch((error) => {
-          console.log("No fue posible crear usuario");
-          console.log(error);
+          ("No fue posible crear usuario");
+          (error);
           alert(error.message);
         });
       resetForm();

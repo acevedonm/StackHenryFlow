@@ -39,15 +39,13 @@ export default function App() {
 
   async function toggleTheme() {
     const current = await AsyncStorage.getItem('DARK_MODE')
-    console.log('current',current)
+    
     const currentIsDarkMode = current == 'false' ? false : true
-    console.log('currentIsDarkMode',currentIsDarkMode)
-    console.log('tonces seteoo',!currentIsDarkMode)
-
+  
     await AsyncStorage.setItem('DARK_MODE', !currentIsDarkMode);
     setIsDarkMode(!currentIsDarkMode)
   };
-  console.log('sdfsfsdfsdfsdf', isDarkMode)
+ 
 
 return (
   loading ? (

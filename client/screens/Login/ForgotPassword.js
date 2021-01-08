@@ -23,7 +23,7 @@ export default function ForgotPassword({ navigation }) {
         <Formik
           initialValues={{ email: "" }}
           onSubmit={(values) => {
-            console.log(values);
+          
           }}
           validationSchema={validations}
         >

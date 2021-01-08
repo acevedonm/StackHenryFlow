@@ -41,7 +41,7 @@ const Profile = ({ navigation }) => {
         setPhoto(user.photoURL)
       } 
     } else {
-      console.log("No se encontró usuario");
+     
     }
   }, [photo]);
   return (

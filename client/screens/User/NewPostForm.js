@@ -51,7 +51,7 @@ export default function NewPostForm({ navigation }) {
     obtenerFecha();
     values = { ...values, user: currentUser, fecha: currentDate };
     let posteo = await createPost(values);
-    posteo && console.log(posteo);
+
     resetForm();
     setLoading(true);
     setTimeout(() => {

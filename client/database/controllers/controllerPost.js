@@ -20,11 +20,11 @@ export const createPost = (values) => {
       fecha: fecha
     })
     .then(() => {
-      console.log("Post creado con exito");
+     
       return true;
     })
     .catch((err) => {
-      console.log(err);
+      
     });
 };
 
@@ -39,7 +39,7 @@ export const GetMyPosts = () => {
   let user = firebase.auth().currentUser;
 
   var query = postRef.where("userId","==",user.uid).get()
-  console.log(user)
+  
   return query;
 };
 
@@ -48,7 +48,6 @@ export const GetMyLikes = (id, commentId) => {
   let user = firebase.auth().currentUser;
 
   var query = likeRef.where( like= "usuario","==",user.uid).get()
-  console.log(likeRef)
   return query;
 };
 
@@ -70,8 +69,8 @@ export const searchInPost = async (value) => {
     });
     return array;
   } catch (error) {
-    console.log("Error al buscar post en back");
-    console.log(error);
+   
+    (error);
   }
 };
 
@@ -111,7 +110,7 @@ refComentario.update({
 };
 
 export const DeleteComment = (id,commentId) => {
- console.log(id, commentId)
+ (id, commentId)
   let refComentario = firebase.firestore().collection("post").doc(id)
  var removeComment= refComentario.update({ 
  commentId: firebase.firestore.FieldValue.delete(),

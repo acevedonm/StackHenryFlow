@@ -28,14 +28,13 @@ export default function Login({ navigation }) {
         navigation.navigate("Index");
       })
       .catch((error) => {
-        console.log(error);
-        console.log("No fue posible Loggearte");
+       
       });
   };
   const handlerloginWithGoogle = () => {
     loginWithGoogle()
       .then((result) => {
-        console.log(result);
+        
         navigation.navigate("Index");
 
         AsyncStorage.setItem(USER_LOGIN, JSON.stringify(result));
@@ -43,8 +42,7 @@ export default function Login({ navigation }) {
       .catch(function (error) {
         // Handle Errors.
         alert(error.message);
-        console.log(error);
-        console.log("credential: ", error.credential);
+        
       });
   };
 

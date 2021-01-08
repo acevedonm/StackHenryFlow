@@ -17,7 +17,7 @@ import DarkThemeContext from '../../DarkThemeContext'
 import { darkStyles } from "../../styles/darkStyles";
 
 export default function Posts({ navigation }) {
-  console.log('POSTS LIST!!!!')
+ 
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,17 +41,15 @@ export default function Posts({ navigation }) {
       .then((posts) => {
 /*         for (let i = 0; i < 3; i++) {
           const doc = posts.docs[i];
-          console.log("edoc",doc)
           setPosts([...{id: doc.id, ...doc.data()} ])
           
         } */
 /*         var array = []
-        console.log("page: ", pagination.page)
-        console.log("J: ", j)
+      
         array.push(posts.docs[j])
         array.push(posts.docs[j+1])
         array.push(posts.docs[j+2])
-        console.log("array: ", array) */
+        */
         setPosts(posts.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
       .then(() => {
@@ -59,7 +57,7 @@ export default function Posts({ navigation }) {
         setPagination({...pagination, refreshing: false });
       })
       .catch((error) => {
-        console.log("Error getting posts", error);
+      
         setLoading(false);
         setPagination({ ...pagination, error, refreshing: false });
       });
@@ -68,7 +66,7 @@ export default function Posts({ navigation }) {
   };
 
   useEffect(() => {
-    console.log("cargando");
+   
     setLoading(true);
     firebaseRequest(pagination.page);
   }, []);
@@ -107,7 +105,7 @@ export default function Posts({ navigation }) {
   };
 
   const handleRefresh = () => {
-    console.log("entre a handle refresh")
+    ("entre a handle refresh")
     setPagination(
       {...pagination,
         refreshing: true,
@@ -118,7 +116,7 @@ export default function Posts({ navigation }) {
  
   };
   const handleLoadMore = ()=> {
-    console.log("Entre a hanlde load more")
+    
     setPagination({...pagination,
       page: pagination.page+1
     })
@@ -127,7 +125,7 @@ export default function Posts({ navigation }) {
 
   const renderList = () => (
     <>
-    {console.log("refreshing: ", pagination.refreshing)}
+    
       <Text style={!isDarkMode ? styles.h3 : darkStyles.darkH3text}>ULTIMAS ENTRADAS</Text>
       {posts && posts.length >= 1 ? (
         <FlatList
@@ -149,7 +147,7 @@ export default function Posts({ navigation }) {
 
   return (
     <>
-    {console.log("lo que ghay en post: ", posts)}
+    
       <Header navigation={navigation} />
       <ScrollView>
         <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>

@@ -14,9 +14,7 @@ export default function MyPosts({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log('my posts: ', isDarkMode)
-
-  console.log('darkStyles: ', darkStyles)
+ 
   const handleSearch = (data) => {
     setPosts(data);
   };
@@ -28,7 +26,6 @@ export default function MyPosts({ navigation }) {
       })
       .then(() => setLoading(false))
       .catch((err) => {
-        console.log("Error getting posts", err);
       });
     
   }, []);
