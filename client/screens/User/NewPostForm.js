@@ -67,7 +67,7 @@ export default function NewPostForm({ navigation }) {
   return (
     <>
       <Header navigation={navigation} />
-      <ScrollView style={!isDarkMode ? styles.body : darkStyles.scroll}>
+      <ScrollView style={!isDarkMode ? {} : darkStyles.scroll}>
         <View style={!isDarkMode ? styles.body : darkStyles.darkBody}>
           {loading ? (
             <>
@@ -77,7 +77,7 @@ export default function NewPostForm({ navigation }) {
               </Text>
             </>
           ) : (
-            <Formik style={isDarkMode ? styles.formikInput : darkStyles.darkFormikInput}
+            <Formik style={!isDarkMode ? styles.formikInput : darkStyles.darkFormikInput}
               initialValues={{ title: "", description: "", tag: "Modulo 1" }}
               onSubmit={handlerPost}
             >
@@ -91,7 +91,7 @@ export default function NewPostForm({ navigation }) {
                         marginBottom: 20,
                       }}
                     >
-                      ¿Cual es tu duda {!isDarkMode ? currentUser.displayName : darkStyles.darkDisplayName}?
+                      ¿Cual es tu duda?
                     </Text>
                   )}
 
@@ -112,6 +112,7 @@ export default function NewPostForm({ navigation }) {
                     ¿A qué modulo pertenece tu duda?
                   </Text>
                   <Picker
+                  
                     style={!isDarkMode ? styles.inputNewPost : darkStyles.darkInputNewPost}
                     onValueChange={(itemValue) =>
                       setFieldValue("tag", itemValue)
@@ -126,6 +127,7 @@ export default function NewPostForm({ navigation }) {
                       label="Proyecto Final"
                       value="Proyecto"
                       key={6}
+                      
                     />
                   </Picker>
 

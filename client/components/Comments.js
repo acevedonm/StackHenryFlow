@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, TextInput, Button, Text } from "react-native";
 import { styles } from "../styles/styles";
-import { AddComments, AddLike, GetComments, DeleteComment } from "../database/controllers/controllerPost";
+import { AddComments, AddLike, GetComments, Dislike, GetMyLikes } from "../database/controllers/controllerPost";
 import { getUserLogin } from "../functions/getUserLogin";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-
-//Esto se tiene que renderizar en la pantalla postDetail
 export const Comments = (props) => {
   const [currentDate, setCurrentDate] = useState("");
   const [currentUser, setCurrentUser] = useState("");
@@ -14,12 +13,12 @@ export const Comments = (props) => {
   const [ com, setCom] =useState([])
   const { id } = props.data;
 
+
   const obtenercomentarios = () => {
     GetComments(id).then((coment) => {
       setCom(coment.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
     })
   }
-
 
   const obtenerFecha = () => {
     getUserLogin().then((user) =>
@@ -48,25 +47,33 @@ export const Comments = (props) => {
     props.navigation.navigate("PostsList");
   };
 
-
   const onChageLike = async (commentId) => {
    const respuesta= await getUserLogin()
      let userId=  respuesta.user.uid
-    
     AddLike(id, commentId ,userId)
-  
-   
-    console.log('entro a la funcion de likes')
   }
 
-  const deleteComment = async(commentId) => {
-    DeleteComment(id,commentId)
-    console.log('entro en eliinar comentario')
+  const dislike = async(commentId) => {
+     const respuesta= await getUserLogin()
+     let userId=  respuesta.user.uid
+    Dislike(id,commentId, userId)
+  }
+  const obtenerLikes = async (likes) => {
+    const respuesta= await getUserLogin()
+     let userId=  respuesta.user.uid
+    likes.map((laik)=>{
+      if(userId==laik.usuario){
+       
+        console.log(laik.usuario)
+      } else {
+     
+        console.log('no ta')
+      }
+    })
+     
+    
   }
 
-  const updateComment = async (commentId) => {
-    console.log('entro en editar comentario')
-  }
 
   useEffect(() => {
     obtenerFecha();
@@ -93,13 +100,15 @@ export const Comments = (props) => {
                   {comentario.fecha}
                 </Text>
                 <Text style={{ color: "#FFF", textAlign: "right" }}>
-                  {comentario.likes.length}
+                  {obtenerLikes(comentario.likes), comentario.likes.length}
                 </Text>
+                  
+                  <Icon name="thumb-down" size={20} color="white" onPress={() => dislike(comentario.id)} />
+                   <Icon  name="thumb-up"  size={20} color="white" onPress={() => onChageLike(comentario.id)} /> 
+                
+               
                 
                 
-                <Button title="me gusta" color="#000000" onPress={() => onChageLike(comentario.id)} /> 
-                <Button title="eliminar" color="#000000" onPress={() => deleteComment(comentario.id)} />
-                <Button title="editar" color="#000000" onPress={() => updateComment(comentario.id)} />
               </View>
             );
           }): <> </> } 

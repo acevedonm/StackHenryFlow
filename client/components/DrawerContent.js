@@ -26,7 +26,6 @@ import "firebase/firestore";
 
 export default function DrawerContent(props) {
   
-  console.log('dddraweeeeeeee', props.isDarkMode)
   const USER_LOGIN = "@user_login";
   const inicialState = {
     displayName: "",
@@ -69,6 +68,8 @@ export default function DrawerContent(props) {
 }, [photo]);
 
   const isDarkMode = React.useContext(DarkThemeContext);
+    console.log('dddraweeeeeeee',isDarkMode)
+
   return (
     <View style={!isDarkMode ? { flex: 1 } : { flex: 1, backgroundColor: 'black' }}>
 

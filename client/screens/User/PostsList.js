@@ -154,15 +154,9 @@ export default function Posts({ navigation }) {
       <ScrollView>
         <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>
           <SearchBar onSearch={handleSearch} />
-<<<<<<< HEAD
           <View style={!isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList}>
             {loading ? <Text>Cargando posts..</Text> : renderList()}
-=======
-          <View style={styles.cardPostList}>
-            {loading ? <Text>Cargando posts..</Text> :
-              renderList()
-            }
->>>>>>> dev
+
           </View>
         </View>
       </ScrollView>

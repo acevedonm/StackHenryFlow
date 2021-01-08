@@ -75,10 +75,10 @@ export default function Login({ navigation }) {
                 <Text style={styles.h1}>Inicia sesión</Text>
 
                 {/* CAMPO USUARIO */}
-                <Text style={styles.label}>Email</Text>
+                {/* <Text style={styles.label}>Email</Text> */}
                 <Input
                 style={styles.input}
-                style={{color:"black"}}
+                style={{color:"black",textAlign:"center", marginTop:10}}
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
@@ -91,10 +91,10 @@ export default function Login({ navigation }) {
                 )}
 
                 {/* CAMPO CONTRASEÑA */}
-                <Text style={styles.label}>Contraseña</Text>
+                {/* <Text style={styles.label}>Contraseña</Text> */}
                 <Input
                   style={styles.input}
-                  style={{color:"black"}}
+                  style={{color:"black", marginTop:10,textAlign:"center"}}
                   secureTextEntry={true}
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
