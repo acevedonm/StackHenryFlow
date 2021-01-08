@@ -63,8 +63,6 @@ export default function DrawerContent(props) {
   };
   useEffect(() => {
     getUser();
-      
-
 }, [photo]);
 
   const isDarkMode = React.useContext(DarkThemeContext);

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+
 import {
   Text,
   View,
   ScrollView,
   FlatList,
   ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
-import { GetPosts } from "../../database/controllers/controllerPost";
+import { GetSomethingsPosts } from "../../database/controllers/controllerPost";
 import { styles } from "../../styles/styles";
 // COMPONENTS //
 import Header from "../../components/Header";
@@ -24,34 +27,20 @@ export default function Posts({ navigation }) {
   const [pagination, setPagination] = useState({
     refreshing: false,
     seed: 1,
-    page: 1,
     error: null
   });
+  const [page, setPage] = useState(3)
 
   const handleSearch = (data) => {
     setPosts(data);
   };
 
-  const firebaseRequest = (j) => {
-
-    //PODRIA HACER UN FOR DESDE I HASTA LA PAGINA SIGUIENTE, O ALGO ASI
-    //AGREGAR AL USEEFECT EL ESTADO DE PAGE PARA VOLVER A RENDERIZAR, FUNCIONA ASI CON HOOKS
+  const firebaseRequest = () => {
+    //setLoading(true)
     setTimeout(() => {
-      GetPosts()
+      GetSomethingsPosts(page)
       .then((posts) => {
-/*         for (let i = 0; i < 3; i++) {
-          const doc = posts.docs[i];
-          console.log("edoc",doc)
-          setPosts([...{id: doc.id, ...doc.data()} ])
-          
-        } */
-/*         var array = []
-        console.log("page: ", pagination.page)
-        console.log("J: ", j)
-        array.push(posts.docs[j])
-        array.push(posts.docs[j+1])
-        array.push(posts.docs[j+2])
-        console.log("array: ", array) */
+        setPage(page+3)
         setPosts(posts.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
       .then(() => {
@@ -70,14 +59,14 @@ export default function Posts({ navigation }) {
   useEffect(() => {
     console.log("cargando");
     setLoading(true);
-    firebaseRequest(pagination.page);
+    firebaseRequest();
   }, []);
 
   const keyExtractor = (item) => item.id;
   const renderItem = ({ item }) => (
     <ListItem
       bottomDivider
-      containerStyle={!isDarkMode ? styles.listItemContainer : darkStyles.listItemContainer}
+      style={!isDarkMode ? styles.listItemContainer : darkStyles.listItemContainer}
       onPress={() => navigation.navigate("PostDetails", { data: item })}
     >
       <Avatar
@@ -98,32 +87,23 @@ export default function Posts({ navigation }) {
     return <View style={styles.separatorPostList} />;
   };
   const renderFooter = () => {
-    //if (!loading) return null;
     return (
-      <View style={styles.spinnerVerticalPagination}>
-        <ActivityIndicator animating size="small"></ActivityIndicator>
+      //Footer View with Load More button
+      <View style={stylesLocal.footer}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          onPress={firebaseRequest}
+          //On Click of button calling getData function to load more data
+          style={stylesLocal.loadMoreBtn}>
+          <Text style={stylesLocal.btnText}>Cargar Más</Text>
+          {loading ? (
+            <ActivityIndicator color="white" style={{marginLeft: 8}} />
+          ) : null}
+        </TouchableOpacity>
       </View>
     );
   };
 
-  const handleRefresh = () => {
-    console.log("entre a handle refresh")
-    setPagination(
-      {...pagination,
-        refreshing: true,
-        page: 1,
-        seed: pagination.seed + 1,
-      })
-      firebaseRequest(pagination.page);
- 
-  };
-  const handleLoadMore = ()=> {
-    console.log("Entre a hanlde load more")
-    setPagination({...pagination,
-      page: pagination.page+1
-    })
-    firebaseRequest(pagination.page)
-  }
 
   const renderList = () => (
     <>
@@ -136,10 +116,6 @@ export default function Posts({ navigation }) {
           renderItem={renderItem}
           ItemSeparatorComponent={renderSeparator}
           ListFooterComponent={renderFooter}
-          refreshing={pagination.refreshing}
-          onRefresh={handleRefresh}
-          onEndReached={handleLoadMore}
-          onEndReachedThreshold={3}
         />
       ) : (
         <Text>No se encontraron resultados..</Text>
@@ -149,17 +125,42 @@ export default function Posts({ navigation }) {
 
   return (
     <>
-    {console.log("lo que ghay en post: ", posts)}
       <Header navigation={navigation} />
       <ScrollView>
         <View style={!isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList}>
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch}/>
           <View style={!isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList}>
-            {loading ? <Text>Cargando posts..</Text> : renderList()}
-
+            {/* loading ? <Text>Cargando posts..</Text> : */ renderList()}
           </View>
         </View>
       </ScrollView>
     </>
   );
 }
+
+
+const stylesLocal = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    flex: 1,
+  },
+  footer: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  loadMoreBtn: {
+    padding: 10,
+    backgroundColor: 'black',
+    borderRadius: 4,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnText: {
+    color: 'white',
+    fontSize: 15,
+    textAlign: 'center',
+  },
+});
