@@ -219,6 +219,7 @@ export const styles = StyleSheet.create({
     color: `${black}`,
     marginBottom: 10,
     marginTop: 5,
+    fontWeight: "bold",
   },
   card: {
     backgroundColor: `${gray}`,

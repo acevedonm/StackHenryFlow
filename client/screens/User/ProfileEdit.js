@@ -108,7 +108,7 @@ const ProfileEdit = (props) => {
                 />
                 <Text style={styles.textLabel2}>Para ayudar a que las personas descubran tu cuenta, usa el nombre por el que te conoce la gente.</Text>
 
-                <Text style={!isDarkMode ? styles.textLabel : styles.darkTextLabel}>Nombre de usuario</Text>
+                <Text style={!isDarkMode ? styles.textLabel : styles.darkTextLabel}>Email</Text>
                 <TextInput
                   style={!isDarkMode ? styles.textInput : styles.darkTextInput}
                   placeholder="Email"

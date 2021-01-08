@@ -24,6 +24,7 @@ export default function Posts({ navigation }) {
   const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [flag, setFlag] = useState(false)
   const [pagination, setPagination] = useState({
     refreshing: false,
     seed: 1,
@@ -32,6 +33,11 @@ export default function Posts({ navigation }) {
   const [page, setPage] = useState(3)
 
   const handleSearch = (data) => {
+    if(data.length > 0){
+      setFlag(true)
+    } else {
+      setFlag(false)
+    }
     setPosts(data);
   };
 
