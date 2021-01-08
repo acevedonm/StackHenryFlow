@@ -200,6 +200,7 @@ darkH1: {
     borderRadius: 10,
     borderWidth: 1,
     borderColor: `${yellow}`,
+    color: white,
     height: 100,
     width: "80%",
     marginVertical: 5,
