@@ -15,6 +15,8 @@ import {
   loginWithGoogle,
 } from "../../database/controllers/controllerUsers";
 import BtnGoogle from "../../components/LoginWithGoogle";
+import { Input } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Login({ navigation }) {
   const USER_LOGIN = "@user_login";
@@ -70,30 +72,34 @@ export default function Login({ navigation }) {
               touched,
             }) => (
               <View style={styles.form}>
-                <Text style={styles.h1}>LOGIN</Text>
+                <Text style={styles.h1}>Inicia sesión</Text>
 
                 {/* CAMPO USUARIO */}
-                <Text style={styles.label}>Email</Text>
-                <TextInput
-                  style={styles.input}
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
+                {/* <Text style={styles.label}>Email</Text> */}
+                <Input
+                style={styles.input}
+                style={{color:"black",textAlign:"center", marginTop:10}}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
+                placeholder='Email'
                 />
-
+                
                 {/* ERROR EMAIL */}
                 {touched.email && errors.email && (
                   <Text style={styles.errorForm}>{errors.email}</Text>
                 )}
 
                 {/* CAMPO CONTRASEÑA */}
-                <Text style={styles.label}>Contraseña</Text>
-                <TextInput
+                {/* <Text style={styles.label}>Contraseña</Text> */}
+                <Input
                   style={styles.input}
+                  style={{color:"black", marginTop:10,textAlign:"center"}}
                   secureTextEntry={true}
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   value={values.password}
+                  placeholder='Contraseña'
                 />
 
                 {/* ERROR CONTRASEÑA */}

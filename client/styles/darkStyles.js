@@ -1,40 +1,43 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { yellow, black, white, errorRed, gray } from "./globalsVariables";
 
-const windowHeight = Dimensions.get("window").height;
+ const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
-export const styles = StyleSheet.create({
-  container: {
+export const darkStyles = StyleSheet.create({
+  darkContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: `${white}`,
-    color: `${white}`,
+    backgroundColor: `${black}`,
+    color: `${yellow}`,
     textAlign: "center",
   },
-  headerOut: {
+  darkHeaderOut: {
     top: 0,
     left: 0,
     paddingTop: 20,
     width: "100%",
-    backgroundColor: `${yellow}`,
+    backgroundColor: `${black}`,
   },
-  header: {
+  darkHeader: {
     top: 0,
     left: 0,
     paddingTop: 2,
     width: "100%",
-    backgroundColor: `${yellow}`,
+    backgroundColor:`${white}`,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
       
   },
-  body: {
+  scroll:{
+    backgroundColor: `${black}`,
+  },
+  darkBody: {
     textAlign: "center",
-    backgroundColor: `${white}`,
-    color: `${black}`,
+    backgroundColor: `${black}`,
+    color: `${yellow}`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -43,19 +46,17 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 
-  bodyPostList: {
+  darkBodyPostList: {
     textAlign: "center",
-    backgroundColor: `${white}`,
+    backgroundColor: `${black}`,
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
     minHeight: windowHeight * 0.813,
     paddingVertical: 20,
-    borderRadius:24
   },
-  post: {
-    backgroundColor: `${white}`,
-    color: `${black}`,
+  darkPost: {
+    backgroundColor: black,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -66,13 +67,13 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
   },
-  postList: {
-    color: `${black}`,
+  darkPostList: {
+    color: white,
     fontSize: 15,
     alignSelf: "center",
     paddingVertical: 10,
   },
-  postTag: {
+  darkPostTag: {
     fontWeight: "bold",
     backgroundColor: `${yellow}`,
     borderRadius: 100,
@@ -80,46 +81,54 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 11,
   },
-  listItemContainer: { borderBottomWidth: 1.5 },
-  h1: {
-    color: `${black}`,
+darkH1: {
+    color: `${yellow}`,
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
     zIndex: 10,
   },
  
-  h2: {
-    color: `${white}`,
+  darkH2: {
+    color: `${yellow}`,
     fontSize: 18,
     textAlign: "center",
     marginTop: 15,
     marginBottom: 10,
   },
-  h3: {
-    color: black,
+  darkH3: {
+    color:`${yellow}`,
     fontSize: 18,
     marginTop: 10,
     marginBottom: 15,
     fontWeight: "bold",
     textAlign: "center",
   },
-  h4: {
+  darkH3text:{
+      color:`${yellow}`,
+      fontSize: 18,
+      marginTop: 10,
+      marginBottom: 15,
+      fontWeight: "bold",
+      textAlign: "center",
+    
+  },
+  darkH4: {
     color: white,
     fontSize: 15,
     marginVertical: 10,
     fontWeight: "bold",
     textAlign: "center",
   },
-  h5: {
-    color: black,
+  darkH5: {
+    color: yellow,
     fontSize: 18,
     marginTop: 10,
     marginBottom: 15,
     fontWeight: "bold",
     textAlign: "left",
   },
-  welcome: {
+  darkWelcome: {
     color: `${black}`,
     marginTop: 30,
     marginBottom: 20,
@@ -129,29 +138,29 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     zIndex: 10,
   },
-  form: {
+  darkForm: {
     flex: 1,
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
     borderColor: "#00FFFF",
     borderRadius: 15,
-    backgroundColor: "#00000005",
+    backgroundColor: "black",
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "2%",
     marginBottom: "3%",
-    color:`${black}`,
   },
-  formNewPost: {
+  listItemContainer: { borderBottomWidth: 1.5, backgroundColor: gray },
+  darkFormNewPost: {
     flex: 1,
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
     borderColor: "#00FFFF",
     borderRadius: 15,
-    backgroundColor: `${gray}`,
+    backgroundColor: black,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -159,22 +168,26 @@ export const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
   },
-  input: {
-   border: "none",
+  darkFormikInput :{
+    backgroundColor: `${yellow}`
+  },
+  darkInput: {
+    borderRadius: 15,
     borderWidth: 1,
-    // borderColor: yellow,
+    borderColor: yellow,
     height: 30,
     width: "80%",
     marginTop: 5,
     justifyContent: "center",
     textAlign: "center",
-    color: `${black}`,
+    color: `${white}`,
   },
-  inputNewPost: {
+  darkInputNewPost: {
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: `${black}`,
-    backgroundColor: `${gray}`,
+    borderColor: `${yellow}`,
+    backgroundColor: `${black}`,
+    color: `${white}`,
     height: 30,
     width: "80%",
     marginVertical: 5,
@@ -183,27 +196,28 @@ export const styles = StyleSheet.create({
     padding: 5,
     
   },
-  inputDescription: {
+  darkInputDescription: {
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: `${black}`,
+    borderColor: `${yellow}`,
+    color: white,
     height: 100,
     width: "80%",
     marginVertical: 5,
     justifyContent: "center",
     textAlign: "center",
   },
-  label: {
-    color: `${black}`,
+  darkLabel: {
+    color: `${white}`,
     marginTop: 15,
   },
-  errorForm: {
+  darkErrorForm: {
     fontSize: 12,
     color: `${errorRed}`,
     marginTop: 5,
     marginBottom: 15,
   },
-  boton: {
+  darkBoton: {
     color: `${black}`,
     fontWeight: "bold",
     backgroundColor: `${yellow}`,
@@ -215,14 +229,13 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  linkForm: {
-    color: `${black}`,
+  darkLinkForm: {
+    color: `${white}`,
     marginBottom: 10,
     marginTop: 5,
-    fontWeight: "bold",
   },
-  card: {
-    backgroundColor: `${gray}`,
+  darkCard: {
+    backgroundColor: `${black}`,
     width: "90%",
     display: "flex",
     justifyContent: "center",
@@ -240,8 +253,8 @@ export const styles = StyleSheet.create({
     elevation: 24,
     minHeight: windowHeight * 0.5
   },
-  cardComment: {
-    backgroundColor: `${white}`,
+  darkCardComment: {
+    backgroundColor: `${black}`,
     width: "90%",
     display: "flex",
     justifyContent: "center",
@@ -259,8 +272,8 @@ export const styles = StyleSheet.create({
     elevation: 24,
     minHeight: windowHeight * 0.5
   },
-  cardPostList: {
-    backgroundColor: `${gray}`,
+  darkCardPostList: {
+    backgroundColor: `${black}`,
     color: black,
     width: "90%",
     display: "flex",
@@ -278,20 +291,20 @@ export const styles = StyleSheet.create({
     elevation: 24,
     minHeight: windowHeight * 0.6
   },
-  imgHenry: {
+  darkImgHenry: {
     alignSelf: "center",
     width: 124,
     height: 50,
     zIndex: 1,
     marginLeft: -50,
   },
-  imgHenryOut: {
+  darkImgHenryOut: {
     alignSelf: "center",
     width: 124,
     height: 50,
     zIndex: 1,
   },
-  containerInputComment: {
+  darkContainerInputComment: {
     borderRadius: 10,
     borderColor: "yellow",
     backgroundColor: "black",
@@ -301,7 +314,7 @@ export const styles = StyleSheet.create({
     height: 100,
     color: "white",
   },
-  comment: {
+  darkComment: {
     textAlign: "center",
     padding: 8,
     marginVertical: 20,
@@ -313,63 +326,79 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingTop:20
   },
-  separatorPostList: {
+  darkSeparatorPostList: {
     height: 1,
+    color:black,
     width: "70%",
-    backgroundColor: "#CED0CE",
     marginLeft: "15%",
     marginRight: "15%"
   },
-  spinnerVerticalPagination: {
+  darkSpinnerVerticalPagination: {
     paddingVertical: 20,
       borderTopWidth: 1,
-      borderColor: "#CED0CE"
+      borderColor: `${yellow}` 
   },
-  comentario: {
+  darkComentario: {
     padding: 10,
     backgroundColor: "#000",
     borderRadius: 10,
     marginBottom: 5,
     color: "#FFF",
   },
-  containerSearch: {
+  darkContainerSearch: {
     display: "flex",
     alignItems: "center",
     backgroundColor: "#329999",
     borderRadius: 8,
-    //border: "none",
+    border: "none",
     overflow: "hidden",
   },
-  // STYLES VIDEOS DE CLASES
-  h1clases: {
-    color: `${black}`,
+  darkInput:{
+    backgroundColor: "transparent",
+    border: "none",
+    color: "#fff",
+    // margin: 0.25rem 0.5rem,
+    paddingLeft: 16,
+    fontSize: 16,
+    width: 6,
+  },
+  darkTextStyle:{
+    color:`${yellow}`
+  },
+  placeholder:{
+    color: "#4c2882 ",
+  },
+  darkFocus: {
+    outline: "none",
+  },
+   darkDisplayName : {
+    color:`${yellow}`
+  },
+  textstyle:{
+    color:`${black}`
+  },
+  darkScroll:{
+    backgroundColor:`${black}`
+  },
+  bodydark:{
+    backgroundColor:black
+  },
+  h1classesdark:{
+    color: `${yellow}`,
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
     zIndex: 10,
     marginTop:20
   },
-  h2clases: {
-    color: `${black}`,
+  h2classesdark:{
+    color: `${yellow}`,
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
     zIndex: 10,
     marginTop:28,
     marginBottom:20,
-  
-  },
-  containerVideo: {
-    display:"flex",
-    width:300,
-    height:200,
-    marginTop:20,
-    alignSelf: "center",
-  },
-  containerVideo2: {
-    display:"flex",
-    width:300,
-    height:200,
-    alignSelf: "center",
   }
+  
 });

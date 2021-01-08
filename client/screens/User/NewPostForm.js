@@ -13,8 +13,19 @@ import Header from "../../components/Header";
 import { createPost } from "../../database/controllers/controllerPost";
 import { getUserLogin } from "../../functions/getUserLogin";
 import { ScrollView } from "react-native-gesture-handler";
+import DarkThemeContext from "../../DarkThemeContext";
+import {
+  yellow,
+  black,
+  white,
+  errorRed,
+  gray,
+} from "../../styles/globalsVariables";
+import { darkStyles } from "../../styles/darkStyles";
+// import DarkThemeContext from '../../DarkThemeContext'
 
 export default function NewPostForm({ navigation }) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentDate, setCurrentDate] = useState("");
@@ -61,8 +72,8 @@ export default function NewPostForm({ navigation }) {
   return (
     <>
       <Header navigation={navigation} />
-      <ScrollView>
-        <View style={styles.body}>
+      <ScrollView style={!isDarkMode ? {} : darkStyles.scroll}>
+        <View style={!isDarkMode ? styles.body : darkStyles.darkBody}>
           {loading ? (
             <>
               <ActivityIndicator size="large" color="#FFFF01" />
@@ -72,20 +83,30 @@ export default function NewPostForm({ navigation }) {
             </>
           ) : (
             <Formik
+              style={
+                !isDarkMode ? styles.formikInput : darkStyles.darkFormikInput
+              }
               initialValues={{ title: "", description: "", tag: "Modulo 1" }}
               onSubmit={handlerPost}
             >
               {({ values, handleChange, handleSubmit, setFieldValue }) => (
-                <View style={styles.formNewPost}>
+                <View
+                  style={
+                    !isDarkMode
+                      ? styles.formNewPost
+                      : darkStyles.darkFormNewPost
+                  }
+                >
                   {currentUser && (
                     <Text
                       style={{
-                        color: "#000",
+                        color: !isDarkMode ? "#000" : yellow,
                         fontWeight: "bold",
                         marginBottom: 20,
+                        fontSize: 20
                       }}
                     >
-                      ¿Cual es tu duda {currentUser.displayName}?
+                      ¿Cual es tu duda?
                     </Text>
                   )}
 
@@ -93,20 +114,39 @@ export default function NewPostForm({ navigation }) {
                     placeholder="Haz tu pregunta"
                     onChangeText={handleChange("title")} //update title
                     value={values.title} //recibe valor de input
-                    style={styles.inputNewPost}
+                    style={
+                      !isDarkMode
+                        ? styles.inputNewPost
+                        : darkStyles.darkInputNewPost
+                    }
                   />
                   <TextInput
-                    style={styles.inputDescription}
+                    style={
+                      !isDarkMode
+                        ? styles.inputDescription
+                        : darkStyles.darkInputDescription
+                    }
                     multiline //Permite texto largo
                     placeholder="Agregar una descripción"
                     onChangeText={handleChange("description")}
                     value={values.description}
                   />
-                  <Text style={{ marginTop: 15, marginBottom: 10 }}>
+                  <Text
+                    style={{
+                      marginTop: 15,
+                      marginBottom: 10,
+                      color: !isDarkMode ? "#000" : yellow,
+                      fontWeight: "bold"
+                    }}
+                  >
                     ¿A qué modulo pertenece tu duda?
                   </Text>
                   <Picker
-                    style={styles.inputNewPost}
+                    style={
+                      !isDarkMode
+                        ? styles.inputNewPost
+                        : darkStyles.darkInputNewPost
+                    }
                     onValueChange={(itemValue) =>
                       setFieldValue("tag", itemValue)
                     }

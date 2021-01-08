@@ -5,7 +5,6 @@ export const createPost = (values) => {
   const { title, description, tag, user, fecha } = values;
   //verificar que los tags sean solo 3
 
-  
   firebase
     .firestore()
     .collection("post")
@@ -13,12 +12,11 @@ export const createPost = (values) => {
       title: title,
       description: description,
       tag: tag,
-      comment: [],
       userId: user.uid,
       email: user.email,
       name: user.displayName,
       photo: user.photoURL,
-      fecha: fecha
+      fecha: fecha,
     })
     .then(() => {
       console.log("Post creado con exito");
@@ -30,20 +28,36 @@ export const createPost = (values) => {
 };
 
 export const GetPosts = () => {
-  let postRef = firebase.firestore().collection("post").orderBy("fecha", "desc").get();
+  let postRef = firebase
+    .firestore()
+    .collection("post")
+    .orderBy("fecha", "desc")
+    .get();
   return postRef;
 };
 
-
 export const GetMyPosts = () => {
-  let postRef = firebase.firestore().collection("post")
+  let postRef = firebase.firestore().collection("post");
   let user = firebase.auth().currentUser;
 
-  var query = postRef.where("userId","==",user.uid).get()
-  console.log(user)
+  var query = postRef.where("userId", "==", user.uid).get();
+  console.log(user);
   return query;
 };
 
+export const GetMyLikes = (id, commentId) => {
+  let likeRef = firebase
+    .firestore()
+    .collection("post")
+    .doc(id)
+    .collection("comments")
+    .doc(commentId);
+  let user = firebase.auth().currentUser;
+
+  var query = likeRef.where((like = "usuario"), "==", user.uid).get();
+  console.log(likeRef);
+  return query;
+};
 
 export const searchInPost = async (value) => {
   try {
@@ -72,9 +86,64 @@ export const GetPost = (id) => {
   return postRef;
 };
 
-export const AddComments = (id, comentario) => {
-  let posteo = firebase.firestore().collection("post").doc(id);
-  posteo.update({
-    comment: firebase.firestore.FieldValue.arrayUnion(comentario),
+export const GetSomethingsPosts = (pagination) => {
+  let postRef = firebase.firestore().collection("post").limit(pagination).get();
+  return postRef;
+};
+export const GetComments = (id) => {
+  let commentRef = firebase
+    .firestore()
+    .collection("post")
+    .doc(id)
+    .collection("comment")
+    // .orderBy("likes", "desc")
+    .get();
+  return commentRef;
+};
+
+export const AddComments = (id, props) => {
+  const { comentario, user, fecha, likes } = props;
+  let posteo = firebase
+    .firestore()
+    .collection("post")
+    .doc(id)
+    .collection("comment")
+    .add({
+      texto: comentario,
+      likes,
+      user,
+      fecha,
+    });
+};
+
+export const AddLike = (id, commentId, userId) => {
+  let refComentario = firebase
+    .firestore()
+    .collection("post")
+    .doc(id)
+    .collection("comment")
+    .doc(commentId);
+  return refComentario.update({
+    likes: firebase.firestore.FieldValue.arrayUnion({ usuario: userId }),
+  });
+};
+
+export const Dislike = (id, commentId, userId) => {
+  let refComentario = firebase
+    .firestore()
+    .collection("post")
+    .doc(id)
+    .collection("comment")
+    .doc(commentId);
+  return refComentario.update({
+    likes: firebase.firestore.FieldValue.arrayRemove({ usuario: userId }),
+  });
+};
+
+export const DeleteComment = (id, commentId) => {
+  console.log(id, commentId);
+  let refComentario = firebase.firestore().collection("post").doc(id);
+  var removeComment = refComentario.update({
+    commentId: firebase.firestore.FieldValue.delete(),
   });
 };

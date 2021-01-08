@@ -4,17 +4,29 @@ import { Avatar, Title, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GetUserLogin } from "../../database/controllers/controllerUsers";
 import Header from "../../components/Header";
+import DarkThemeContext from "../../DarkThemeContext";
+import {
+  yellow,
+  black,
+  white,
+  errorRed,
+  gray,
+} from "../../styles/globalsVariables";
 
 const Profile = ({ navigation }) => {
+  const isDarkMode = React.useContext(DarkThemeContext);
+
   var initialState = {
     name: "",
     email: "",
     cohorte: "",
     password: "",
-    phone: "",
+    phoneNumber: "",
   };
+
   const [usuario, setUsuario] = useState(initialState);
   const [photo, setPhoto] = useState("");
+  const [provider, setProvider] = useState("");
   const handleProfileEdit = () => {
     navigation.navigate("ProfileEdit", {
       myData: usuario,
@@ -23,25 +35,35 @@ const Profile = ({ navigation }) => {
 
   useEffect(() => {
     var user = GetUserLogin();
-
+    if (user != null) {
+      user.providerData.forEach(function (profile) {
+        setProvider(profile.providerId)
+      });
+    }
     if (user) {
       setUsuario({
         email: user.email,
         name: user.displayName,
         cohorte: user.cohorte,
-        phoneNumber: user.phone,
+        phoneNumber: user.phoneNumber,
       });
-      setPhoto(user.photoURL);
+      if (user.photoURL) {
+        setPhoto(user.photoURL);
+      }
     } else {
       console.log("No se encontró usuario");
     }
   }, [photo]);
   return (
-    <>
+    <View style={!isDarkMode ? styles.container : styles.darkContainer}>
       <Header navigation={navigation} />
-      <SafeAreaView style={styles.container}>
-        <View style={styles.body}>
-          <View style={styles.userInfoSection}>
+      <SafeAreaView style={!isDarkMode ? styles.body : styles.darkbody}>
+        <View style={!isDarkMode ? styles.container : styles.darkContainer}>
+          <View
+            style={
+              !isDarkMode ? styles.userInfoSection : styles.darkUserInfoSection
+            }
+          >
             <View
               style={{
                 flexDirection: "column",
@@ -53,7 +75,7 @@ const Profile = ({ navigation }) => {
                 size={150}
                 source={
                   photo
-                    ? photo
+                    ? { uri: photo }
                     : {
                         uri:
                           "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
@@ -62,55 +84,61 @@ const Profile = ({ navigation }) => {
               />
             </View>
           </View>
-          <View style={styles.userInfoSection}>
+          <View
+            style={
+              !isDarkMode ? styles.userInfoSection : styles.darkUserInfoSections
+            }
+          >
             <View style={styles.row}>
-              <Icon name="account" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="account" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.name}
               </Text>
             </View>
             <View style={styles.row}>
-              <Icon name="phone" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="phone" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.phone}
               </Text>
             </View>
             <View style={styles.row}>
-              <Icon name="email" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="email" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.email}
               </Text>
             </View>
             <View style={styles.row}>
-              <Icon name="book-open-outline" color="#3b3b3b" size={20} />
-              <Text style={{ color: "#777777", marginLeft: 20 }}>
+              <Icon name="book-open-outline" color="gray" size={20} />
+              <Text style={{ color: "gray", marginLeft: 20 }}>
                 {usuario.cohorte}
               </Text>
             </View>
           </View>
-          <View style={styles.userInfoSection}>
-            <TouchableOpacity style={styles.btn} onPress={handleProfileEdit}>
-              <View style={styles.row}>
-                <Icon
-                  name="account-edit"
-                  style={{ color: "#000000" }}
-                  size={20}
-                />
-                <Text
-                  style={{
-                    marginLeft: 20,
-                    color: "#000000",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Editar Perfil
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          {provider !== "google.com" ? 
+                      <View style={styles.userInfoSection}>
+                      <TouchableOpacity style={styles.btn} onPress={handleProfileEdit}>
+                        <View style={styles.row}>
+                          <Icon
+                            name="account-edit"
+                            style={{ color: "#000000" }}
+                            size={20}
+                          />
+                          <Text
+                            style={{
+                              marginLeft: 20,
+                              color: "#000000",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Editar Perfil
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+          : <></>}
         </View>
       </SafeAreaView>
-    </>
+    </View>
   );
 };
 
@@ -123,7 +151,19 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginVertical: 20,
   },
+  darkbody: {
+    width: "95%",
+    backgroundColor: `${black}`,
+    borderRadius: 10,
+    alignSelf: "center",
+    paddingVertical: 20,
+    marginVertical: 20,
+  },
   container: {
+    flex: 1,
+    backgroundColor: `${white}`,
+  },
+  darkContainer: {
     flex: 1,
     backgroundColor: "#000",
   },

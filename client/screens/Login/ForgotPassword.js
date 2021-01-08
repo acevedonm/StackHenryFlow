@@ -3,6 +3,7 @@ import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
+import { Input } from "react-native-elements"
 
 export default function ForgotPassword({ navigation }) {
   const validations = yup.object().shape({
@@ -37,12 +38,14 @@ export default function ForgotPassword({ navigation }) {
           }) => (
             <View style={styles.form}>
               <Text style={styles.h1}>RECUPERAR CONTRASEÑA</Text>
-              <Text style={styles.h2}>Ingrese su email</Text>
-              <TextInput
+              
+              <Input
                 style={styles.input}
+                style={{marginTop:20}}
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
+                placeholder='Ingrese su mail'
               />
               {touched.email && errors.email && (
                 <Text style={styles.error}>{errors.email}</Text>

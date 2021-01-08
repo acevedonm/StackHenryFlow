@@ -11,6 +11,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { styles } from "../../styles/styles";
 import { createUser } from "../../database/controllers/controllerUsers";
+import {Input} from "react-native-elements";
 
 export default function Register({ navigation }) {
   const validations = yup.object().shape({
@@ -74,12 +75,14 @@ export default function Register({ navigation }) {
                 <Text style={styles.h1}>REGISTRO</Text>
 
                 {/* CAMPO EMAIL */}
-                <Text style={styles.label}>Email</Text>
-                <TextInput
+                
+                <Input
                   style={styles.input}
+                  style={{marginTop:10, textAlign:"center"}}
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
                   value={values.email}
+                  placeholder='Email'
                 />
                 {/* ERROR EMAIL */}
                 {touched.email && errors.email && (
@@ -87,13 +90,14 @@ export default function Register({ navigation }) {
                 )}
 
                 {/* CAMPO PASSWORD */}
-                <Text style={styles.label}>Contraseña</Text>
-                <TextInput
+                
+                <Input
                   style={styles.input}
                   secureTextEntry={true}
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   value={values.password}
+                  placeholder='Contraseña'
                 />
                 {/* ERROR PASSWORD */}
                 {touched.password && errors.password && (
@@ -101,13 +105,14 @@ export default function Register({ navigation }) {
                 )}
 
                 {/* CAMPO REPEAT PASSWORD */}
-                <Text style={styles.label}>Repite la Contraseña</Text>
-                <TextInput
+                
+                <Input
                   style={styles.input}
                   secureTextEntry={true}
                   onChangeText={handleChange("repeatPassword")}
                   onBlur={handleBlur("repeatPassword")}
                   value={values.repeatPassword}
+                  placeholder='Repite la contraseña'
                 />
                 {/* ERROR REPEAT PASSWORD */}
                 {touched.repeatPassword && errors.repeatPassword && (

@@ -17,6 +17,13 @@ import {
 } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DarkThemeContext from "../DarkThemeContext";
+import {
+  yellow,
+} from "../styles/globalsVariables";
+
+import firebase from "firebase";
+import "firebase/firestore";
 
 export default function DrawerContent(props) {
   const USER_LOGIN = "@user_login";
@@ -26,10 +33,9 @@ export default function DrawerContent(props) {
   };
   const [usuario, setUsuario] = useState(inicialState);
   const [photo, setPhoto] = useState("");
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+    props.route?.params?.toggleTheme();
   };
 
   const logout = () => {
@@ -40,130 +46,199 @@ export default function DrawerContent(props) {
   const getUser = async () => {
     let storageUser = await AsyncStorage.getItem(USER_LOGIN);
     storageUser = JSON.parse(storageUser);
-
     if (storageUser) {
+      if (storageUser.user.photoURL) {
+        setPhoto(storageUser.user.photoURL);
+      }
       setUsuario({
         displayName: storageUser.user.displayName,
         email: storageUser.user.email,
       });
-      setPhoto(storageUser.user.photoURL);
+      //setPhoto(storageUser.user.photoURL);
     } else {
       console.log("Error al pedir user al storage");
     }
   };
   useEffect(() => {
     getUser();
-  }, []);
+  }, [photo]);
+
+  const isDarkMode = React.useContext(DarkThemeContext);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={!isDarkMode ? { flex: 1 } : { flex: 1, backgroundColor: "black" }}
+    >
       <DrawerContentScrollView {...props}>
-        <View style={styles.drawerContent}>
-          <View style={styles.userInfoSection}>
+        <View
+          style={!isDarkMode ? styles.drawerContent : styles.darkDrawerContent}
+        >
+          <View
+            style={
+              !isDarkMode ? styles.userInfoSection : styles.darkUserInfoSection
+            }
+          >
             <View style={{ flexDirection: "row", marginTop: 15 }}>
               <Avatar.Image
-                source={{
-                  uri: photo
-                    ? photo
-                    : "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
-                }}
+                source={
+                  photo
+                    ? { uri: photo }
+                    : {
+                        uri:
+                          "https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg",
+                      }
+                }
                 size={50}
               />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
-                {usuario.displayName ?
-                <Title>{usuario.displayName.length < 18 ? usuario.displayName : `${usuario.displayName.substring(0,18)}..`}</Title>
-                : <Title>Bienvenido!</Title> }
-                <Caption>{usuario.email}</Caption>
+                {usuario.displayName ? (
+                  <Title>
+                    {usuario.displayName.length < 18
+                      ? usuario.displayName
+                      : `${usuario.displayName.substring(0, 18)}..`}
+                  </Title>
+                ) : (
+                  <Title style={!isDarkMode ? styles.titleB : styles.darktlB}>
+                    Bienvenido!
+                  </Title>
+                )}
+                <Caption style={!isDarkMode ? styles.titleB : styles.darktlB}>
+                  {usuario.email}
+                </Caption>
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.section}>
-                <Paragraph style={[styles.paragraph, styles.caption]}>
+                <Paragraph
+                  style={
+                    !isDarkMode
+                      ? [styles.paragraph, styles.caption]
+                      : [styles.paragraph, styles.darkCaption]
+                  }
+                >
                   80
                 </Paragraph>
-                <Caption style={styles.caption}>Following</Caption>
+                <Caption
+                  style={!isDarkMode ? styles.caption : styles.darkCaption}
+                >
+                  Following
+                </Caption>
               </View>
               <View style={styles.section}>
-                <Paragraph style={[styles.paragraph, styles.caption]}>
+                <Paragraph
+                  style={
+                    !isDarkMode
+                      ? [styles.paragraph, styles.caption]
+                      : [styles.paragraph, styles.darkCaption]
+                  }
+                >
                   100
                 </Paragraph>
-                <Caption style={styles.caption}>Followers</Caption>
+                <Caption
+                  style={!isDarkMode ? styles.caption : styles.darkCaption}
+                >
+                  Followers
+                </Caption>
               </View>
             </View>
           </View>
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
+              style={isDarkMode ? { backgroundColor: yellow } : {}}
+              labelStyle={{ color: "black" }}
               icon={({ color, size }) => (
                 <Icon name="home-outline" color={color} size={size} />
               )}
-              label="Home"
+              label="Inicio"
               onPress={() => {
                 props.navigation.navigate("Home");
               }}
             />
             <DrawerItem
+              style={isDarkMode ? { backgroundColor: yellow } : {}}
+              labelStyle={{ color: "black" }}
               icon={({ color, size }) => {
                 return (
                   <Icon name="account-outline" color={color} size={size} />
                 );
               }}
-              label="Profile"
+              label="Perfil"
               onPress={() => {
                 props.navigation.navigate("Profile");
               }}
             />
             <DrawerItem
+              style={isDarkMode ? { backgroundColor: yellow } : {}}
+              labelStyle={{ color: "black" }}
               icon={({ color, size }) => {
                 return (
                   <Icon name="plus-box-outline" color={color} size={size} />
                 );
               }}
-              label="New Post"
+              label="Nuevo posteo"
               onPress={() => {
                 props.navigation.navigate("NewPostForm");
               }}
             />
             <DrawerItem
+              style={isDarkMode ? { backgroundColor: yellow } : {}}
+              labelStyle={{ color: "black" }}
               icon={({ color, size }) => {
                 return <Icon name="brain" color={color} size={size} />;
               }}
-              label="Be a Support"
+              label="Preguntas"
               onPress={() => {
                 props.navigation.navigate("PostsList");
               }}
             />
             <DrawerItem
+              style={isDarkMode ? { backgroundColor: yellow } : {}}
+              labelStyle={{ color: "black" }}
               icon={({ color, size }) => {
                 return <Icon name="post" color={color} size={size} />;
               }}
-              label="My Posts"
+              label="Mis preguntas"
               onPress={() => {
                 props.navigation.navigate("MyPosts");
               }}
             />
           </Drawer.Section>
-          <Drawer.Section title="Preferences">
+          <Drawer.Section
+            title="Preferences"
+            style={!isDarkMode ? {} : styles.darkPreferenceTitle}
+          >
             <TouchableRipple
               onPress={() => {
                 toggleTheme();
               }}
             >
-              <View style={styles.preference}>
-                <Text>Dark Theme</Text>
+              <View
+                style={!isDarkMode ? styles.preference : styles.darkPreference}
+              >
+                <Text>Modo nocturno</Text>
+
                 <View pointerEvents="none">
-                  <Switch value={isDarkTheme}></Switch>
+                  <Switch value={props.isDarkMode}></Switch>
                 </View>
               </View>
             </TouchableRipple>
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
-      <Drawer.Section style={styles.bottomDrawerSection}>
+      <Drawer.Section
+        style={
+          !isDarkMode
+            ? styles.bottomDrawerSection
+            : styles.bottomDrawerSectionDark
+        }
+      >
         <DrawerItem
+          style={isDarkMode ? { backgroundColor: yellow } : {}}
+          labelStyle={{ color: "black" }}
           icon={({ color, size }) => {
             return <Icon name="exit-to-app" color={color} size={size}></Icon>;
           }}
-          label="Sign Out"
+          label="Cerrar sesión"
           onPress={logout}
         ></DrawerItem>
       </Drawer.Section>
@@ -175,8 +250,16 @@ const styles = StyleSheet.create({
   drawerContent: {
     flex: 1,
   },
+  darkDrawerContent: {
+    flex: 1,
+    backgroundColor: "'black'",
+  },
   userInfoSection: {
     paddingLeft: 20,
+  },
+  darkUserInfoSection: {
+    paddingLeft: 20,
+    color: "yellow",
   },
   title: {
     fontSize: 16,
@@ -186,6 +269,11 @@ const styles = StyleSheet.create({
   caption: {
     fontSize: 14,
     lineHeight: 14,
+  },
+  darkCaption: {
+    fontSize: 14,
+    lineHeight: 14,
+    color: yellow,
   },
   row: {
     marginTop: 20,
@@ -209,10 +297,29 @@ const styles = StyleSheet.create({
     borderTopColor: "#f4f4f4",
     borderTopWidth: 1,
   },
+  bottomDrawerSectionDark: {
+    marginBottom: 15,
+    borderTopColor: yellow,
+    backgroundColor: "black",
+    borderTopWidth: 1,
+  },
   preference: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 12,
     paddingHorizontal: 16,
+  },
+  darkPreference: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    backgroundColor: yellow,
+  },
+  darkPreferenceTitle: {
+    backgroundColor: yellow,
+  },
+  darktlB: {
+    color: yellow,
   },
 });

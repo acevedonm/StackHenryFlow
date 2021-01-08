@@ -2,6 +2,7 @@ import { SearchBar } from "react-native-elements";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { searchInPost } from "../database/controllers/controllerPost";
+import { styles } from "../styles/styles";
 
 const Bar = ({ onSearch }) => {
   const [search, setSearch] = useState("");
@@ -11,8 +12,11 @@ const Bar = ({ onSearch }) => {
   };
 
   const buscar = async (busqueda) => {
-    var result = await searchInPost(busqueda);
-    onSearch(result)
+    if(busqueda){
+      var result = await searchInPost(busqueda);
+      onSearch(result)
+    }
+
   };
 
   useEffect(() => {
@@ -20,12 +24,18 @@ const Bar = ({ onSearch }) => {
   }, [search]);
 
   return (
-    <View style={{ width: "85%", alignSelf: "center" }}>
+
+    <View>
       <SearchBar
+
         placeholder="Buscar..."
         onChangeText={updateSearch}
         value={search}
-        
+        lightTheme={true}
+        platform={"ios"}
+        // inputContainerStyle={{ borderRadius: 50,backgroundColor: 'transparent'}}
+         containerStyle={{ borderRadius: 50,backgroundColor: 'transparent'}}
+
       />
     </View>
   );

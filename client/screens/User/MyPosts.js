@@ -5,9 +5,12 @@ import { styles } from "../../styles/styles";
 // COMPONENTS //
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
-import { Avatar, ListItem } from 'react-native-elements'
+import { Avatar, ListItem } from "react-native-elements";
+import { darkStyles } from "../../styles/darkStyles";
+import DarkThemeContext from "../../DarkThemeContext";
 
-export default function PostsList({ navigation }) {
+export default function MyPosts({ navigation }) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -17,47 +20,69 @@ export default function PostsList({ navigation }) {
 
   useEffect(() => {
     setLoading(true);
-     GetMyPosts().then((myPost) => {
+    GetMyPosts()
+      .then((myPost) => {
         setPosts(myPost.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
       .then(() => setLoading(false))
       .catch((err) => {
         console.log("Error getting posts", err);
       });
-    
   }, []);
 
-
-  
-  const keyExtractor = item => item.id
+  const keyExtractor = (item) => item.id;
   const renderItem = ({ item }) => (
-    <ListItem bottomDivider containerStyle={{ borderBottomWidth: 1.5 }}>
-      <Avatar rounded title={item.title[0]} source={{uri: item.photo ? item.photo:"https://cutt.ly/hjrVYr8"}}/>
+    <ListItem
+      bottomDivider
+      containerStyle={{ borderBottomWidth: 1.5 }}
+      onPress={() => navigation.navigate("PostDetails", { data: item })}
+    >
+      <Avatar
+        rounded
+        title={item.title[0]}
+        source={{ uri: item.photo ? item.photo : "https://cutt.ly/hjrVYr8" }}
+      />
       <ListItem.Content>
         <ListItem.Title>{item.title}</ListItem.Title>
-        <ListItem.Subtitle style={{fontSize : 10}}>{item.tag}</ListItem.Subtitle>
+        <ListItem.Subtitle style={{ fontSize: 10 }}>
+          {item.tag}
+        </ListItem.Subtitle>
       </ListItem.Content>
       <ListItem.Chevron />
     </ListItem>
-  )
+  );
   const renderSeparator = () => {
     return (
       <View
-        style={styles.separatorPostList}
+        style={
+          !isDarkMode
+            ? styles.separatorPostList
+            : darkStyles.darkSeparatorPostList
+        }
       />
     );
   };
-  const renderFooter = ()=>{
-    if (!loading) return null 
-    return <View style={styles.spinnerVerticalPagination}>
-      <ActivityIndicator animating size="small" ></ActivityIndicator>
-    </View>
-  }
+  const renderFooter = () => {
+    if (!loading) return null;
+    return (
+      <View
+        style={
+          !isDarkMode
+            ? styles.spinnerVerticalPagination
+            : darkStyles.darkSpinnerVerticalPagination
+        }
+      >
+        <ActivityIndicator animating size="small"></ActivityIndicator>
+      </View>
+    );
+  };
 
-const renderList = ()=>(
-  <>
-  <Text style={styles.h3}>ULTIMAS ENTRADAS</Text>
-  {posts && posts.length >= 1 ? (
+  const renderList = () => (
+    <>
+      <Text style={!isDarkMode ? styles.h3text : darkStyles.darkH3text}>
+        ULTIMAS ENTRADAS
+      </Text>
+      {posts && posts.length >= 1 ? (
         <FlatList
           keyExtractor={keyExtractor}
           data={posts}
@@ -65,22 +90,30 @@ const renderList = ()=>(
           ItemSeparatorComponent={renderSeparator}
           ListFooterComponent={renderFooter}
         />
-  ) : (
-      <Text>No se encontraron resultados..</Text>
-    )}
-</>
-)
+      ) : (
+        <Text style={!isDarkMode ? styles.textstyle : darkStyles.darkTextStyle}>
+          No se encontraron resultados..
+        </Text>
+      )}
+    </>
+  );
 
   return (
     <>
       <Header navigation={navigation} />
-      <ScrollView>
-        <View style={styles.bodyPostList}>
+      <ScrollView style={!isDarkMode ? styles.scroll : darkStyles.darkScroll}>
+        <View
+          style={
+            !isDarkMode ? styles.bodyPostList : darkStyles.darkBodyPostList
+          }
+        >
           <SearchBar onSearch={handleSearch} />
-          <View style={styles.cardPostList}>
-            {loading ? <Text>Cargando posts..</Text> :
-              renderList()
+          <View
+            style={
+              !isDarkMode ? styles.cardPostList : darkStyles.darkCardPostList
             }
+          >
+            {loading ? <Text>Cargando posts..</Text> : renderList()}
           </View>
         </View>
       </ScrollView>

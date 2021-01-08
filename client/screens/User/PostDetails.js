@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Image } from "react-native";
 import Comments from "../../components/Comments";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
+import { GetComments} from "../../database/controllers/controllerPost"
+import DarkThemeContext from '../../DarkThemeContext'
 
 export default function PostDetails(props) {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const { data } = props.route.params;
 
+  const [comments, setComments] = useState([])
+
+  useEffect(() => {
+    GetComments(data.id).then((respuesta)=> setComments(respuesta.docs))
+  },[])
   return (
     <>
       <Header navigation={props.navigation} />
@@ -60,7 +68,7 @@ export default function PostDetails(props) {
                 <Text>{data.email}</Text>
               </View>
             </View>
-            <Comments data={data} navigation={props.navigation} />
+            <Comments data={data} comments={comments} navigation={props.navigation} />
           </View>
         </View>
       </ScrollView>
