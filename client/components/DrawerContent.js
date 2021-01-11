@@ -90,7 +90,7 @@ export default function DrawerContent(props) {
                 }
                 size={50}
               />
-              <View style={{ marginLeft: 15, flexDirection: "column" }}>
+              <View style={!isDarkMode ?{ marginLeft: 15, flexDirection: "column" } :{ marginLeft: 15, flexDirection: "column", color: yellow } }>
                 {usuario.displayName ? (
                   <Title>
                     {usuario.displayName.length < 18

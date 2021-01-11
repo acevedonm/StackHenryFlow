@@ -11,8 +11,12 @@ import {
 import { getUserLogin } from "../functions/getUserLogin";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import DarkThemeContext from '../DarkThemeContext'
+import { darkStyles } from "../styles/darkStyles"; 
+import { yellow, black, white, errorRed, gray } from "../styles/globalsVariables";
 
 export const Comments = (props) => {
+  const isDarkMode = React.useContext(DarkThemeContext);
   const [currentDate, setCurrentDate] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [comentario, setComentario] = useState("");
@@ -77,21 +81,20 @@ export const Comments = (props) => {
     obtenerFecha();
     obtenercomentarios();
   }, [currentUser]);
-
+  
   return (
     <>
       {/* <Header navigation={navigation} /> */}
-      <View style={styles.containerInput}>
-        <View>
-                                                                                  {/* PASAR A DARK ESTE TITULO "Comentarios:" */}
-          <Text style={styles.tituloComentarios}>Comentarios:</Text>
+      <View style={!isDarkMode ? styles.containerInput: darkStyles.darkContainerInputComment}>
+        <View style={!isDarkMode ? styles.containerInput: darkStyles.darkContainerInputComment}>
+         {/* PASAR A DARK ESTE TITULO "Comentarios:" */}
+          <Text style={!isDarkMode ? styles.tituloComentarios : darkStyles.darkComentario}>Comentarios:</Text>
           {Array.isArray(com) ? (
             com.map((comentario) => {
               return (
-                <View style={styles.comentario} key={comentario.id}>
-
-                                                                                   {/* PASAR A DARK userData */}
-                  <Text style={styles.userAndData}>
+                <View style={!isDarkMode ? styles.comentario : darkStyles.darkComentario} key={comentario.id}>
+                     {/* PASAR A DARK userData */}
+                  <Text style={!isDarkMode? styles.userAndData : darkStyles.userAndData}>
                   {comentario.user} - {comentario.fecha} 
                   </Text>
                   
@@ -128,13 +131,13 @@ export const Comments = (props) => {
         <TextInput
           placeholder="Escribe un comentario..."
                                                                           // PASAR A DARK inputComment
-          style={styles.inputComment}
+          style={!isDarkMode ? styles.inputComment : darkStyles.inputComment}
           multiline={true}
           numberOfLines={4}
           onChangeText={(comentario) => setComentario(comentario)}
           value={comentario}
         />
-        <Button title="Comentar" color="#000000" onPress={enviarComentario} />
+        <Button title="Comentar"  color={!isDarkMode ? "#000000" : yellow} onPress={enviarComentario} />
       </View>
     </>
   );

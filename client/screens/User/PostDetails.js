@@ -3,8 +3,10 @@ import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import Comments from "../../components/Comments";
 import { styles } from "../../styles/styles";
 import Header from "../../components/Header";
-import { GetComments } from "../../database/controllers/controllerPost";
-import DarkThemeContext from "../../DarkThemeContext";
+import { GetComments} from "../../database/controllers/controllerPost"
+import DarkThemeContext from '../../DarkThemeContext'
+import { darkStyles } from "../../styles/darkStyles";
+import { white } from "../../styles/globalsVariables";
 
 export default function PostDetails(props) {
   const isDarkMode = React.useContext(DarkThemeContext);
@@ -19,14 +21,14 @@ export default function PostDetails(props) {
     <>
       <Header navigation={props.navigation} />
       <ScrollView>
-        <View style={styles.body}>
+        <View style={!isDarkMode ? styles.body : darkStyles.darkBody}>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("PostsList")}
           >
             <Text style={{ marginTop: 20, fontSize: 14 }}>Volver a Posts</Text>
           </TouchableOpacity>
-          <View style={styles.cardComment}>
-            <Text style={styles.h5}>
+          <View style={!isDarkMode? styles.cardComment : darkStyles.darkCardComment}>
+            <Text style={!isDarkMode? [styles.h5, { alignSelf: "flex-start" }] : [styles.h5, { alignSelf: "flex-start", color: white }]}>
               {data.title}
             </Text>
             <Text
@@ -38,19 +40,25 @@ export default function PostDetails(props) {
               {data.tag}
             </Text>
             <Text
-              style={{
+              style={!isDarkMode ?{
                 marginTop: 25,
                 fontSize: 15,
                 textAlign: "left",
                 alignSelf: "flex-start",
                 marginLeft: 2,
-              }}
+              }:{
+                marginTop: 25,
+                fontSize: 15,
+                alignSelf: "flex-start",
+                marginLeft: 2,
+                color:white
+              }
+            }
             >
               {data.description}
             </Text>
-            <Text style={{ marginTop: 40, alignSelf: "flex-start" }}>
-              {data.fecha}
-            </Text>
+            <Text style={!isDarkMode ?{ marginTop: 40, alignSelf: "flex-start" } : { marginTop: 40, alignSelf: "flex-start", color:white }}>{data.fecha}</Text>
+
             <View
               style={{
                 display: "flex",
@@ -77,8 +85,8 @@ export default function PostDetails(props) {
                 }}
               />
               <View style={{ textAlign: "left" }}>
-                <Text style={{ fontWeight: "bold" }}>{data.name}</Text>
-                <Text>{data.email}</Text>
+                <Text style={!isDarkMode ? { fontWeight: "bold" } : { fontWeight: "bold", color:white } }>{data.name}</Text>
+                <Text style={!isDarkMode ? { fontWeight: "bold" } : { fontWeight: "bold", color:white }}>{data.email}</Text>
               </View>
             </View>
             <Comments

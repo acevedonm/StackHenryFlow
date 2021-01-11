@@ -13,6 +13,11 @@ export const darkStyles = StyleSheet.create({
     color: `${yellow}`,
     textAlign: "center",
   },
+  userAndData:{
+    color: "white", 
+    textAlign: "center", 
+    marginTop: 5,
+  },
   darkHeaderOut: {
     top: 0,
     left: 0,
@@ -305,14 +310,22 @@ darkH1: {
     zIndex: 1,
   },
   darkContainerInputComment: {
-    borderRadius: 10,
-    borderColor: "yellow",
-    backgroundColor: "black",
+    backgroundColor: black,
+    borderColor: yellow,
+    color: "black",
+  },
+  inputComment: {
+    textAlign: "center",
     padding: 8,
-    margin: 10,
-    width: 200,
+    marginVertical: 20,
+    width: 280,
     height: 100,
-    color: "white",
+    color: black,
+    borderColor: yellow,
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingTop:20,
+    alignSelf: "center",
   },
   darkComment: {
     textAlign: "center",
@@ -321,7 +334,7 @@ darkH1: {
     width: 280,
     height: 100,
     color: black,
-    borderColor: black,
+    borderColor: yellow,
     borderWidth: 1,
     borderRadius: 5,
     paddingTop:20
@@ -341,10 +354,11 @@ darkH1: {
   },
   darkComentario: {
     padding: 10,
-    backgroundColor: "#000",
     borderRadius: 10,
     marginBottom: 5,
     color: "#FFF",
+    borderColor: `${yellow}` 
+
   },
   darkContainerSearch: {
     display: "flex",
