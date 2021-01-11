@@ -43,8 +43,12 @@ export default function MyPosts({ navigation }) {
         source={{ uri: item.photo ? item.photo : "https://cutt.ly/hjrVYr8" }}
       />
       <ListItem.Content>
-        <ListItem.Title>{item.title}</ListItem.Title>
-        <ListItem.Subtitle style={{ fontSize: 10 }}>
+        <ListItem.Title>
+          {item.title.length > 21
+            ? item.title.substring(0, 20) + ".."
+            : item.title}
+        </ListItem.Title>
+        <ListItem.Subtitle style={{ fontSize: 14, color: "grey" }}>
           {item.tag}
         </ListItem.Subtitle>
       </ListItem.Content>

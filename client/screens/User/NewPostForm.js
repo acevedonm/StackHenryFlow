@@ -109,7 +109,7 @@ export default function NewPostForm({ navigation }) {
                       marginBottom: 20,}}
 
                     >
-                      ¿Cual es tu duda?
+                      ¿Cuál es tu duda?
                     </Text>
                   )}
 
